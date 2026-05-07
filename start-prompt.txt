@@ -1,1 +1,7 @@
-Russell's knowledge base is at C:\ClaudeCode\CoWork_Helper. Mount that folder, read CLAUDE.md first, then check the README.md index for any relevant playbook or gotcha. We're working on: [TOPIC].
+Russell's knowledge base lives at https://github.com/Syncflo-design/CoWork_Helper.
+
+1. Fetch https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/CLAUDE.md and follow its instructions.
+2. Then fetch https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/README.md to see the index of playbooks, gotchas, sites, and templates.
+3. Before starting, fetch any playbook or gotcha that matches the topic. Raw URL pattern: https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/<path> — e.g. playbooks/insights-v3.md, gotchas/2026-05-06-insights-explicit-join-wrong-schema.md, sites/blomoplastics.md.
+
+We're working on: [TOPIC].
