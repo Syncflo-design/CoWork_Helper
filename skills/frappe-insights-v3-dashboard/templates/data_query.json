@@ -1,0 +1,16 @@
+{
+  "_readme": "Data-query wrapper. Goes in the `operations` field of the chart's data_query (the auto-created sibling Insights Query v3 doc). Replace <SOURCE_QUERY_NAME> with the source query's name (e.g. 'dodbej7124') and <WORKBOOK_ID> with the workbook id integer (NOT a string).",
+
+  "operations_template": [
+    {
+      "type": "source",
+      "table": {
+        "type": "query",
+        "query_name": "<SOURCE_QUERY_NAME>",
+        "workbook": 1
+      }
+    }
+  ],
+
+  "_save_hint": "After save, the data_query's `linked_queries` field will auto-populate with [\"<SOURCE_QUERY_NAME>\"] — that's how you confirm the source op parsed correctly."
+}

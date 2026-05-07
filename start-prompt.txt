@@ -1,0 +1,1 @@
+Russell's knowledge base is at C:\ClaudeCode\CoWork_Helper. Mount that folder, read CLAUDE.md first, then check the README.md index for any relevant playbook or gotcha. We're working on: [TOPIC].

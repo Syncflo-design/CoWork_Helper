@@ -1,0 +1,187 @@
+/* =========================================================
+   SOFT PROFESSIONAL — Frappe Insights v3 Dashboard Theme
+   Version: 1 | Date: 2026-05-06
+   Selectors VERIFIED against live Insights v3 DOM
+
+   ⚠️  DO NOT USE as a Client Script or Website Settings head_html.
+   Frappe Insights v3 is a standalone Vue SPA — frappe is not defined
+   on the page and Frappe's template system does not render the Insights
+   HTML. Neither mechanism can inject CSS into it.
+
+   ✅  USE via Tampermonkey userscript:
+       templates/insights-theme-all-sites.user.js
+       — add your site's colours to SITE_THEMES at the top of that file.
+
+   This file is a REFERENCE / design token source. Keep it updated
+   when you tune colours. The userscript generates its own CSS from
+   the same colour values programmatically.
+
+   =========================================================
+   DESIGN INTENT
+   =========================================================
+   Muted, low-saturation gradients with soft shadows.
+   No harsh reds or pinks. Suitable for executive dashboards
+   and any context where the previous Industrial Pro palette
+   felt too bold.
+
+   Replaces the earlier Industrial Pro theme (2026-05-06 AM)
+   per Russell's preference for a softer professional palette.
+
+   =========================================================
+   VERIFIED DOM STRUCTURE (Insights v3)
+   =========================================================
+   .vgl-layout                              ← dashboard background canvas
+     section.vgl-item.vgl-item--transform   ← each chart tile
+       div.group.relative.flex.h-full.w-full.p-2
+         div > div > ...
+           div.[rounded][bg-white][shadow]  ← KPI number card
+           div.[divide-y][bg-white][shadow] ← Table card
+
+   Grid positions (nth-child):
+     1–4 : KPI cards
+     5   : hero chart
+     6   : table 1
+     7   : table 2
+
+   =========================================================
+   COLOR PALETTE (edit these when tuning a new site)
+   =========================================================
+   KPI 1  Slate blue  (operational)   #6b85a3 → #4a6580  shadow rgba(107,133,163,0.30)
+   KPI 2  Sage green  (production)    #82a085 → #5d7a60  shadow rgba(130,160,133,0.30)
+   KPI 3  Soft amber  (caution)       #c4a373 → #99794d  shadow rgba(196,163,115,0.30)
+   KPI 4  Dusty rose  (alert)         #b07e7e → #855555  shadow rgba(176,126,126,0.30)
+
+   Soft Executive variant (financial dashboards):
+   Steel blue   #5e85a8 → #3f6182  shadow rgba(94,133,168,0.30)
+   Soft sage    #7a9c7d → #557556  shadow rgba(122,156,125,0.30)
+   Muted plum   #8b7991 → #614f68  shadow rgba(139,121,145,0.30)
+   Warm taupe   #b08c75 → #836552  shadow rgba(176,140,117,0.30)
+   ========================================================= */
+
+
+/* === DASHBOARD CANVAS === */
+.vgl-layout {
+  background: #f5f6f8 !important;
+  padding: 8px !important;
+}
+
+
+/* =========================================================
+   KPI CARDS
+   Selector: .vgl-item:nth-child(N) [class*="rounded"][class*="bg-white"][class*="shadow"]
+   ========================================================= */
+
+/* KPI 1 — Slate blue */
+.vgl-item:nth-child(1) [class*="rounded"][class*="bg-white"][class*="shadow"] {
+  background: linear-gradient(140deg, #6b85a3 0%, #4a6580 100%) !important;
+  box-shadow: 0 4px 18px rgba(107,133,163,0.30) !important;
+  border-radius: 14px !important;
+  transition: transform 0.2s ease !important;
+}
+.vgl-item:nth-child(1) [class*="rounded"][class*="bg-white"][class*="shadow"]:hover {
+  transform: translateY(-2px) !important;
+}
+.vgl-item:nth-child(1) [class*="rounded"][class*="bg-white"][class*="shadow"] span,
+.vgl-item:nth-child(1) [class*="rounded"][class*="bg-white"][class*="shadow"] div {
+  color: #ffffff !important;
+}
+
+/* KPI 2 — Sage green */
+.vgl-item:nth-child(2) [class*="rounded"][class*="bg-white"][class*="shadow"] {
+  background: linear-gradient(140deg, #82a085 0%, #5d7a60 100%) !important;
+  box-shadow: 0 4px 18px rgba(130,160,133,0.30) !important;
+  border-radius: 14px !important;
+  transition: transform 0.2s ease !important;
+}
+.vgl-item:nth-child(2) [class*="rounded"][class*="bg-white"][class*="shadow"]:hover {
+  transform: translateY(-2px) !important;
+}
+.vgl-item:nth-child(2) [class*="rounded"][class*="bg-white"][class*="shadow"] span,
+.vgl-item:nth-child(2) [class*="rounded"][class*="bg-white"][class*="shadow"] div {
+  color: #ffffff !important;
+}
+
+/* KPI 3 — Soft amber */
+.vgl-item:nth-child(3) [class*="rounded"][class*="bg-white"][class*="shadow"] {
+  background: linear-gradient(140deg, #c4a373 0%, #99794d 100%) !important;
+  box-shadow: 0 4px 18px rgba(196,163,115,0.30) !important;
+  border-radius: 14px !important;
+  transition: transform 0.2s ease !important;
+}
+.vgl-item:nth-child(3) [class*="rounded"][class*="bg-white"][class*="shadow"]:hover {
+  transform: translateY(-2px) !important;
+}
+.vgl-item:nth-child(3) [class*="rounded"][class*="bg-white"][class*="shadow"] span,
+.vgl-item:nth-child(3) [class*="rounded"][class*="bg-white"][class*="shadow"] div {
+  color: #ffffff !important;
+}
+
+/* KPI 4 — Dusty rose (replaces harsh red) */
+.vgl-item:nth-child(4) [class*="rounded"][class*="bg-white"][class*="shadow"] {
+  background: linear-gradient(140deg, #b07e7e 0%, #855555 100%) !important;
+  box-shadow: 0 4px 18px rgba(176,126,126,0.30) !important;
+  border-radius: 14px !important;
+  transition: transform 0.2s ease !important;
+}
+.vgl-item:nth-child(4) [class*="rounded"][class*="bg-white"][class*="shadow"]:hover {
+  transform: translateY(-2px) !important;
+}
+.vgl-item:nth-child(4) [class*="rounded"][class*="bg-white"][class*="shadow"] span,
+.vgl-item:nth-child(4) [class*="rounded"][class*="bg-white"][class*="shadow"] div {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   HERO CHART (position 5)
+   Selector: .vgl-item:nth-child(5) [class*="rounded"][class*="bg-white"][class*="shadow"]
+   ========================================================= */
+.vgl-item:nth-child(5) [class*="rounded"][class*="bg-white"][class*="shadow"] {
+  border-top: 5px solid #6b85a3 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06) !important;
+  border-radius: 14px !important;
+}
+
+
+/* =========================================================
+   TABLES (positions 6, 7)
+   Selector: .vgl-item:nth-child(N) [class*="divide-y"][class*="bg-white"][class*="shadow"]
+   ========================================================= */
+
+/* Table 1 — Sage accent */
+.vgl-item:nth-child(6) [class*="divide-y"][class*="bg-white"][class*="shadow"] {
+  border-top: 5px solid #82a085 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}
+
+/* Table 2 — Slate blue accent */
+.vgl-item:nth-child(7) [class*="divide-y"][class*="bg-white"][class*="shadow"] {
+  border-top: 5px solid #6b85a3 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}
+
+
+/* =========================================================
+   TABLE CONTENT (applies globally to all tables on page)
+   ========================================================= */
+
+/* Headers */
+thead.sticky {
+  background: linear-gradient(90deg, #f5f6fa, #eef1f7) !important;
+}
+thead.sticky td {
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: #37474f !important;
+}
+
+/* Row hover */
+tbody tr:hover td {
+  background: #eef2f6 !important;
+}

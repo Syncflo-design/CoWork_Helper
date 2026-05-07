@@ -1,0 +1,50 @@
+{
+  "_readme": "Chart config for Table charts in Insights v3. CRITICAL: on a dashboard, Table charts MUST have rows + values populated, otherwise the tile shows 'No data to display' even if the underlying query returns rows. Standalone view is more forgiving but the dashboard view is not. See gotchas/2026-05-06-insights-table-needs-rows-values.md.",
+
+  "chart_doc_fields": {
+    "chart_type": "Table",
+    "query": "SOURCE_QUERY_NAME",
+    "data_query": "DATA_QUERY_NAME",
+    "config": "see config_template below, JSON-stringified"
+  },
+
+  "config_template": {
+    "filters": {"filters": [], "logical_operator": "And"},
+    "limit": 100,
+    "order_by": [
+      {"column": {"column_name": "SORT_COL", "data_type": "Decimal"}, "direction": "asc"}
+    ],
+    "rows": [
+      {"column_name": "DIMENSION_COL_1", "data_type": "String", "dimension_name": "DIMENSION_COL_1"}
+    ],
+    "columns": [],
+    "values": [
+      {"aggregation": "sum", "column_name": "MEASURE_COL_1", "data_type": "Decimal", "measure_name": "MEASURE_COL_1"},
+      {"aggregation": "sum", "column_name": "MEASURE_COL_2", "data_type": "Decimal", "measure_name": "MEASURE_COL_2"}
+    ]
+  },
+
+  "concrete_example_finished_goods_snapshot": {
+    "filters": {"filters": [], "logical_operator": "And"},
+    "limit": 100,
+    "order_by": [
+      {"column": {"column_name": "projected_qty", "data_type": "Decimal"}, "direction": "asc"}
+    ],
+    "rows": [
+      {"column_name": "item_code", "data_type": "String", "dimension_name": "item_code"}
+    ],
+    "columns": [],
+    "values": [
+      {"aggregation": "sum", "column_name": "actual_qty",    "data_type": "Decimal", "measure_name": "actual_qty"},
+      {"aggregation": "sum", "column_name": "reserved_qty",  "data_type": "Decimal", "measure_name": "reserved_qty"},
+      {"aggregation": "sum", "column_name": "projected_qty", "data_type": "Decimal", "measure_name": "projected_qty"}
+    ]
+  },
+
+  "_notes": [
+    "rows = dimensions to show as table rows (one entry per row column).",
+    "values = measures to show as numeric columns. aggregation 'sum' is safe even if the source query is already aggregated.",
+    "columns array (the third one, between rows and values) is for pivot-table-style cross-tabbed columns. Leave [] for a flat table.",
+    "Wide tables (5+ row columns) need w:12 on the dashboard grid."
+  ]
+}

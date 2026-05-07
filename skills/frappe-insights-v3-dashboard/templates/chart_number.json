@@ -1,0 +1,42 @@
+{
+  "_readme": "Chart config for a Number / KPI card. Set on the `config` field of an Insights Chart v3 doc with chart_type='Number'. Replace COLUMN_NAME and DATA_TYPE.",
+
+  "chart_doc_fields": {
+    "chart_type": "Number",
+    "query": "<SOURCE_QUERY_NAME>",
+    "data_query": "<DATA_QUERY_NAME>",
+    "config": "<see config_template below, JSON-stringified>"
+  },
+
+  "config_template": {
+    "date_column": {},
+    "filters": {"filters": [], "logical_operator": "And"},
+    "limit": 100,
+    "number_column_options": [],
+    "number_columns": [
+      {
+        "aggregation": "sum",
+        "column_name": "<MEASURE_COLUMN>",
+        "data_type": "<Integer|Decimal>",
+        "measure_name": "<MEASURE_COLUMN>"
+      }
+    ],
+    "order_by": []
+  },
+
+  "concrete_example_active_work_orders": {
+    "date_column": {},
+    "filters": {"filters": [], "logical_operator": "And"},
+    "limit": 100,
+    "number_column_options": [],
+    "number_columns": [
+      {
+        "aggregation": "sum",
+        "column_name": "active_work_orders",
+        "data_type": "Integer",
+        "measure_name": "active_work_orders"
+      }
+    ],
+    "order_by": []
+  }
+}

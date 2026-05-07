@@ -1,0 +1,55 @@
+{
+  "_readme": "Chart config for Bar / Line / Area charts. Same shape works for chart_type 'Bar', 'Line', 'Area'. The x_axis is one dimension; y_axis.series can hold multiple measures (each renders as a separate series).",
+
+  "config_template_single_series": {
+    "filters": {"filters": [], "logical_operator": "And"},
+    "limit": 100,
+    "order_by": [],
+    "x_axis": {
+      "dimension": {
+        "column_name": "<DIMENSION_COLUMN>",
+        "data_type": "String",
+        "dimension_name": "<DIMENSION_COLUMN>"
+      }
+    },
+    "y_axis": {
+      "series": [
+        {
+          "measure": {
+            "aggregation": "sum",
+            "column_name": "<MEASURE_COLUMN>",
+            "data_type": "Decimal",
+            "measure_name": "<MEASURE_COLUMN>"
+          }
+        }
+      ],
+      "stack": false
+    }
+  },
+
+  "config_template_two_series": {
+    "filters": {"filters": [], "logical_operator": "And"},
+    "limit": 100,
+    "order_by": [],
+    "x_axis": {
+      "dimension": {
+        "column_name": "item_name",
+        "data_type": "String",
+        "dimension_name": "item_name"
+      }
+    },
+    "y_axis": {
+      "series": [
+        {"measure": {"aggregation": "sum", "column_name": "actual_qty",    "data_type": "Decimal", "measure_name": "actual_qty"}},
+        {"measure": {"aggregation": "sum", "column_name": "projected_qty", "data_type": "Decimal", "measure_name": "projected_qty"}}
+      ],
+      "stack": false
+    }
+  },
+
+  "_notes": [
+    "data_type on dimension: String for text, Date for time series (then add granularity: 'day'|'month'|'year').",
+    "stack: true gives a stacked bar; false (or omitted) gives grouped bars.",
+    "If your source query is already aggregated (e.g. SELECT item, SUM(qty) GROUP BY item), still set aggregation:'sum' here — sum-of-pre-summed is identity."
+  ]
+}

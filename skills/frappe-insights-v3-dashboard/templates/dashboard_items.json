@@ -1,0 +1,41 @@
+{
+  "_readme": "What goes in the `items` field of an Insights Dashboard v3 doc, as a JSON-encoded STRING. The grid is 12 columns wide. Every item MUST have a unique layout.i — without it the chart saves but doesn't render. Using the chart name as i is fine.",
+
+  "item_shape": {
+    "type": "chart | text | filter",
+    "chart": "<chart_name when type=chart>",
+    "filter_name": "<when type=filter>",
+    "filter_type": "<when type=filter>",
+    "content": "<when type=text>",
+    "links": {},
+    "layout": {
+      "i": "<unique key, use chart name>",
+      "x": 0,
+      "y": 0,
+      "w": 3,
+      "h": 3
+    }
+  },
+
+  "reference_layout_ops_dashboard_8_tiles": [
+    {"type": "chart", "chart": "<KPI_1>", "layout": {"i": "<KPI_1>", "x": 0, "y": 0,  "w": 3,  "h": 3}},
+    {"type": "chart", "chart": "<KPI_2>", "layout": {"i": "<KPI_2>", "x": 3, "y": 0,  "w": 3,  "h": 3}},
+    {"type": "chart", "chart": "<KPI_3>", "layout": {"i": "<KPI_3>", "x": 6, "y": 0,  "w": 3,  "h": 3}},
+    {"type": "chart", "chart": "<KPI_4>", "layout": {"i": "<KPI_4>", "x": 9, "y": 0,  "w": 3,  "h": 3}},
+    {"type": "chart", "chart": "<HERO_BAR>",       "layout": {"i": "<HERO_BAR>",       "x": 0, "y": 3,  "w": 12, "h": 7}},
+    {"type": "chart", "chart": "<COMPARISON_L>",   "layout": {"i": "<COMPARISON_L>",   "x": 0, "y": 10, "w": 6,  "h": 6}},
+    {"type": "chart", "chart": "<COMPARISON_R>",   "layout": {"i": "<COMPARISON_R>",   "x": 6, "y": 10, "w": 6,  "h": 6}},
+    {"type": "chart", "chart": "<DETAIL_TABLE>",   "layout": {"i": "<DETAIL_TABLE>",   "x": 0, "y": 16, "w": 12, "h": 7}}
+  ],
+
+  "_grid_sizing_guide": {
+    "kpi_card": "w:3 h:3 (squat) or h:4 (taller, more readable)",
+    "wide_chart": "w:12 h:6-8",
+    "half_chart": "w:6 h:5-7",
+    "table_full": "w:12 h:6-8",
+    "table_half": "w:6 h:5-7 — only if 4 or fewer columns",
+    "max_grid_columns": 12
+  },
+
+  "_save_hint": "After save, the dashboard's linked_charts child table auto-rebuilds from items. You don't have to manage it. If linked_charts is missing rows, your items JSON is malformed."
+}

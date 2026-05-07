@@ -1,0 +1,51 @@
+{
+  "_readme": "Working source-query operations from blomoplastics workbook 1. Each value is what goes in the `operations` field (as a stringified JSON) of an Insights Query v3 doc. Plain MariaDB inside raw_sql: backticks for spaced identifiers, single % in LIKE.",
+
+  "kpi_count": [
+    {
+      "type": "sql",
+      "raw_sql": "SELECT COUNT(*) AS active_work_orders FROM `tabWork Order` WHERE status IN ('In Process', 'Not Started')",
+      "data_source": "Site DB"
+    }
+  ],
+
+  "kpi_sum_with_arithmetic": [
+    {
+      "type": "sql",
+      "raw_sql": "SELECT SUM(qty - produced_qty) AS units_remaining FROM `tabWork Order` WHERE status IN ('In Process', 'Not Started')",
+      "data_source": "Site DB"
+    }
+  ],
+
+  "kpi_count_with_comparison": [
+    {
+      "type": "sql",
+      "raw_sql": "SELECT COUNT(*) AS shortfall_items FROM `tabBin` WHERE projected_qty < 0",
+      "data_source": "Site DB"
+    }
+  ],
+
+  "kpi_count_with_like": [
+    {
+      "type": "sql",
+      "raw_sql": "SELECT COUNT(*) AS low_rm_lines FROM `tabBin` WHERE actual_qty < 50 AND warehouse LIKE '%Raw Materials%'",
+      "data_source": "Site DB"
+    }
+  ],
+
+  "list_with_join": [
+    {
+      "type": "sql",
+      "raw_sql": "SELECT i.item_name, b.actual_qty, b.projected_qty FROM `tabBin` b INNER JOIN `tabItem` i ON b.item_code = i.name WHERE b.warehouse LIKE '%Raw Materials%' ORDER BY b.actual_qty DESC",
+      "data_source": "Site DB"
+    }
+  ],
+
+  "list_multi_column_with_date_func": [
+    {
+      "type": "sql",
+      "raw_sql": "SELECT name, production_item, item_name, qty, produced_qty, status, DATE(planned_start_date) AS planned_start FROM `tabWork Order` WHERE docstatus < 2 ORDER BY planned_start_date ASC",
+      "data_source": "Site DB"
+    }
+  ]
+}
