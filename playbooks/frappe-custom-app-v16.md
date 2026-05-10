@@ -35,6 +35,19 @@ Any time you need a new Frappe v16 app (DocTypes, server logic, UI hooks) that y
                 └── <doctype_snake_case>.js   ← form script (parent doctypes only)
 ```
 
+## `patches.txt` — REQUIRES both section headers
+
+```ini
+[pre_model_sync]
+# patches that run BEFORE DocType sync (e.g. doctype renames). Example:
+# <app_name>.patches.v1_2.rename_some_doctype
+
+[post_model_sync]
+# patches that run AFTER DocType sync (data migrations, defaults, etc.)
+```
+
+**Both headers must be present**, even if one section is empty. An empty file is also fine (no patches at all). A file with only ONE of the two sections crashes `bench migrate` with `ValidationError: Patch type PatchType.post_model_sync not found in patches.txt` — and Frappe Cloud's auto-Recovery hides this so the site looks stuck in an Update Available loop. See `gotchas/2026-05-08-frappe-patches-txt-needs-both-section-headers.md`.
+
 ## `pyproject.toml` (Frappe v16, flit_core)
 
 ```toml
