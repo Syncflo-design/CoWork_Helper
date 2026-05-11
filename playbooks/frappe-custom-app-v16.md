@@ -174,8 +174,42 @@ In the JSON `permissions[]` array, each entry is a role + a set of capability fl
 
 Updating: `git push` → Bench → Apps → Update on that app's row → Deploy.
 
+## Before-push checklist
+
+Run these four checks from the repo root before the first `git push`. Each one corresponds to a gotcha that has already cost half a day. All four must pass — none of them produce useful error messages when wrong; the failures only surface at site-install / migrate time, often after Frappe Cloud has hidden the underlying error behind an auto-Recovery.
+
+```bash
+APP=<app_name>      # e.g. APP=nest_crm_tasks
+
+# 1. modules.txt is title-case ("Nest CRM Tasks", not "nest_crm_tasks")
+cat $APP/$APP/modules.txt
+# expected: human-readable, title-case, matches the "module" field used in every fixture/page/doctype JSON
+
+# 2. A nested module folder exists at the snake_case of modules.txt
+MOD_SNAKE=$(cat $APP/$APP/modules.txt | tr '[:upper:] ' '[:lower:]_')
+test -d $APP/$APP/$MOD_SNAKE && echo "module folder OK" || echo "MISSING module folder — page/ and doctype/ must live under $APP/$APP/$MOD_SNAKE/"
+
+# 3. __version__ is in <app>/__init__.py (Frappe reads it directly; pyproject.toml's `version` doesn't substitute)
+grep -q '__version__' $APP/$APP/__init__.py && echo "__version__ OK" || echo "MISSING __version__ in $APP/$APP/__init__.py"
+
+# 4. patches.txt has BOTH section headers
+grep -c '^\[' $APP/$APP/patches.txt
+# expected: 2 (one for [pre_model_sync], one for [post_model_sync]). Empty file is also OK. One header = explodes at migrate.
+
+# 5. Bonus: every "module" reference points at the same title-case string
+grep -rh '"module"' $APP/ | sort -u
+# expected: one unique line, matching the title-case string from (1)
+```
+
+If you're using AI to scaffold the app, paste this checklist into the same chat after the scaffold lands. It catches the trinity-of-three (modules.txt / folder / fixture `"module"` field) plus the two adjacent "won't install" traps in under 30 seconds.
+
 ## Known patterns / pitfalls
 
-- **Dynamic Link in a grid**: see `gotchas/2026-05-06-frappe-dynamic-link-in-grid.md`.
-- **Blank-item Purchase Invoice rows**: see `gotchas/2026-05-06-erpnext-purchase-invoice-blank-item-row.md`.
-- **MCP user perms on Frappe Cloud**: see `gotchas/2026-05-06-mcp-user-restricted-doctypes.md`.
+- **Module folder vs modules.txt trinity** (new apps): `gotchas/2026-05-11-frappe-new-app-missing-nested-module-folder.md`.
+- **Module folder vs modules.txt trinity** (after rename): `gotchas/2026-05-08-frappe-module-folder-vs-modulestxt-mismatch.md`.
+- **Missing `__version__`**: `gotchas/2026-05-11-frappe-app-init-needs-version.md`.
+- **`patches.txt` one-header crash**: `gotchas/2026-05-08-frappe-patches-txt-needs-both-section-headers.md`.
+- **Dynamic Link in a grid**: `gotchas/2026-05-06-frappe-dynamic-link-in-grid.md`.
+- **Blank-item Purchase Invoice rows**: `gotchas/2026-05-06-erpnext-purchase-invoice-blank-item-row.md`.
+- **MCP user perms on Frappe Cloud**: `gotchas/2026-05-06-mcp-user-restricted-doctypes.md`.
+- **Frappe v16 desk Page JS drift**: `gotchas/2026-05-10-frappe-v16-page-api-drift.md`.
