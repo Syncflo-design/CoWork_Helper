@@ -2,6 +2,13 @@
 
 Plastics manufacturer. Frappe Cloud instance. ERPNext + Insights v3.
 
+## Custom apps installed
+
+| App | Module | Version | Purpose |
+|---|---|---|---|
+| `wo_wip` | WO WIP | v1.2.0 (2026-05-10) | Operator-facing Works Order — WIP page + `Operator Run` DocType for shift/handover tracking. Adds **WIP** button group to Work Order form (Start Operator Run, Open WIP Screen). |
+| `production_floor` | RM Issue | (2026-05-08 cleanup) | Operator-facing RM-issue page (`/app/floor-ops`) for issuing raw materials to a Work Order. |
+
 ## MCP connector
 
 `frappe-blomo` (configured globally for this user).
@@ -210,3 +217,26 @@ To extend to another tile: edit `DRILL_MAP` in the .ts file, push to `syncflo-cu
 **To merge upstream Insights updates:** `git fetch upstream && git merge upstream/develop` on `develop`, then merge `develop` into `syncflo-custom-theme`. Conflicts on the 2 import lines in `main.ts` are the only realistic risk; ~5 min cost per release. See playbook for full procedure.
 
 **Tampermonkey userscript status:** disabled. Kept on disk as fallback in case Frappe Cloud is mid-deploy or in case the fork ever needs to be reverted.
+
+---
+
+### 2026-05-10 — wo_wip v1.2.0 went live + production_floor cleanup
+
+Single long session covering two custom-app deployments.
+
+**production_floor (RM Issue module)** — was looping in Update-Available state for days. Root cause: commit `c5f31fe` renamed module "Floor Ops" → "RM Issue" in `modules.txt` but the on-disk folder stayed `floor_ops/`. Frappe migrate registered the new Module Def then couldn't find any DocType/Page/Workspace content because it walks `<package>/rm_issue/` (snake of "RM Issue"). Auto-recovered every time, hiding the failure. Fix: `git mv production_floor/floor_ops production_floor/rm_issue` + production-grade pyproject/hooks/license cleanup. Deployed clean. See [`gotchas/2026-05-08-frappe-module-folder-vs-modulestxt-mismatch.md`](../gotchas/2026-05-08-frappe-module-folder-vs-modulestxt-mismatch.md).
+
+**wo_wip — fresh v1.x build for shop-floor production tracking.** Sequence of fixes to get to working v1.2.0:
+- v1.0.0 baseline cleanup — added missing `__version__`, dropped `setup.py`, `app_color`, bogus "Custom DocType" fixture; modernized workspace JSON to v16 schema; added MIT license + `before_install` role bootstrap.
+- v1.1.0 — added `Work Order` form-button extension (`doctype_js`) shipping a **WIP** button group with **Start Operator Run** and **Open WIP Screen** (deep-links into the WIP page detail view via `frappe.route_options`).
+- v1.2.0 — renamed DocType `WO Operator Session` → `Operator Run` (and child `WO Session RM Return` → `Operator Run RM Return`). Migration patch via `wo_wip.patches.v1_2.rename_operator_session_to_run` uses `frappe.rename_doc` to preserve any test data.
+- v1.2.0 hotfixes (same day) — three independent v15→v16 page-API drift bugs in the operator-facing `Works Order - WIP` page that all surfaced at once after deploy:
+  1. `wrapper.main` undefined (v16 dropped it; use `page.body` wrapped in jQuery).
+  2. `frappe.client.get_list` rejected `item_code` field on Work Order (v16 tightened field-level perms; dropped the field, item_name suffices).
+  3. `patches.txt` needs both `[pre_model_sync]` AND `[post_model_sync]` headers (Frappe iterates per type, throws ValidationError if either header missing). Frappe Cloud's auto-Recovery hid this for hours.
+
+  See [`gotchas/2026-05-10-frappe-v16-page-api-drift.md`](../gotchas/2026-05-10-frappe-v16-page-api-drift.md) and [`gotchas/2026-05-08-frappe-patches-txt-needs-both-section-headers.md`](../gotchas/2026-05-08-frappe-patches-txt-needs-both-section-headers.md).
+
+**Verified live 2026-05-10:** `/app/wo-wip` renders WO cards with status badges + progress bars; click-through to detail view works; **WIP** dropdown on Work Order form opens new Operator Run pre-filled and Open WIP Screen deep-links correctly.
+
+**Bench commit hashes deployed:** Production Floor `99abfb5`, WO WIP `9a3ca72` (or successor). Site update finally green after the patches.txt + page-JS fixes.
