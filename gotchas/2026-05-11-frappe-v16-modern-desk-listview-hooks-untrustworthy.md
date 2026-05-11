@@ -39,7 +39,8 @@ We did not isolate which specific Vue component is responsible — verifying wou
 **Default to building a custom Frappe Page for any non-trivial custom UX in v16.**
 
 - A Frappe Page (`/desk/<your-page>`, file layout under `<app>/<module>/page/<page>/<page>.{json,py,js,css}`) runs in your own JS context. You control the DOM, the click handlers, the data fetch, the filters. No Vue listview to fight.
-- Pages do come with their own gotchas — `page.body` is jQuery in v16, `frappe.client.get_list` has tightened field-level perms (see `gotchas/2026-05-10-frappe-v16-page-api-drift.md`) — but those are tractable, unlike the listview-hook quagmire.
+- Pages do come with their own gotchas — **read `gotchas/2026-05-10-frappe-v16-page-api-drift.md` BEFORE you build the page**, not after. The most common trap is "Variant 2: silent empty-body" — `$(wrapper).find('.some-class')` returns an empty jQuery collection because nothing creates that class, then every `.html()` and `.on()` call silently does nothing. Page chrome (title, filters, action buttons) still renders fine via the independent `make_app_page` API, so you may not notice until you wonder why the table never appears. Bit `nest_crm_tasks` v0.0.3.
+- `frappe.client.get_list` has tightened field-level perms (also covered in the page-api-drift gotcha) — audit your `fields:` array.
 - For nav-level integration, replace the workspace shortcut for the standard DocType with a Page link.
 
 Reference build: `nest_crm_tasks` v0.0.3 — `my_activities` page (`/desk/my-activities`) replaces the standard `/desk/todo` for sales users, with clickable Lead pills that the listview formatter couldn't produce.

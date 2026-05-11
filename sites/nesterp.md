@@ -21,7 +21,7 @@ Syncflo's internal ERPNext instance. Frappe v16 / ERPNext v16.
 - `telephony` (`FTelephony` module)
 - *(2026-05-06)* `quick_purchase_invoice` — staged for deploy; see `projects/quick_purchase_invoice/DEPLOY.md`.
 - *(2026-05-07)* `nest_theme` v0.3.0 — Syncflo-internal palette switcher + tightened headers + customer logo. Deployed.
-- *(2026-05-11)* `nest_crm_tasks` v0.0.3 — Lead Activity Hub + custom My Activities page. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). **Deploy underway, smoke test pending.**
+- *(2026-05-11)* `nest_crm_tasks` **v0.0.4** — Lead Activity Hub + custom My Activities page. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). Local checkout: `C:\ClaudeCode\nest_crm_tasks` on the Dell (primary dev machine going forward). **v0.0.4 fix on disk, push + deploy + smoke pending.**
 
 ## Companies on the site
 
@@ -144,15 +144,32 @@ Each ships light + dark variants under `body.syn-palette-<slug>` and `html[data-
 
 ### nest_crm_tasks — 2026-05-11
 
-Sales-rep activity / tasks toolkit. Frappe v16 custom app. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). Local checkout: `C:\Users\Russell - Manifold\nest_crm_tasks`.
+Sales-rep activity / tasks toolkit. Frappe v16 custom app. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). Local checkout: `C:\ClaudeCode\nest_crm_tasks` on the Dell (primary dev machine going forward; was previously on the Manifold machine at `C:\Users\Russell - Manifold\nest_crm_tasks`).
 
 **Goal:** when a salesperson opens their tasks, one click should land them on the full activity history for the linked Lead — not a chain of screens.
 
-**v0.0.3 ships:**
+**v0.0.4 ships** (v0.0.3 had the same files but both pages were broken — see "v0.0.3 → v0.0.4 fix" below):
 
 - **Lead Activity Hub** — desk Page at `/desk/lead-activity/<lead>`. Header card with lead metadata; activity table showing all ToDos linked to that Lead. Per-row Mark Complete / Reopen actions. Add Task dialog.
 - **My Activities** — desk Page at `/desk/my-activities`. Custom replacement for the standard ToDo list. Each task row has a "Lead / Reference" column; Lead-linked rows show a blue clickable `[👤 CRM-LEAD-...]` pill that navigates to the Lead Activity Hub. Row click (outside the pill) opens the standard ToDo form. Filters: My/All × Open/Closed/Any, persisted to localStorage. Add Task + Mark Complete / Reopen actions in the page header.
 - `fixtures/client_script.json` — Client Script for ToDo listview. Effectively no-op on v16 modern desk (formatter HTML stripped to plain text — see gotcha). Shipped for legacy desk compatibility; harmless on v16.
+
+**v0.0.3 → v0.0.4 fix (2026-05-11):**
+
+Smoke test of v0.0.3 revealed the page rendered chrome (title, filters, Actions / Add Task buttons, sidebar entries for both pages) but the body was empty. Console showed zero errors. `frappe.db.get_list("ToDo", {limit_page_length: 5})` from the console returned 20+ rows — so data was reachable.
+
+Root cause: both pages had `this.$main = $(wrapper).find('.my-activities-page')` (and the analogous selector for lead_activity) — pointing at a class nothing in the code creates. The `$main` jQuery collection was empty. Every subsequent `this.$main.html(...)`, `.append(...)`, and `.on('click', selector, handler)` silently did nothing because jQuery setters and event-bindings against empty collections fail silently.
+
+Fix (`my_activities.js` + `lead_activity.js`, both constructors):
+
+```diff
+- this.$main = $(wrapper).find('.my-activities-page');
++ // v16 modern desk: page.body is a jQuery object. Create our own container
++ // — find('.my-activities-page') returned empty because nothing made that div.
++ this.$main = $('<div class="my-activities-page"></div>').appendTo(page.body);
+```
+
+This is "Variant 2" of `gotchas/2026-05-10-frappe-v16-page-api-drift.md` — same root cause as the Work Order WIP fix (page-body wrangling in v16) but with a silent-no-error symptom instead of the appendChild TypeError. Both gotchas should be on the pre-build checklist for any future custom Page.
 
 **Why a custom Page and not a Client Script:**
 
