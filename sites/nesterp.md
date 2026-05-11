@@ -20,6 +20,8 @@ Syncflo's internal ERPNext instance. Frappe v16 / ERPNext v16.
 - `syncflo_internal` (Syncflo's existing private custom app — module `Syncflo Internal`)
 - `telephony` (`FTelephony` module)
 - *(2026-05-06)* `quick_purchase_invoice` — staged for deploy; see `projects/quick_purchase_invoice/DEPLOY.md`.
+- *(2026-05-07)* `nest_theme` v0.3.0 — Syncflo-internal palette switcher + tightened headers + customer logo. Deployed.
+- *(2026-05-11)* `nest_crm_tasks` v0.0.3 — Lead Activity Hub + custom My Activities page. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). **Deploy underway, smoke test pending.**
 
 ## Companies on the site
 
@@ -137,3 +139,40 @@ Each ships light + dark variants under `body.syn-palette-<slug>` and `html[data-
 **Permission fence:** `Nest Theme Settings` is System Manager only. Client desk users can't see or modify the palette. Russell switches during onboarding from his Frappe Cloud admin login.
 
 **Files:** CSS 16.3 KB (5 palettes × 2 modes + spacing). JS 3.8 KB (2 realtime listeners). Backend has `boot.publish_settings_change` firing both `syn_palette_changed` and `syn_logo_changed` after commit.
+
+---
+
+### nest_crm_tasks — 2026-05-11
+
+Sales-rep activity / tasks toolkit. Frappe v16 custom app. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). Local checkout: `C:\Users\Russell - Manifold\nest_crm_tasks`.
+
+**Goal:** when a salesperson opens their tasks, one click should land them on the full activity history for the linked Lead — not a chain of screens.
+
+**v0.0.3 ships:**
+
+- **Lead Activity Hub** — desk Page at `/desk/lead-activity/<lead>`. Header card with lead metadata; activity table showing all ToDos linked to that Lead. Per-row Mark Complete / Reopen actions. Add Task dialog.
+- **My Activities** — desk Page at `/desk/my-activities`. Custom replacement for the standard ToDo list. Each task row has a "Lead / Reference" column; Lead-linked rows show a blue clickable `[👤 CRM-LEAD-...]` pill that navigates to the Lead Activity Hub. Row click (outside the pill) opens the standard ToDo form. Filters: My/All × Open/Closed/Any, persisted to localStorage. Add Task + Mark Complete / Reopen actions in the page header.
+- `fixtures/client_script.json` — Client Script for ToDo listview. Effectively no-op on v16 modern desk (formatter HTML stripped to plain text — see gotcha). Shipped for legacy desk compatibility; harmless on v16.
+
+**Why a custom Page and not a Client Script:**
+
+Three Client-Script approaches to add a one-click Lead shortcut to `/desk/todo` all failed on v16 modern desk:
+
+1. Bubble-phase click interceptor — Frappe's own row-click handler fires first, navigates to the ToDo form before our handler runs.
+2. Capture-phase listener on `cur_list.$result[0]` and `document` — never fires. Same family as the navbar interception gotcha.
+3. `listview_settings.formatters.description` — IS called; v16 modern desk strips all HTML from the return before insertion. Plain text survives, the `<a>` pill doesn't.
+4. `listview_settings.button` — appears ignored too (no button rendered after `cur_list.refresh()`).
+
+Conclusion captured in `gotchas/2026-05-11-frappe-v16-listview-formatters-stripped-to-text.md` and the meta-gotcha `gotchas/2026-05-11-frappe-v16-modern-desk-listview-hooks-untrustworthy.md`: don't fight v16's listview. Build a custom Page.
+
+**Workspace cutover:** the workspace shortcut for ToDo gets replaced with one pointing at `Page/my-activities` (link type "Page", page `my-activities`). Desk-UI action, no code change.
+
+**Smoke test checklist:**
+
+1. `https://www.nesterp.co.za/desk/my-activities` renders. Summary bar shows counts. Table populates.
+2. Lead-linked rows show the blue `[👤 CRM-LEAD-...]` pill.
+3. Click a pill → lands on `/desk/lead-activity/<lead>` with the Lead Activity Hub rendered. (The critical one-click flow.)
+4. Click elsewhere on a row → opens the standard ToDo form.
+5. Mark Complete, Reopen, Add Task work.
+6. Scope (My/All) and status (Open/Closed/Any) filters work.
+7. Filter choices persist after page reload.
