@@ -19,6 +19,7 @@ Syncflo's internal ERPNext instance. Frappe v16 / ERPNext v16.
 - `helpdesk`
 - `syncflo_internal` (Syncflo's existing private custom app — module `Syncflo Internal`)
 - `telephony` (`FTelephony` module)
+- `erpnext_sbca` — **CRITICAL: Russell's Sage ↔ ERPNext bridge, written by Doreen (9t9it).** Two-way sync with Sage Business Cloud Accounting: pulls items, prices, stock levels, suppliers, accounts, sales orders, purchase orders FROM Sage; pushes item price changes BACK to Sage. Per-Company credentials in Settings. On nesterp it's installed but the Settings panel is still empty — no Company credentials wired, so the 11 sync jobs fire every tick and no-op. Not broken; just not switched on yet. **Do not disable / uninstall.** Full plain-English overview: `projects/erpnext_sbca/ASSESSMENT.md`.
 - *(2026-05-06)* `quick_purchase_invoice` — staged for deploy; see `projects/quick_purchase_invoice/DEPLOY.md`.
 - *(2026-05-07)* `nest_theme` v0.3.0 — Syncflo-internal palette switcher + tightened headers + customer logo. Deployed.
 - *(2026-05-11)* `nest_crm_tasks` **v0.0.4** — Lead Activity Hub + custom My Activities page. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). Local checkout: `C:\ClaudeCode\nest_crm_tasks` on the Dell (primary dev machine going forward). **v0.0.4 fix on disk, push + deploy + smoke pending.**
@@ -46,6 +47,30 @@ None marked `is_default=1` → users have to pick the template explicitly on eac
 ## Suppliers
 
 `PNA` is the only supplier as of 2026-05-06. All Items are non-stock services (`is_stock_item: 0`), `last_purchase_rate=0` everywhere — meaning the "smart-fill rate from history" feature in `quick_purchase_invoice` will return blank on first use until invoices accumulate.
+
+## Core integrations
+
+### erpnext_sbca — Sage ↔ ERPNext bridge (CRITICAL infrastructure)
+
+**Written by Doreen (`doreen@9t9it.com`, 9t9it partner).** Two-way sync between ERPNext and Sage Business Cloud Accounting (SBCA). Every few minutes the app:
+
+- **Pulls from Sage:** items, item categories, price lists + additional prices, inventory qty-on-hand, chart of accounts, suppliers, sales orders, purchase orders.
+- **Pushes to Sage:** item price updates, item updates (batched).
+
+Each ERPNext Company gets its own credentials row in the Settings panel — so multiple companies on this bench can sync with separate Sage accounts.
+
+**Status on nesterp (2026-05-12):** installed but **not yet switched on**. The Settings URL field is empty and there are no Company credential rows. The 11 scheduled jobs fire every cron tick but exit immediately because they have nothing to authenticate as. Nothing is broken — just unconfigured.
+
+**To switch it on** (needs the Sage credentials Doreen would have):
+1. Fill the **URL** field in the `Erpnext Sbca Settings` panel (the base Sage API URL).
+2. Add a row to the credentials table for each ERPNext Company that should sync (username, password, API key, OAuth callback URL).
+3. Run the one-time OAuth login — Sage redirects back with a session id, which gets stored in the row.
+4. Watch `Scheduled Job Log` for a few ticks to confirm syncing is happening cleanly.
+
+**Do not disable, stop the scheduled jobs, or uninstall this app** without explicit go-ahead from Russell — it's keystone infrastructure for his ecosystem.
+
+Full plain-English overview, audit recipe, and filesystem map: `projects/erpnext_sbca/ASSESSMENT.md`.
+Meta-lesson on auditing inherited Frappe apps: `gotchas/2026-05-12-frappe-chatty-cron-on-unconfigured-third-party-app.md`.
 
 ## Active builds
 
