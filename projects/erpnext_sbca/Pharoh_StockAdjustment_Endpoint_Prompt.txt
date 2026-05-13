@@ -1,28 +1,48 @@
-CONTEXT
--------
-Pharoh is a .NET middleware that bridges ERPNext and Sage Business Cloud
-Accounting. It already has working controller classes for Sales Invoices,
-Purchase Invoices, Journal Entries, and Account/Customer/Supplier syncs.
+================================================================================
+PROMPT FOR GITHUB COPILOT  --  Pharoh .NET project (VS 2022, other machine)
+Date: 2026-05-13
+Purpose: Add new StockAdjustmentSync endpoint to post stock value movements
+         from ERPNext to Sage as Journal Entries
+================================================================================
 
-Look at the existing JournalEntriesSync controller
-(POST /api/JournalEntriesSync/post-journalentry-to-sage) as the closest
-reference — this new endpoint follows exactly the same pattern but for
-stock-value adjustments.
+You are working on the Pharoh middleware -- a .NET / C# Web API that bridges
+between ERPNext (the customer-facing custom app "erpnext_sbca") and Sage
+Business Cloud Accounting. The project is open in Visual Studio 2022.
 
-TASK
-----
-Create a new controller and endpoint:
+--------------------------------------------------------------------------------
+BACKGROUND
+--------------------------------------------------------------------------------
+
+ERPNext custom app "erpnext_sbca" posts financial documents to Pharoh; Pharoh
+translates camelCase -> PascalCase and forwards to Sage Business Cloud
+Accounting's REST API.
+
+Sage's API docs live at:
+  https://resellers.accounting.sageone.co.za/api/2.0.0
+
+Relevant page for this task:
+  https://resellers.accounting.sageone.co.za/api/2.0.0/Help/Api/POST-JournalEntry-Save
+
+The existing endpoint
+  POST /api/JournalEntriesSync/post-journalentry-to-sage
+is the closest reference -- the new endpoint follows exactly the same pattern.
+Use the JournalEntriesSync controller as your structural template.
+
+--------------------------------------------------------------------------------
+WHAT NEEDS TO BE BUILT
+--------------------------------------------------------------------------------
+
+A brand new controller and endpoint:
 
   POST /api/StockAdjustmentSync/post-stock-adjustment-to-sage
 
 This endpoint receives stock-value movements from ERPNext (physical count
 variances, material issues/receipts, manufacturing conversions, kit builds,
-disassembly) and posts them to Sage Business Cloud Accounting as a journal
-entry, preserving the financial values that ERPNext computed.
+disassembly) and posts them to Sage as a Journal Entry using the same
+JournalEntry/Save mechanism as the existing JournalEntriesSync controller.
 
+The new request body Pharoh must accept:
 
-REQUEST BODY (JSON)
--------------------
 {
   "credentials": {
     "loginName": "string",
@@ -32,9 +52,9 @@ REQUEST BODY (JSON)
     "provider": "string"
   },
   "stockAdjustment": {
-    "date": "yyyy-MM-dd",
-    "reference": "STE-2026-00042",       // ERPNext document name
-    "entryType": "Material Issue",        // see full list below
+    "date": "2026-05-13",
+    "reference": "STE-2026-00042",
+    "entryType": "Material Issue",
     "description": "Material Issue — STE-2026-00042",
     "memo": "Material Issue — STE-2026-00042",
     "taxPeriodId": null,
@@ -46,15 +66,15 @@ REQUEST BODY (JSON)
     "payRunId": null,
     "lines": [
       {
-        "effect": 1,             // 1 = Debit, 2 = Credit  (Sage enum)
-        "accountId": 12345,      // Sage account ID (signed long — negatives valid)
+        "effect": 1,
+        "accountId": 12345,
         "debit": 1500.00,
         "credit": 0,
-        "exclusive": 1500.00,    // == debit when effect=1, == credit when effect=2
+        "exclusive": 1500.00,
         "tax": 0,
         "total": 1500.00,
         "taxTypeId": null,
-        "description": "GL entry remarks from ERPNext"
+        "description": "Stock In Hand"
       },
       {
         "effect": 2,
@@ -65,83 +85,156 @@ REQUEST BODY (JSON)
         "tax": 0,
         "total": 1500.00,
         "taxTypeId": null,
-        "description": ""
+        "description": "Stock Adjustment"
       }
     ]
   }
 }
 
-FIELD NOTES
------------
-- `effect`: always 1 (Debit) or 2 (Credit). Never send both debit > 0 and
-  credit > 0 on the same line — ERPNext guarantees one direction per row.
-- `accountId`: signed long. Negative values are valid (Sage system accounts
-  such as VAT control accounts use negative IDs).
+Notes on the shape:
+
+- effect:      1 = Debit, 2 = Credit (Sage's enum). One direction per line --
+               never both populated on the same row.
+- accountId:   signed long. Sage uses negative IDs for system accounts (e.g.
+               -24 for VAT controls). Don't reject negatives.
+- entryType:   informational metadata for logging and the Sage journal
+               description. Possible values:
+                 "Material Issue"
+                 "Material Receipt"
+                 "Manufacture"
+                 "Material Consumption for Manufacture"
+                 "Repack"
+                 "Disassemble"
+                 "Stock Reconciliation"
 - Nullable integers (taxTypeId, taxPeriodId, analysisCategoryId1/2/3,
-  businessId, payRunId) must be sent as null — never 0. Sage treats 0 as
-  an invalid foreign key and will reject the call.
-- `tax` is always 0 and `exclusive == total` on every line. Stock-value
-  journals carry no tax at the journal level.
-- The `lines[]` array is balanced (sum of debits == sum of credits) because
-  ERPNext's GL entries are always balanced. Pharoh does not need to verify
-  this, but can assert it in debug/test mode.
-- `entryType` is informational metadata — use it for logging and for the
-  Sage journal description/reference. Possible values from ERPNext:
-    "Material Issue"
-    "Material Receipt"
-    "Manufacture"
-    "Material Consumption for Manufacture"
-    "Repack"
-    "Disassemble"
-    "Stock Reconciliation"
+               businessId, payRunId) arrive as null. Preserve null -- do NOT
+               coerce to 0. Sage's API treats 0 as an invalid foreign key.
+- tax is always 0 and exclusive == total on every line (stock adjustment
+               journals carry no tax at the journal level).
+- The overall payload is balanced -- sum of debits equals sum of credits
+               across the lines[] array. Lines may be more than 2.
 
-WHAT PHAROH MUST DO
--------------------
-1. Authenticate to Sage using the credentials block (same auth flow as the
-   existing Journal Entry and Invoice controllers).
-2. POST each line to Sage's journal endpoint, decomposing the multi-row
-   `lines[]` array into Sage's single-(account, contraAccount, debit, credit)
-   shape. Use the same pivot-decomposition strategy as the Journal Entry
-   endpoint: pick line[0] as the pivot account, emit N-1 Sage calls (each
-   pairing the pivot with one other line), all sharing the same Reference
-   so they appear as one logical journal in Sage.
-3. Return a JSON response to ERPNext:
+--------------------------------------------------------------------------------
+WHAT PHAROH MUST DO WITH THE PAYLOAD
+--------------------------------------------------------------------------------
 
-   Success:
-   {
-     "success": true,
-     "sageOrderId": 987654,       // Sage's internal order/journal ID
-     "documentNumber": "JE-2026-00789"  // human-readable Sage doc number
-   }
+Sage's underlying JournalEntry/Save endpoint accepts one DTO per call with
+both AccountId and ContraAccountId populated. To keep the 1:1 model (one
+ERPNext stock adjustment = one logical Sage journal), Pharoh must decompose
+the lines[] array into multiple JournalEntry/Save calls, posting them under a
+SINGLE SHARED Reference so an accountant browsing Sage sees them as one
+logical group.
 
-   Failure:
-   {
-     "success": false,
-     "errorMessage": "Human-readable description of what went wrong"
-   }
+Use the same decomposition strategy as the JournalEntriesSync controller:
 
-4. Log the reference, entryType, and line count at INFO level for audit trail.
-5. On any Sage API error, return success=false with the Sage error message —
-   do not throw unhandled exceptions.
+Strategy B -- Pivot decomposition.  ** USE THIS **
+  Pick line[0] as the pivot. For every other line, emit one JournalEntry/Save
+  with the pivot as ContraAccountId and the other line as AccountId.
+  All calls share the same Reference, Date, Description, Memo.
+  Produces N-1 Sage calls for N lines. Simple and predictable.
 
-SAGE API REFERENCE
-------------------
-- Sage Business Cloud Accounting API docs:
-  https://resellers.accounting.sageone.co.za/api/2.0.0
-- The `effect` enum (1=Debit, 2=Credit) is defined in the Sage JournalEntry
-  schema under the `Effect` property.
-- Journal Entry Save endpoint shape: single (Account, ContraAccount, Amount)
-  pair per call. All calls for one ERPNext journal share the same Reference.
+--------------------------------------------------------------------------------
+FIELD MAPPING (camelCase Pharoh input -> PascalCase Sage body)
+--------------------------------------------------------------------------------
 
-CONTROLLER LOCATION
--------------------
-Mirror the existing JournalEntriesSync controller structure:
-- Controller class: StockAdjustmentSyncController
-- Route prefix: /api/StockAdjustmentSync
-- New file(s) alongside the existing JournalEntriesSync files
+For each Sage JournalEntry/Save call Pharoh makes:
 
-TESTS
------
-Write a unit test that sends a balanced 2-line payload (one debit, one credit,
-equal amounts) and asserts the response has success=true and a non-null
-sageOrderId. Use the existing Journal Entry test as the template.
+  Pharoh input                              Sage field               Notes
+  ----------------------------------------  -----------------------  --------
+  stockAdjustment.date                      Date                     ISO date
+  stockAdjustment.reference                 Reference                Same value across every Save call in the group
+  stockAdjustment.description               Description
+  stockAdjustment.memo                      Memo
+  stockAdjustment.taxPeriodId               TaxPeriodId              Pass null through
+  stockAdjustment.analysisCategoryId1/2/3   AnalysisCategoryId1/2/3  Pass null through
+  stockAdjustment.trackingCode              $TrackingCode
+  stockAdjustment.businessId               BusinessId               Pass null through
+  stockAdjustment.payRunId                  PayRunId                 Pass null through
+  lines[i].effect                           Effect                   1 or 2
+  lines[i].accountId                        AccountId                "This side" account for this Save call
+  (derived from pivot pairing)              ContraAccountId          The pivot line's accountId
+  lines[i].debit                            Debit
+  lines[i].credit                           Credit
+  lines[i].exclusive                        Exclusive
+  lines[i].tax                              Tax                      Always 0
+  lines[i].total                            Total
+  lines[i].taxTypeId                        TaxTypeId                Pass null through
+
+Do NOT send Editable, Locked, or HasAttachments -- Sage's docs flag them as
+read-only / system-generated.
+
+Log stockAdjustment.reference, stockAdjustment.entryType, and lines[].length
+at INFO level for audit trail.
+
+--------------------------------------------------------------------------------
+RESPONSE PHAROH RETURNS TO ERPNEXT
+--------------------------------------------------------------------------------
+
+Same shape as the existing invoice and journal push responses:
+
+Success:
+{
+  "success": true,
+  "sageOrderId": "<the first Save call's returned ID>",
+  "documentNumber": "<the shared Reference or Sage-assigned doc number>",
+  "errorMessage": null
+}
+
+Failure:
+{
+  "success": false,
+  "sageOrderId": null,
+  "documentNumber": null,
+  "errorMessage": "<human-readable cause>"
+}
+
+If any Save call within the group fails, return failure for the whole journal.
+The ERPNext side flags the document as Failed and the user retries.
+
+--------------------------------------------------------------------------------
+ALREADY DONE ON THE ERPNEXT SIDE (don't re-derive)
+--------------------------------------------------------------------------------
+
+- On every Stock Entry submit (Material Issue, Receipt, Manufacture, Material
+  Consumption for Manufacture, Repack, Disassemble) and every Stock
+  Reconciliation submit, ERPNext reads its own GL Entry records for the
+  document and sends the multi-row payload above to this new endpoint.
+
+- Each GL Entry account carries a custom_sage_account_id field (the Sage
+  account's signed long ID) -- these become the accountId values in lines[].
+
+- ERPNext tracks custom_sage_order_id, custom_sage_document_number,
+  custom_sage_sync_status on the submitted document from the response.
+
+- The push is gated by a Settings toggle (push_stock_adjustment_on_submit)
+  which defaults OFF until this Pharoh endpoint is deployed.
+
+--------------------------------------------------------------------------------
+YOUR TASK
+--------------------------------------------------------------------------------
+
+1. Create a new DTO class (e.g. StockAdjustmentRequest / StockAdjustmentDTO /
+   StockAdjustmentLineDTO) to match the request shape above. Mirror the
+   structure of the existing SageJournalEntryRequest DTOs.
+
+2. Create a new controller:
+     Class:       StockAdjustmentSyncController
+     Route:       /api/StockAdjustmentSync
+     Action:      POST post-stock-adjustment-to-sage
+   Place new files alongside the existing JournalEntriesSync files.
+
+3. Implement the pivot decomposition + per-line Sage JournalEntry/Save calls
+   under one shared Reference (Strategy B above).
+
+4. Return the success/failure shape above.
+
+5. Update the swagger / OpenAPI spec so the new endpoint shows in
+     /swagger/index.html.
+
+When done, run the project locally and confirm the swagger renders the new
+endpoint and shape. ERPNext-side testing happens separately on the live
+deployment.
+
+================================================================================
+END OF PROMPT
+================================================================================

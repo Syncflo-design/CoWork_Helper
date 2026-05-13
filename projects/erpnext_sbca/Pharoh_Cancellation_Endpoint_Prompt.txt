@@ -1,31 +1,54 @@
-CONTEXT
--------
-Pharoh is a .NET middleware bridging ERPNext and Sage Business Cloud
-Accounting. It already has working controllers for Sales Orders and Purchase
-Orders (post-salesorder-to-sage, post-purchaseorder-to-sage).
+================================================================================
+PROMPT FOR GITHUB COPILOT  --  Pharoh .NET project (VS 2022, other machine)
+Date: 2026-05-13
+Purpose: Add cancel action methods to the existing SalesOrder and PurchaseOrder
+         controllers so ERPNext can cancel these documents in Sage
+================================================================================
 
-We need two new cancel endpoints — one for Sales Orders, one for Purchase
-Orders. When a Sales Order or Purchase Order is cancelled in ERPNext, Pharoh
-must cancel the matching document in Sage by calling Sage's Save endpoint
-with the document status set to Cancelled.
+You are working on the Pharoh middleware -- a .NET / C# Web API that bridges
+between ERPNext (the customer-facing custom app "erpnext_sbca") and Sage
+Business Cloud Accounting. The project is open in Visual Studio 2022.
 
-Use the existing SalesOrder and PurchaseOrder controller files as the
-structural reference.
+--------------------------------------------------------------------------------
+BACKGROUND
+--------------------------------------------------------------------------------
 
+ERPNext custom app "erpnext_sbca" posts financial documents to Pharoh; Pharoh
+translates camelCase -> PascalCase and forwards to Sage Business Cloud
+Accounting's REST API.
 
-TASK
-----
-Create two new endpoints:
+Sage's API docs live at:
+  https://resellers.accounting.sageone.co.za/api/2.0.0
+
+Relevant pages for this task:
+  https://resellers.accounting.sageone.co.za/api/2.0.0/Help/Api/POST-SalesOrder-Save
+  https://resellers.accounting.sageone.co.za/api/2.0.0/Help/Api/POST-PurchaseOrder-Save
+
+The existing endpoints
+  POST /api/SalesOrder/post-salesorder-to-sage
+  POST /api/PurchaseOrder/post-purchaseorder-to-sage
+are the closest reference -- the new actions live in the same controllers and
+follow the same auth pattern. Do NOT create new controller files.
+
+--------------------------------------------------------------------------------
+WHAT NEEDS TO BE BUILT
+--------------------------------------------------------------------------------
+
+Two new action methods -- one added to the existing SalesOrderSyncController
+and one added to the existing PurchaseOrderSyncController:
 
   POST /api/SalesOrder/cancel-salesorder-in-sage
   POST /api/PurchaseOrder/cancel-purchaseorder-in-sage
 
-Both follow identical logic — only the Sage API path differs
-(SalesOrder/Save vs PurchaseOrder/Save).
+Both follow identical logic. Only the Sage API path differs:
+  Sales Order:    POST SalesOrder/Save?useSystemDocumentNumber=false
+  Purchase Order: POST PurchaseOrder/Save?useSystemDocumentNumber=false
 
+There is no un-cancel endpoint. Once cancelled in Sage, the document stays
+cancelled. If a mistake needs reverting it must be done directly in Sage.
 
-REQUEST BODY (JSON) — same shape for both endpoints
-----------------------------------------------------
+The request body Pharoh must accept (same shape for both endpoints):
+
 {
   "credentials": {
     "loginName": "string",
@@ -34,66 +57,131 @@ REQUEST BODY (JSON) — same shape for both endpoints
     "sessionToken": "string",
     "provider": "string"
   },
-  "documentNumber": "SO-2026-00042"   // Sage document number to cancel
+  "documentNumber": "SO-2026-00042"
 }
 
-FIELD NOTES
------------
-- `documentNumber` is the human-readable Sage document number that was
-  returned by the original post-salesorder-to-sage / post-purchaseorder-to-sage
-  call (the `documentNumber` field in that response). ERPNext stores it in
-  `custom_sage_document_number` and sends it back here on cancel.
-- Credentials block is identical to every other Pharoh endpoint.
-- There is no un-cancel endpoint — once cancelled, the document stays
-  cancelled. If a mistake needs reverting it is done directly in Sage.
+Notes on the shape:
 
+- credentials:    Identical block used by every other Pharoh endpoint. Same
+                  auth flow as the existing post-salesorder-to-sage action.
+- documentNumber: The human-readable Sage document number originally returned
+                  when the order was pushed (the "documentNumber" field in the
+                  post-to-sage success response). ERPNext stores it as
+                  custom_sage_document_number and sends it back here on cancel.
+                  Use this to identify the document in Sage -- do not use the
+                  internal sageOrderId.
 
-WHAT PHAROH MUST DO
--------------------
+--------------------------------------------------------------------------------
+WHAT PHAROH MUST DO WITH THE PAYLOAD
+--------------------------------------------------------------------------------
+
 1. Authenticate to Sage using the credentials block (same auth flow as the
-   existing Sales Order and Purchase Order push controllers).
+   existing SalesOrder and PurchaseOrder push actions).
 
-2. Call Sage's Save endpoint to set the document status to Cancelled:
+2. Call Sage's Save endpoint with the document status set to Cancelled:
+   - Sales Order:    POST SalesOrder/Save?useSystemDocumentNumber=false
+   - Purchase Order: POST PurchaseOrder/Save?useSystemDocumentNumber=false
 
-   For Sales Orders:
-     POST SalesOrder/Save?useSystemDocumentNumber=false
-   For Purchase Orders:
-     POST PurchaseOrder/Save?useSystemDocumentNumber=false
+   Pass the documentNumber to identify the record and set the Sage status
+   field to the Cancelled enum value (check the Sage API docs at the URLs
+   above for the correct integer value).
 
-   Payload to Sage: include the `documentNumber` to identify the document
-   and set the status field to Cancelled (use Sage's status enum value for
-   Cancelled — check the Sage Business Cloud Accounting API docs at
-   https://resellers.accounting.sageone.co.za/api/2.0.0 for the correct
-   enum value).
-
-3. Return a JSON response to ERPNext:
-
-   Success:
-   {
-     "success": true
-   }
-
-   Failure:
-   {
-     "success": false,
-     "errorMessage": "Human-readable description of what went wrong"
-   }
+3. This is a single Sage call per request -- no decomposition or looping
+   needed (unlike the JournalEntry or StockAdjustment endpoints).
 
 4. Log the documentNumber and result at INFO level for audit trail.
 
 5. On any Sage API error, return success=false with the Sage error message.
    Do not throw unhandled exceptions.
 
+--------------------------------------------------------------------------------
+FIELD MAPPING (camelCase Pharoh input -> PascalCase Sage body)
+--------------------------------------------------------------------------------
 
-CONTROLLER LOCATION
--------------------
-Add the cancel action method to the existing SalesOrderSyncController and
-PurchaseOrderSyncController classes respectively. Do not create new files —
-add it alongside the existing post-...-to-sage action in each controller.
+For the Sage SalesOrder/Save or PurchaseOrder/Save call Pharoh makes:
 
+  Pharoh input          Sage field          Notes
+  --------------------  ------------------  ------------------------------------
+  documentNumber        DocumentNumber      Identifies the document to cancel
+  (hardcoded)           Status              Sage's Cancelled enum value
 
-TESTS
------
-Write a unit test for each endpoint that sends a valid documentNumber and
-asserts the response has success=true. Use the existing Sales Order / Purchase
-Order push tests as the template.
+All other Sage fields required by the Save endpoint should be passed as their
+default / null values -- only DocumentNumber and Status are being changed.
+
+--------------------------------------------------------------------------------
+RESPONSE PHAROH RETURNS TO ERPNEXT
+--------------------------------------------------------------------------------
+
+Same shape as the existing push responses:
+
+Success:
+{
+  "success": true,
+  "sageOrderId": null,
+  "documentNumber": "<the documentNumber that was cancelled>",
+  "errorMessage": null
+}
+
+Failure:
+{
+  "success": false,
+  "sageOrderId": null,
+  "documentNumber": null,
+  "errorMessage": "<human-readable cause>"
+}
+
+sageOrderId is null on success -- cancellation does not create a new document
+in Sage. The ERPNext side stamps custom_sage_sync_status = "Cancelled" on
+success, or "Cancel Failed" on failure (and logs the error for manual follow-up).
+
+--------------------------------------------------------------------------------
+ALREADY DONE ON THE ERPNEXT SIDE (don't re-derive)
+--------------------------------------------------------------------------------
+
+- When a Sales Order or Purchase Order is cancelled in ERPNext, the on_cancel
+  handler in erpnext_sbca/API/cancellation.py checks that
+  custom_sage_document_number is set on the document (meaning it was
+  previously pushed to Sage successfully).
+
+- If the field is set, ERPNext enqueues a background worker that POSTs to
+  these new endpoints with the credentials and documentNumber.
+
+- On a success response, ERPNext stamps custom_sage_sync_status = "Cancelled".
+  On a failure response, it stamps "Cancel Failed" and logs a Frappe Error
+  telling the user to cancel the document manually in Sage.
+
+- The cancel is gated by the existing push toggles (push_sales_order_on_submit
+  and push_purchase_order_on_submit) -- if the push is disabled, the cancel
+  is also skipped.
+
+--------------------------------------------------------------------------------
+YOUR TASK
+--------------------------------------------------------------------------------
+
+1. Create a new DTO class (e.g. SageCancelRequest) to match the request shape
+   above -- credentials block + documentNumber string. Mirror the structure of
+   the existing request DTOs in the project.
+
+2. Add a new action method to SalesOrderSyncController:
+     Route:  POST cancel-salesorder-in-sage
+     Calls:  POST SalesOrder/Save?useSystemDocumentNumber=false
+   Do not create a new file -- add alongside the existing post-salesorder-to-sage
+   action in the same controller class.
+
+3. Add an equivalent action method to PurchaseOrderSyncController:
+     Route:  POST cancel-purchaseorder-in-sage
+     Calls:  POST PurchaseOrder/Save?useSystemDocumentNumber=false
+   Same pattern as step 2.
+
+4. Return the success/failure shape above from both actions.
+
+5. Update the swagger / OpenAPI spec so both new endpoints show in
+     /swagger/index.html.
+
+When done, run the project locally and confirm the swagger renders both new
+endpoints and their request shape. ERPNext-side testing happens separately on
+the live deployment.
+
+================================================================================
+END OF PROMPT
+================================================================================
