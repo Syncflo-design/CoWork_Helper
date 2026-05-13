@@ -1,0 +1,229 @@
+================================================================================
+PROMPT FOR CLAUDE CODE  --  Pharoh .NET project (VS 2022, other machine)
+Date: 2026-05-13
+Purpose: Update the JournalEntry endpoint to accept multi-row journals
+================================================================================
+
+You are working on the Pharoh middleware -- a .NET / C# Web API that bridges
+between ERPNext (the customer-facing custom app "erpnext_sbca") and Sage
+Business Cloud Accounting. The project is open in Visual Studio 2022.
+
+--------------------------------------------------------------------------------
+BACKGROUND
+--------------------------------------------------------------------------------
+
+ERPNext custom app "erpnext_sbca" posts financial documents to Pharoh; Pharoh
+translates camelCase -> PascalCase and forwards to Sage Business Cloud
+Accounting's REST API.
+
+Sage's API docs live at:
+  https://resellers.accounting.sageone.co.za/api/2.0.0
+
+Relevant page for this task:
+  https://resellers.accounting.sageone.co.za/api/2.0.0/Help/Api/POST-JournalEntry-Save
+
+--------------------------------------------------------------------------------
+WHAT NEEDS TO CHANGE
+--------------------------------------------------------------------------------
+
+The endpoint
+  POST /api/JournalEntriesSync/post-journalentry-to-sage
+today accepts a SageJournalEntryRequest whose body carries a single
+SageJournalEntryDTO (one Account + one ContraAccount per call -- Sage's native
+shape).
+
+The ERPNext side has been updated to send MULTI-ROW journals -- N independent
+lines, each with one Account, no ContraAccount. The new request body Pharoh
+must accept:
+
+{
+  "credentials": {
+    "loginName": "string",
+    "loginPwd": "string",
+    "useOAuth": false,
+    "sessionToken": "string",
+    "provider": "string"
+  },
+  "journalEntry": {
+    "date": "2026-05-13",
+    "reference": "ACC-JV-2026-00001",
+    "description": "Bank receipt for sale",
+    "memo": "Bank receipt for sale",
+    "taxPeriodId": null,
+    "analysisCategoryId1": null,
+    "analysisCategoryId2": null,
+    "analysisCategoryId3": null,
+    "trackingCode": "",
+    "businessId": null,
+    "payRunId": null,
+    "lines": [
+      {
+        "effect": 1,
+        "accountId": 12345,
+        "debit": 100.0,
+        "credit": 0,
+        "exclusive": 100.0,
+        "tax": 0,
+        "total": 100.0,
+        "taxTypeId": null,
+        "description": ""
+      },
+      {
+        "effect": 2,
+        "accountId": -24,
+        "debit": 0,
+        "credit": 100.0,
+        "exclusive": 100.0,
+        "tax": 0,
+        "total": 100.0,
+        "taxTypeId": null,
+        "description": ""
+      }
+    ]
+  }
+}
+
+Notes on the new shape:
+
+- effect:    1 = Debit, 2 = Credit (Sage's enum). One direction per line --
+             never both populated.
+- accountId: signed long. Sage uses negative IDs for system accounts (e.g.
+             -24 for VAT controls). Don't reject negatives.
+- Nullable integers (taxTypeId, taxPeriodId, analysisCategoryId1/2/3,
+             businessId, payRunId) arrive as null when not set. Preserve null
+             -- do NOT coerce to 0. Sage's API treats 0 as an invalid
+             foreign key.
+- tax is always 0 and exclusive == total on every line (ERPNext journals are
+             tax-free at the journal level).
+- The overall journal is balanced -- sum of debits equals sum of credits
+             across the lines[] array.
+- Lines may be more than 2 (e.g. 3 debits and 1 credit for a split-expense
+             journal). Common shape is 2 lines but support N.
+
+--------------------------------------------------------------------------------
+WHAT PHAROH MUST DO WITH THE MULTI-ROW PAYLOAD
+--------------------------------------------------------------------------------
+
+Sage's underlying JournalEntry/Save endpoint accepts one DTO per call with
+both AccountId and ContraAccountId populated. To keep the 1:1 model (one
+ERPNext journal = one logical Sage journal), Pharoh must decompose the
+lines[] array into multiple JournalEntry/Save calls, posting them under a
+SINGLE SHARED Reference so an accountant browsing Sage sees them as one
+logical group.
+
+Two acceptable decomposition strategies -- pick whichever is cleaner for the
+codebase:
+
+Strategy A -- Balanced-pair decomposition.
+  Walk the lines greedily: for each debit, find a credit of matching (or
+  larger) amount; emit one JournalEntry/Save call with
+    (Effect=1, AccountId=debit's accountId, ContraAccountId=credit's
+     accountId, Debit=amount, Credit=amount).
+  If one side is larger, split it across multiple calls. All calls share the
+  same Reference, Date, Description, Memo.
+
+Strategy B -- Pivot decomposition.  ** RECOMMENDED **
+  Pick one line as the pivot (e.g. the largest debit or credit). For every
+  other line, emit one JournalEntry/Save with the pivot as ContraAccountId
+  and the other line as AccountId. Same shared Reference. Simpler logic;
+  produces N-1 Sage calls for N lines.
+
+Strategy B is simpler and produces predictable results.
+
+--------------------------------------------------------------------------------
+FIELD MAPPING (camelCase Pharoh input -> PascalCase Sage body)
+--------------------------------------------------------------------------------
+
+For each Sage JournalEntry/Save call Pharoh makes:
+
+  Pharoh input                              Sage field             Notes
+  ----------------------------------------  ---------------------  --------
+  journalEntry.date                         Date                   ISO date
+  journalEntry.reference                    Reference              Same value across every Save call in the group
+  journalEntry.description                  Description
+  journalEntry.memo                         Memo
+  journalEntry.taxPeriodId                  TaxPeriodId            Pass null through
+  journalEntry.analysisCategoryId1/2/3      AnalysisCategoryId1/2/3 Pass null through
+  journalEntry.trackingCode                 $TrackingCode
+  journalEntry.businessId                   BusinessId             Pass null through
+  journalEntry.payRunId                     PayRunId               Pass null through
+  lines[i].effect                           Effect                 1 or 2
+  lines[i].accountId                        AccountId              The "this side" account for this Save call
+  (derived from pairing)                    ContraAccountId        The other side of the pair
+  lines[i].debit                            Debit
+  lines[i].credit                           Credit
+  lines[i].exclusive                        Exclusive
+  lines[i].tax                              Tax                    0
+  lines[i].total                            Total
+  lines[i].taxTypeId                        TaxTypeId              Pass null through
+
+Do NOT send Editable, Locked, or HasAttachments -- Sage's docs flag them as
+read-only / system-generated.
+
+--------------------------------------------------------------------------------
+RESPONSE PHAROH RETURNS TO ERPNEXT
+--------------------------------------------------------------------------------
+
+Same shape as the existing invoice push responses (e.g.
+TaxInvoice/post-taxinvoice-to-sage):
+
+Success:
+{
+  "success": true,
+  "sageOrderId": "<the first Save call's returned ID, or a composite>",
+  "documentNumber": "<the journal's Reference or Sage-assigned doc number>",
+  "errorMessage": null
+}
+
+Failure:
+{
+  "success": false,
+  "sageOrderId": null,
+  "documentNumber": null,
+  "errorMessage": "<human-readable cause>"
+}
+
+If any Save call within the group fails, return failure for the whole journal
+and ideally roll back the prior Saves (best-effort -- Sage's API doesn't have
+a transactional wrapper). The ERPNext side flags the document as Failed and
+the user retries.
+
+--------------------------------------------------------------------------------
+ALREADY DONE ON THE ERPNEXT SIDE (don't re-derive)
+--------------------------------------------------------------------------------
+
+- Reads "sageacct_idx" from Pharoh's /api/AccountsSync/get-accounts-for-erpnext
+  response and stamps it as custom_sage_account_id on every ERPNext Account.
+  (You added sageacct_idx to the AccountsSync + AccountBalanceDTO responses
+  -- that's already deployed.)
+
+- Posts the multi-row payload above on every Journal Entry submit.
+
+- Tracks custom_sage_order_id, custom_sage_document_number,
+  custom_sage_sync_status per Journal Entry from the response.
+
+--------------------------------------------------------------------------------
+YOUR TASK
+--------------------------------------------------------------------------------
+
+1. Update the SageJournalEntryRequest / SageJournalEntryDTO DTOs (or introduce
+   a new SageJournalEntryLineDTO) to match the multi-row shape above.
+
+2. Update the controller at
+     POST /api/JournalEntriesSync/post-journalentry-to-sage
+   to accept the new shape.
+
+3. Implement the decomposition + per-line Sage JournalEntry/Save calls under
+   one shared Reference (Strategy B recommended).
+
+4. Return the success/failure shape above.
+
+5. Update the swagger / OpenAPI spec so the new shape shows in
+     /swagger/index.html.
+
+When done, run the project locally and confirm the swagger renders the new
+shape. ERPNext-side testing happens separately on the live deployment.
+
+================================================================================
+END OF PROMPT
+================================================================================
