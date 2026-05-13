@@ -1,0 +1,147 @@
+CONTEXT
+-------
+Pharoh is a .NET middleware that bridges ERPNext and Sage Business Cloud
+Accounting. It already has working controller classes for Sales Invoices,
+Purchase Invoices, Journal Entries, and Account/Customer/Supplier syncs.
+
+Look at the existing JournalEntriesSync controller
+(POST /api/JournalEntriesSync/post-journalentry-to-sage) as the closest
+reference — this new endpoint follows exactly the same pattern but for
+stock-value adjustments.
+
+TASK
+----
+Create a new controller and endpoint:
+
+  POST /api/StockAdjustmentSync/post-stock-adjustment-to-sage
+
+This endpoint receives stock-value movements from ERPNext (physical count
+variances, material issues/receipts, manufacturing conversions, kit builds,
+disassembly) and posts them to Sage Business Cloud Accounting as a journal
+entry, preserving the financial values that ERPNext computed.
+
+
+REQUEST BODY (JSON)
+-------------------
+{
+  "credentials": {
+    "loginName": "string",
+    "loginPwd": "string",
+    "useOAuth": false,
+    "sessionToken": "string",
+    "provider": "string"
+  },
+  "stockAdjustment": {
+    "date": "yyyy-MM-dd",
+    "reference": "STE-2026-00042",       // ERPNext document name
+    "entryType": "Material Issue",        // see full list below
+    "description": "Material Issue — STE-2026-00042",
+    "memo": "Material Issue — STE-2026-00042",
+    "taxPeriodId": null,
+    "analysisCategoryId1": null,
+    "analysisCategoryId2": null,
+    "analysisCategoryId3": null,
+    "trackingCode": "",
+    "businessId": null,
+    "payRunId": null,
+    "lines": [
+      {
+        "effect": 1,             // 1 = Debit, 2 = Credit  (Sage enum)
+        "accountId": 12345,      // Sage account ID (signed long — negatives valid)
+        "debit": 1500.00,
+        "credit": 0,
+        "exclusive": 1500.00,    // == debit when effect=1, == credit when effect=2
+        "tax": 0,
+        "total": 1500.00,
+        "taxTypeId": null,
+        "description": "GL entry remarks from ERPNext"
+      },
+      {
+        "effect": 2,
+        "accountId": 67890,
+        "debit": 0,
+        "credit": 1500.00,
+        "exclusive": 1500.00,
+        "tax": 0,
+        "total": 1500.00,
+        "taxTypeId": null,
+        "description": ""
+      }
+    ]
+  }
+}
+
+FIELD NOTES
+-----------
+- `effect`: always 1 (Debit) or 2 (Credit). Never send both debit > 0 and
+  credit > 0 on the same line — ERPNext guarantees one direction per row.
+- `accountId`: signed long. Negative values are valid (Sage system accounts
+  such as VAT control accounts use negative IDs).
+- Nullable integers (taxTypeId, taxPeriodId, analysisCategoryId1/2/3,
+  businessId, payRunId) must be sent as null — never 0. Sage treats 0 as
+  an invalid foreign key and will reject the call.
+- `tax` is always 0 and `exclusive == total` on every line. Stock-value
+  journals carry no tax at the journal level.
+- The `lines[]` array is balanced (sum of debits == sum of credits) because
+  ERPNext's GL entries are always balanced. Pharoh does not need to verify
+  this, but can assert it in debug/test mode.
+- `entryType` is informational metadata — use it for logging and for the
+  Sage journal description/reference. Possible values from ERPNext:
+    "Material Issue"
+    "Material Receipt"
+    "Manufacture"
+    "Material Consumption for Manufacture"
+    "Repack"
+    "Disassemble"
+    "Stock Reconciliation"
+
+WHAT PHAROH MUST DO
+-------------------
+1. Authenticate to Sage using the credentials block (same auth flow as the
+   existing Journal Entry and Invoice controllers).
+2. POST each line to Sage's journal endpoint, decomposing the multi-row
+   `lines[]` array into Sage's single-(account, contraAccount, debit, credit)
+   shape. Use the same pivot-decomposition strategy as the Journal Entry
+   endpoint: pick line[0] as the pivot account, emit N-1 Sage calls (each
+   pairing the pivot with one other line), all sharing the same Reference
+   so they appear as one logical journal in Sage.
+3. Return a JSON response to ERPNext:
+
+   Success:
+   {
+     "success": true,
+     "sageOrderId": 987654,       // Sage's internal order/journal ID
+     "documentNumber": "JE-2026-00789"  // human-readable Sage doc number
+   }
+
+   Failure:
+   {
+     "success": false,
+     "errorMessage": "Human-readable description of what went wrong"
+   }
+
+4. Log the reference, entryType, and line count at INFO level for audit trail.
+5. On any Sage API error, return success=false with the Sage error message —
+   do not throw unhandled exceptions.
+
+SAGE API REFERENCE
+------------------
+- Sage Business Cloud Accounting API docs:
+  https://resellers.accounting.sageone.co.za/api/2.0.0
+- The `effect` enum (1=Debit, 2=Credit) is defined in the Sage JournalEntry
+  schema under the `Effect` property.
+- Journal Entry Save endpoint shape: single (Account, ContraAccount, Amount)
+  pair per call. All calls for one ERPNext journal share the same Reference.
+
+CONTROLLER LOCATION
+-------------------
+Mirror the existing JournalEntriesSync controller structure:
+- Controller class: StockAdjustmentSyncController
+- Route prefix: /api/StockAdjustmentSync
+- New file(s) alongside the existing JournalEntriesSync files
+
+TESTS
+-----
+Write a unit test that sends a balanced 2-line payload (one debit, one credit,
+equal amounts) and asserts the response has success=true and a non-null
+sageOrderId. Use the existing Journal Entry test as the template.
