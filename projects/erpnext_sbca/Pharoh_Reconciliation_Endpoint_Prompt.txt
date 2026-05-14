@@ -1,9 +1,9 @@
 ================================================================================
 PROMPT FOR GITHUB COPILOT  --  Pharoh .NET project (VS 2022, other machine)
-Date: 2026-05-14
-Purpose: Add new ReconciliationSync controller with two endpoints that return
-         per-customer and per-supplier opening/closing balances from Sage for
-         a date range, so ERPNext can run month-end AR/AP reconciliation
+Date: 2026-05-14  (rev 2 -- corrected to the real Sage transaction-listing shape)
+Purpose: Add a new ReconciliationSync controller with two endpoints that return
+         per-customer and per-supplier opening/closing balances from Sage for a
+         date range, so ERPNext can run month-end AR/AP reconciliation
 ================================================================================
 
 You are working on the Pharoh middleware -- a .NET / C# Web API that bridges
@@ -27,10 +27,21 @@ Relevant pages for this task:
   https://resellers.accounting.sageone.co.za/api/2.0.0/Help/Api/POST-SupplierTransactionListing-GetSupplierTransactionListingReportingDetail
 
 A brand new controller is required. The existing AccountsSync controller
-(the one behind POST /api/AccountsSync/get-accounts-for-erpnext and
+(behind POST /api/AccountsSync/get-accounts-for-erpnext and
 get-accountbalances-for-erpnext) is the closest reference -- it is also a
 "fetch from Sage and return a cleaned list to ERPNext" controller rather than
 a "post a document to Sage" one. Use AccountsSync as your structural template.
+
+IMPORTANT CORRECTION FROM REV 1
+-------------------------------
+An earlier draft of this prompt assumed Sage returns a tidy per-customer
+opening/closing-balance list. It does not. The transaction-listing report
+returns, for each party, a summary header (ID, Name, OpeningBalance,
+ClosingBalance, ...) AND a long nested Transactions[] array of every
+individual transaction in the period. ERPNext does NOT need the transaction
+detail. Pharoh's job is to call the report, then DROP the Transactions[]
+array and return only the per-party summary header. No aggregation is needed
+-- OpeningBalance and ClosingBalance are already on the summary header.
 
 --------------------------------------------------------------------------------
 WHAT NEEDS TO BE BUILT
@@ -42,12 +53,11 @@ Two new endpoints on one new controller:
   POST /api/ReconciliationSync/get-supplier-balances
 
 Each endpoint receives a date range, calls the matching Sage transaction
-listing report once, and returns the cleaned list of parties that had
-movement in the period together with their opening and closing balances.
-ERPNext uses these balances to post one reconciliation Journal Entry per
-party per month.
+listing report once, strips the per-transaction detail, and returns the
+cleaned per-party list of opening and closing balances.
 
-The request body Pharoh must accept (identical for both endpoints):
+The request body Pharoh must accept from ERPNext (identical for both
+endpoints):
 
 {
   "credentials": {
@@ -64,87 +74,127 @@ The request body Pharoh must accept (identical for both endpoints):
 Notes on the shape:
 
 - credentials:  the same credentials envelope every other erpnext_sbca call
-                sends. Use it exactly as the existing controllers do
-                (loginName / loginPwd, plus useOAuth / sessionToken /
-                provider for OAuth tenants). The apikey continues to arrive
-                as a query-string parameter, e.g.
+                sends. Use it exactly as the existing controllers do. The
+                apikey continues to arrive as a query-string parameter, e.g.
                   POST /api/ReconciliationSync/get-customer-balances?apikey=...
 - openingDate:  ISO date (yyyy-MM-dd). Start of the reconciliation period.
-                On the very first run for a site this is the financial year
-                start; on later runs it is the previous run's timestamp.
-- closingDate:  ISO date (yyyy-MM-dd). End of the period -- the moment the
-                ERPNext job ran. Always >= openingDate.
-- Both dates are plain calendar dates. No time component.
+- closingDate:  ISO date (yyyy-MM-dd). End of the period. Always >= openingDate.
+- Both are plain calendar dates, no time component.
 
 --------------------------------------------------------------------------------
 WHAT PHAROH MUST DO WITH THE PAYLOAD
 --------------------------------------------------------------------------------
 
-This is a SINGLE Sage call per endpoint -- no decomposition.
+This is a SINGLE Sage call per endpoint -- no decomposition, no aggregation.
 
 get-customer-balances:
-  Call Sage:
-    POST CustomerTransactionListing/GetCustomerTransactionListingReportingDetail
-  Pass the date range as the report's date filter (OData $filter on the
-  transaction date, ge openingDate and le closingDate -- the same way the
-  existing reporting calls scope a date window). Sage returns a reporting-
-  detail structure that already groups by customer and already carries an
-  opening balance and a closing balance per customer for the requested
-  window, and only includes customers that had movement in the period.
+  Call Sage's customer transaction listing report. The request body Sage
+  expects is the following -- and ALL TEN fields must be present in every
+  call or Sage rejects the request:
+
+  {
+    "FromCustomer": "",
+    "ToCustomer": "",
+    "FromCategory": "",
+    "ToCategory": "",
+    "FromDate": "2026-03-01",
+    "ToDate": "2026-05-14",
+    "IncludeActive": true,
+    "IncludeInactive": false,
+    "TransactionType": "",
+    "UseForeignCurrency": false
+  }
+
+  Only FromDate and ToDate vary per call -- map them from the ERPNext
+  openingDate / closingDate. The other eight are fixed constants (empty
+  strings, IncludeActive = true, IncludeInactive = false,
+  UseForeignCurrency = false). Send them every time; do not omit any.
+
+  Sage returns a collection of per-customer objects. Each object looks like
+  this (one real sample, abbreviated):
+
+  {
+    "ID": 356693,
+    "Name": "Cash Sale",
+    "CurrencySymbol": "R",
+    "OpeningBalanceDate": "2026-03-01T00:00:00Z",
+    "OpeningBalance": 153967.48,
+    "ClosingBalanceDate": "2026-05-14T00:00:00Z",
+    "ClosingBalance": 165015.48,
+    "Transactions": [
+      {
+        "ID": 6337616,
+        "DocumentTypeId": 4,
+        "LinkId": 356693,
+        "Name": "Cash Sale",
+        "DocumentNumber": "RCP0000001",
+        "Reference": "qwerty",
+        "Date": "2024-12-16T00:00:00Z",
+        "DocumentTypeDisplayText": "Customer Receipt",
+        "Total": 100.00, "Debit": 100.00, "Credit": 0.0,
+        "RunningTotal": 154067.48
+      },
+      ... many more transaction rows ...
+    ]
+  }
+
+  For each per-customer object:
+    1. Read the SUMMARY HEADER fields only: ID, Name, OpeningBalance,
+       ClosingBalance (and, optionally, OpeningBalanceDate, ClosingBalanceDate,
+       CurrencySymbol).
+    2. DROP the entire Transactions[] array -- do not return it, do not
+       inspect it. ERPNext does not use transaction-level detail.
+    3. Project onto the clean output object (see FIELD MAPPING below).
+  Return the projected list as a bare JSON array.
 
 get-supplier-balances:
-  Identical logic against the supplier report:
-    POST SupplierTransactionListing/GetSupplierTransactionListingReportingDetail
-  Same OData date filter, same per-supplier opening/closing balance shape.
-
-For each endpoint:
-  1. Build the Sage request from credentials + the OData date filter.
-  2. Make the one Sage call.
-  3. Project each customer/supplier row in Sage's response onto the clean
-     output shape below (see FIELD MAPPING).
-  4. Return the projected list as a bare JSON array.
-
-Do NOT compute deltas, do NOT create journals, do NOT call Sage a second
-time for balances -- the single reporting call already returns opening and
-closing balances. Pharoh's only job here is fetch + reshape.
+  Identical logic against Sage's supplier transaction listing report. The
+  request body is the supplier equivalent of the one above -- the same ten
+  fields, with FromSupplier / ToSupplier in place of FromCustomer /
+  ToCustomer. Confirm the exact supplier field names against the Sage
+  supplier-transaction-listing help page; everything else (the constants,
+  the date mapping, the strip-Transactions step, the output shape) is the
+  same as the customer endpoint.
 
 --------------------------------------------------------------------------------
 FIELD MAPPING (camelCase Pharoh I/O <-> PascalCase Sage)
 --------------------------------------------------------------------------------
 
-REQUEST -- Pharoh input -> Sage report request:
+REQUEST -- ERPNext input -> Sage transaction-listing request body:
 
-  Pharoh input            Sage report request          Notes
-  ----------------------  ---------------------------  --------
-  credentials.*           (auth headers / body)        Exactly as the existing
-                                                       controllers send it
-  openingDate             $filter date ge openingDate  Start of window (ISO date)
-  closingDate             $filter date le closingDate  End of window (ISO date)
+  ERPNext input    Sage request field        Notes
+  ---------------  ------------------------  ------------------------------
+  credentials.*    (auth)                    standard envelope, as the other controllers
+  openingDate      FromDate                  ISO date, pass straight through
+  closingDate      ToDate                    ISO date, pass straight through
+  (constant)       FromCustomer = ""         all customers (FromSupplier for the supplier call)
+  (constant)       ToCustomer = ""           all customers (ToSupplier for the supplier call)
+  (constant)       FromCategory = ""         all categories
+  (constant)       ToCategory = ""           all categories
+  (constant)       IncludeActive = true
+  (constant)       IncludeInactive = false
+  (constant)       TransactionType = ""      all transaction types
+  (constant)       UseForeignCurrency = false
 
-RESPONSE -- Sage report row -> Pharoh output object:
+  >>> ALL TEN request fields are mandatory on every Sage call. Omitting any
+  >>> one of them causes Sage to reject the request. <<<
 
-  Sage report field      Pharoh output field   Notes
-  ---------------------  --------------------  --------
-  CustomerName /         partyName             Sage's display name for the
-    SupplierName                               customer / supplier
-  Customer.Name /        sageName              Stable Sage code/id for the
-    Supplier.Name                              party. ERPNext matches this to
-                                               custom_sage_customer_id /
-                                               custom_sage_supplier_id
-  OpeningBalance         openingBalance        Decimal. Pass through Sage's
-                                               sign convention unchanged
-  ClosingBalance         closingBalance        Decimal. Pass through Sage's
-                                               sign convention unchanged
+RESPONSE -- Sage per-party object -> Pharoh output object:
 
-If Sage's exact field names differ from the guesses above (CustomerName,
-Customer.Name, OpeningBalance, ClosingBalance), use whatever the
-CustomerTransactionListing / SupplierTransactionListing reporting-detail
-response actually exposes -- the mapping target (partyName, sageName,
-openingBalance, closingBalance) is what matters and must not change.
+  Sage response field    Pharoh output field    Notes
+  ---------------------  ---------------------  ------------------------------
+  ID                     sageId                 Sage's numeric customer/supplier id
+  Name                   name                   Sage's display name
+  OpeningBalance         openingBalance         decimal, pass through unchanged
+  ClosingBalance         closingBalance         decimal, pass through unchanged
+  OpeningBalanceDate     openingBalanceDate     pass through (ERPNext logs it; harmless)
+  ClosingBalanceDate     closingBalanceDate     pass through
+  CurrencySymbol         currencySymbol         pass through
+  Transactions           (DROPPED)              do NOT return -- ERPNext never uses it
 
 Log credentials.loginName, openingDate, closingDate, the endpoint name, and
-the count of parties returned at INFO level for the audit trail. Do NOT log
-loginPwd / sessionToken / provider / apikey.
+the count of parties returned at INFO level. Do NOT log loginPwd /
+sessionToken / provider / apikey.
 
 --------------------------------------------------------------------------------
 RESPONSE PHAROH RETURNS TO ERPNEXT
@@ -152,33 +202,43 @@ RESPONSE PHAROH RETURNS TO ERPNEXT
 
 Unlike the document-posting endpoints (which return a
 success/sageOrderId/documentNumber object), these two endpoints return a
-BARE JSON ARRAY of party balances. ERPNext's reconciliation worker checks
+BARE JSON ARRAY of per-party balances. ERPNext's reconciliation worker checks
 `isinstance(response, list)` and treats anything that is not a list as a
 failure, so the top-level response MUST be an array.
 
-Success -- a JSON array, one object per active party:
+Success -- a JSON array, one object per party returned by Sage:
 
 [
   {
-    "partyName": "Acme Engineering (Pty) Ltd",
-    "sageName": "ACME001",
-    "openingBalance": 18450.00,
-    "closingBalance": 12300.00
+    "sageId": 356693,
+    "name": "Cash Sale",
+    "openingBalance": 153967.48,
+    "closingBalance": 165015.48,
+    "openingBalanceDate": "2026-03-01T00:00:00Z",
+    "closingBalanceDate": "2026-05-14T00:00:00Z",
+    "currencySymbol": "R"
   },
   {
-    "partyName": "Brightline Retailers",
-    "sageName": "BRIGHT002",
+    "sageId": 357011,
+    "name": "Brightline Retailers",
     "openingBalance": 0.00,
-    "closingBalance": 5600.00
+    "closingBalance": 5600.00,
+    "openingBalanceDate": "2026-03-01T00:00:00Z",
+    "closingBalanceDate": "2026-05-14T00:00:00Z",
+    "currencySymbol": "R"
   }
 ]
 
-If no party had movement in the period, return an empty array: []
+If Sage returns no parties for the period, return an empty array: []
+
+ERPNext only consumes sageId, name, and closingBalance; openingBalance and
+the date/currency fields are returned for traceability and are otherwise
+ignored -- so it is fine to include them, and fine if a value is null.
 
 Failure -- if the Sage call errors or credentials are rejected, return a
 non-2xx HTTP status (e.g. 502 / 400) with a short error body, the same way
-the existing AccountsSync fetch controller surfaces Sage errors. ERPNext
-logs the failure for that company and moves on; it does NOT need the
+the existing AccountsSync fetch controller surfaces Sage errors. ERPNext logs
+the failure for that company and moves on; it does not need the
 success/errorMessage object shape here.
 
 --------------------------------------------------------------------------------
@@ -191,8 +251,8 @@ ALREADY DONE ON THE ERPNEXT SIDE (don't re-derive)
   year start on the first run) and closingDate = now().
 
 - For each party returned, ERPNext:
-    * matches sageName -> custom_sage_customer_id / custom_sage_supplier_id
-      (falling back to partyName),
+    * matches sageId -> custom_sage_customer_id / custom_sage_supplier_id,
+      falling back to name,
     * computes delta = closingBalance - ERPNext outstanding,
     * if delta != 0, creates and submits a reconciliation Journal Entry
       (DR/CR between the party control account and a "Sage Payments
@@ -200,14 +260,15 @@ ALREADY DONE ON THE ERPNEXT SIDE (don't re-derive)
     * writes a Sage Reconciliation Log row and is idempotent per
       company/party/period (safe to re-run).
 
-- ERPNext only needs partyName, sageName, openingBalance, closingBalance.
-  It does not use any other transaction-level detail, so Pharoh should not
-  bother returning the individual transactions -- just the per-party
-  opening/closing summary.
+- ERPNext consumes only sageId, name and closingBalance. It does NOT use
+  openingBalance, the balance dates, the currency symbol, or any
+  transaction-level detail -- so Pharoh must not bother returning the
+  Transactions[] array, and should keep the response to the per-party
+  summary only.
 
-- The whole feature is gated by the push_reconciliation_on_schedule toggle
-  on Erpnext Sbca Settings, which defaults OFF until these two Pharoh
-  endpoints are deployed.
+- The whole feature is gated by the push_reconciliation_on_schedule toggle on
+  Erpnext Sbca Settings, which defaults OFF until these two Pharoh endpoints
+  are deployed.
 
 --------------------------------------------------------------------------------
 YOUR TASK
@@ -217,8 +278,9 @@ YOUR TASK
    credentials envelope + openingDate + closingDate, mirroring how the
    existing fetch controllers model their request bodies.
 
-2. Create the response DTO (e.g. PartyBalanceDTO) with partyName, sageName,
-   openingBalance (decimal), closingBalance (decimal).
+2. Create the response DTO (e.g. PartyBalanceDTO) with sageId (long),
+   name (string), openingBalance (decimal), closingBalance (decimal), and
+   optionally openingBalanceDate / closingBalanceDate / currencySymbol.
 
 3. Create a new controller:
      Class:   ReconciliationSyncController
@@ -227,16 +289,19 @@ YOUR TASK
               POST get-supplier-balances
    Place the new files alongside the existing AccountsSync controller files.
 
-4. Implement get-customer-balances: one call to
-   CustomerTransactionListing/GetCustomerTransactionListingReportingDetail
-   with the OData date filter, project the per-customer rows onto
-   PartyBalanceDTO, return the bare JSON array.
+4. Implement get-customer-balances: build the full TEN-field customer
+   transaction-listing request body (FromDate / ToDate from the ERPNext
+   payload, the other eight as the fixed constants above), make the one Sage
+   call, iterate the per-customer objects, DROP each Transactions[] array,
+   project the summary header onto PartyBalanceDTO, and return the bare JSON
+   array.
 
-5. Implement get-supplier-balances: the same against
-   SupplierTransactionListing/GetSupplierTransactionListingReportingDetail.
+5. Implement get-supplier-balances: the same against the Sage supplier
+   transaction-listing report, using the supplier-equivalent request field
+   names (FromSupplier / ToSupplier).
 
-6. Return the bare JSON array shape above (empty array when no movement);
-   surface Sage / auth errors as a non-2xx response.
+6. Return the bare JSON array shape above (empty array when Sage returns no
+   parties); surface Sage / auth errors as a non-2xx response.
 
 7. Update the swagger / OpenAPI spec so both new endpoints show in
    /swagger/index.html.
