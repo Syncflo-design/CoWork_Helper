@@ -33,6 +33,37 @@ Every few minutes (every scheduler tick — roughly every 4 min) the app reaches
 
 That's it — 11 scheduled jobs in total, each handling one of those flows.
 
+*(That count and list predate the 2026-05 additions — see "Recent additions" below.)*
+
+## Recent additions (2026-05-14)
+
+The 2026-05 work added two features on top of the original sync set. Both are
+gated by their own Settings toggles.
+
+**Payment reconciliation.** A daily scheduled job (`API/reconciliation.py`)
+pulls each customer's and supplier's closing balance from Sage and posts one
+reconciliation Journal Entry per party per month to bring ERPNext's AR/AP into
+line with Sage. New `Sage Reconciliation Log` DocType is the audit trail and
+the idempotent guard. The "Sage Payments Clearing" account is auto-provisioned
+per company. Gated by `push_reconciliation_on_schedule` (default OFF until
+Pharoh's `ReconciliationSync` endpoints are live). Full design:
+`PAYMENT_RECONCILIATION_DESIGN.md`; accountant-facing guide:
+`Sage_ERPNext_Accounting_Sync_Guide.docx`.
+
+**Customer / Supplier category -> group sync.** Two new scheduled pulls
+(`get_customer_categories_from_sage` / `get_supplier_categories_from_sage`)
+mirror Sage's customer/supplier categories into ERPNext as leaf Customer /
+Supplier Groups, and the customer/supplier pulls now assign each party to its
+category's group (previously: everyone dumped into the first leaf group).
+Shared helper `ensure_party_group` in `helper_function.py`. Gated by
+`sync_customer_categories` / `sync_supplier_categories`. See
+`gotchas/2026-05-14-erpnext-party-group-must-be-leaf.md`.
+
+Earlier 2026-05 work, also not covered by the 2026-05-12 audit above:
+triggered pushes for Journal Entries and Stock Adjustments, and SO/PO
+cancellation sync — see `hooks.py` `doc_events` and the
+`Pharoh_*_Endpoint_Prompt.txt` files.
+
 ## Per-Company credentials
 
 Each ERPNext Company that needs to sync with Sage gets its own row in the Settings child table. That row stores:
@@ -62,6 +93,32 @@ So a single nesterp bench with three Companies can talk to three separate Sage a
 4. Watch `Scheduled Job Log` for a few ticks to confirm jobs are completing successfully rather than erroring.
 
 I can't do steps 1–3 from Cowork without the Sage credentials and without being able to follow the OAuth redirect. Doreen, or whoever set this up for the other companies, will know the exact values.
+
+## Critical mental model — ERPNext is master, Sage is the ledger
+
+**This is not a Sage-driven integration.** Russell also owns a separate commercial
+product where Sage is the golden source — POs, SOs, and the item master all
+originate in Sage and flow outward. That model is the opposite of this one.
+
+In this build:
+
+| Concern | Owner |
+|---|---|
+| Item master, stock, orders, manufacturing | **ERPNext** (master) |
+| Financial ledger, VAT, SARS, payments | **Sage** (master) |
+
+The flow is **ERPNext → Sage**, not the other way around. ERPNext creates the
+transaction; Sage receives it and handles the financial/statutory side.
+
+Practical consequences of this model:
+- Sales invoices, purchase invoices, and orders are always **created in ERPNext**.
+  Staff never need to touch Sage for operational transactions.
+- Sage is where the **accountant lives** — payments, allocations, VAT, bank rec.
+- If you ever find yourself thinking "should this originate in Sage?", the answer
+  is almost certainly no — unless it is a pure-service invoice with no stock
+  impact, which the monthly reconciliation handles automatically.
+- Do not add logic that pulls document types (SO, PO, invoices, item master)
+  **from** Sage into ERPNext as the authoritative source. That is the other product.
 
 ## Things to keep in mind
 
@@ -107,25 +164,4 @@ frappe_list("DocType",
     filters=[["module", "=", "Erpnext Sbca"]],
     fields=["name", "issingle", "istable"])
 
-# 3. Inspect each DocType in detail
-frappe_get("DocType", "Erpnext Sbca Settings")
-frappe_get("DocType", "Company Sage Integration")
-
-# 4. The big reveal for integration apps: scheduled jobs
-frappe_list("Scheduled Job Type",
-    filters=[["method", "like", "%erpnext_sbca%"]],
-    fields=["name", "method", "frequency", "stopped"])
-
-# 5. Sample the live data
-frappe_get("Erpnext Sbca Settings", "Erpnext Sbca Settings")
-```
-
-The `Scheduled Job Type` query is the one that revealed what the app actually does. The DocType audit alone made it look almost empty (just a settings doc + a credentials table); the scheduled-jobs list showed the 11 sync flows.
-
-The MCP user can't read `Server Script`, and Python source on the bench isn't reachable via MCP — so the actual sync logic has to be read directly off the bench or from Doreen's repo.
-
-## See also
-
-- `gotchas/2026-05-12-frappe-chatty-cron-on-unconfigured-third-party-app.md` — when auditing an inherited Frappe app, the `Scheduled Job Type` listing is where integration apps' real behaviour shows up. Don't blindly stop jobs without checking if the app is keystone infrastructure (this one is).
-- `gotchas/2026-05-06-mcp-user-restricted-doctypes.md` — why some of this audit had to be done indirectly.
-- `sites/nesterp.md` — the bench this app sits on.
+# 3. Inspect each DocT
