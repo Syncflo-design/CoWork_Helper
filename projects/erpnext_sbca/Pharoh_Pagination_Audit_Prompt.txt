@@ -1,0 +1,130 @@
+================================================================================
+PROMPT FOR GITHUB COPILOT  --  Pharoh .NET project (VS 2022)
+Date: 2026-05-15
+Purpose: Standardise pagination across the Pharoh API so every large-collection
+         endpoint uses caller-driven (pass-through) pagination
+================================================================================
+
+You are working on the Pharoh middleware -- a .NET / C# Web API that bridges
+ERPNext (the customer-facing custom app "erpnext_sbca") and Sage Business Cloud
+Accounting. The project is open in Visual Studio. Controllers live in
+Controllers/, the Sage HTTP layer in Services/SageService.cs, DTOs in Models/.
+ERPNext is the consumer: it calls these endpoints and loops over the results.
+
+--------------------------------------------------------------------------------
+THE RULE
+--------------------------------------------------------------------------------
+
+Any endpoint that returns a COLLECTION which could realistically exceed ~100
+rows must use PASS-THROUGH pagination -- the caller (ERPNext) drives the loop,
+one page per request. Endpoints that loop internally and aggregate every page
+into one response are NOT acceptable: on large datasets they produce huge
+payloads and time the request out.
+
+--------------------------------------------------------------------------------
+THE CANONICAL PATTERN -- COPY THIS EXACTLY
+--------------------------------------------------------------------------------
+
+InventorySyncController.GetInventoryForErpNext  ("get-inventory-for-erpnext")
+and GetInventoryQOHForErpNext  ("get-inventory-qtyonhand-for-erpnext") are the
+reference implementations. The pattern:
+
+1. The action takes  [FromQuery] int skipQty = 0  in addition to its existing
+   parameters.
+
+2. It calls a BATCH-AWARE service method -- e.g.
+   _sageService.GetInventoryItemsByBatchAsync(..., skipQty) -- that makes ONE
+   Sage $skip call and returns a batch response carrying .Items, .TotalResults,
+   .ReturnedResults.
+
+3. The action returns this exact envelope:
+
+   return Ok(new
+   {
+       TotalResults    = sageBatchResponse.TotalResults,
+       ReturnedResults = sageBatchResponse.ReturnedResults,
+       Items           = <mapped list>
+   });
+
+4. The caller loops: start at skipQty = 0; after each response add
+   ReturnedResults to skipQty; stop when skipQty >= TotalResults or
+   ReturnedResults == 0.
+
+Services/SageService.cs already paginates against Sage's own $skip /
+TotalResults / ReturnedResults for every pull -- the data layer can already
+page. What is missing is EXPOSING that page-by-page to ERPNext instead of
+aggregating it inside Pharoh.
+
+--------------------------------------------------------------------------------
+STEP 1 -- AUDIT
+--------------------------------------------------------------------------------
+
+Go through every controller in Controllers/. For each action that returns a
+collection, classify it:
+
+  ALREADY CORRECT   -- already uses skipQty plus the
+                       { TotalResults, ReturnedResults, Items } envelope.
+
+  NEEDS CONVERSION  -- returns a plain list, OR aggregates all pages internally
+                       with a  do { ... skipQty += ReturnedResults }
+                       while (skipQty < totalQty)  loop before returning.
+
+  EXEMPT            -- returns a single record, or a collection that is provably
+                       bounded-small (e.g. tax types, analysis categories, price
+                       lists). State WHY you judged it bounded so a human can
+                       sanity-check the call.
+
+Produce the audit as a table:
+  Controller | Action / route | Returns | Classification | Reason
+
+--------------------------------------------------------------------------------
+STEP 2 -- CONVERT
+--------------------------------------------------------------------------------
+
+For every "Needs conversion" endpoint:
+
+- Add  [FromQuery] int skipQty = 0  to the action signature.
+- Keep all existing filter parameters (lastDate, InclZeroOnHand, etc.) exactly
+  as they are.
+- If the service layer has no batch-aware method for that entity, add one that
+  mirrors GetInventoryItemsByBatchAsync: it takes skipQty, makes ONE Sage $skip
+  call (not a loop), and returns a batch-response DTO with Items, TotalResults,
+  ReturnedResults. Replace the internal do/while aggregation with this single-
+  page call.
+- Return the { TotalResults, ReturnedResults, Items } envelope.
+- Leave the route string and HTTP verb unchanged.
+
+--------------------------------------------------------------------------------
+STEP 3 -- REPORT RESPONSE-SHAPE CHANGES
+--------------------------------------------------------------------------------
+
+Converting an endpoint from a plain list to the
+{ TotalResults, ReturnedResults, Items } envelope BREAKS the ERPNext consumer
+of that endpoint. Produce a list of every endpoint whose response shape changed:
+  route | old shape -> new shape
+so the ERPNext side (erpnext_sbca/API/*.py) can be repointed to loop. Do not
+assume ERPNext copes automatically; it does not.
+
+--------------------------------------------------------------------------------
+GUARDRAILS
+--------------------------------------------------------------------------------
+
+- Do NOT touch POST/push endpoints that send data TO Sage (invoices, journals,
+  item creation, stock reconciliation) -- they do not return collections.
+- Do NOT change route strings, controller names, or auth handling.
+- Do NOT rename or recase the TotalResults / ReturnedResults / Items fields --
+  ERPNext reads them by name.
+- Work one controller at a time and keep each controller's conversion in its
+  own commit, so each can be reviewed and rolled back independently.
+
+--------------------------------------------------------------------------------
+DELIVERABLES
+--------------------------------------------------------------------------------
+
+1. The audit table from Step 1.
+2. The code changes, one controller per commit.
+3. The response-shape-change list from Step 3, for the ERPNext team.
+
+================================================================================
+END OF PROMPT
+================================================================================
