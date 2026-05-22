@@ -14,7 +14,7 @@ Syncflo's internal ERPNext instance. Frappe v16 / ERPNext v16.
 
 - `frappe`, `erpnext`
 - `builder`
-- `custom_subscription`
+- `custom_subscription` — recurring-billing engine (Business Subscription). **Assessed + repaired 2026-05-20/21** — see the dated section below.
 - `drive`
 - `helpdesk`
 - `syncflo_internal` (Syncflo's existing private custom app — module `Syncflo Internal`)
@@ -218,3 +218,48 @@ Conclusion captured in `gotchas/2026-05-11-frappe-v16-listview-formatters-stripp
 5. Mark Complete, Reopen, Add Task work.
 6. Scope (My/All) and status (Open/Closed/Any) filters work.
 7. Filter choices persist after page reload.
+
+### nest_theme v0.3.2 — 2026-05-07 — Sage-inspired palette
+
+6th palette added: "Sage-inspired" (slug `sage-inspired`). Green-forward, styled to resemble Sage Business Cloud Accounting so users moving across the `erpnext_sbca` Sage bridge get a visual link. Unofficial — disclaimer in the Settings palette field description ("not affiliated with or endorsed by Sage").
+
+Colours: primary `#0a9e2e` (light) / `#2ecc5a` (dark); bright Sage accent `#00c805` / `#00dc06`; canvas `#f3f7f3` light / `#0d1a10` dark. Sage brand green is `#00DC06` — kept as accent only (fails white-text contrast as a button colour).
+
+Six palettes total now. No JS/layout change; pure additive CSS block + boot/Settings entries.
+
+### custom_subscription — 2026-05-20 / 05-21
+
+Recurring-billing engine (originally by **Chipo Hameja**). One submittable parent **Business Subscription** (autoname `BS-.####`) + two child tables (**Business Subscription Item**, **Business Subscription Recipient**). A daily scheduler walks every *submitted* subscription whose `next_invoice_date` is due and creates the configured document — **Sales Order**, **Sales Invoice (Draft)**, or **Sales Invoice (Submitted)** — then optionally emails the recipients and advances `next_invoice_date` by the frequency.
+
+- **Repo:** [Syncflo-design/custom-subscription](https://github.com/Syncflo-design/custom-subscription) — **default branch `version-16`** (NOT `main`).
+- **Local checkout:** `C:\ClaudeCode\custom-subscription` (Dell).
+- **Engine:** `custom_subscription/subscriptions.py` (scheduler entry) + controller `.../doctype/business_subscription/business_subscription.py`.
+
+**Bugs found & fixed (2026-05-20):**
+
+1. **Stuck-forever scheduler.** `validate_subscriptions` filtered `next_invoice_date == today` (exact match), so any missed scheduler day left the date in the past and it never matched again — why BS-0002/3/4 sat unprocessed since early May. Fixed to `["<=", today]` + per-subscription `try/except` + `frappe.db.commit()` so one bad record can't abort the whole run.
+2. **`before_save` rewound the schedule.** It reset `last_processed_date`/`next_invoice_date` to `start_date` on *every* save, so editing a running sub sent it back to the start. Guarded with `if self.is_new()`.
+3. **Wrong date step.** `set_next_invoice_date` advanced from `last_processed_date` (pinned to `start_date` by `before_save`) instead of from `next_invoice_date`. Fixed.
+4. **Email attached the wrong document.** `send_email` ran `frappe.attach_print(doc.doctype, doc.name, ...)` where `doc` was the *Business Subscription* (with a Sales-Invoice print format) — it never attached the generated invoice. Fixed to take the created doc and attach it; tolerates a bad/missing print format without killing the run.
+
+**Features added:**
+
+- **`end_date`** (`allow_on_submit`) — auto-stops the subscription once the next run would fall after it (clears `next_invoice_date`). This is the stop mechanism — there is intentionally **no fixed invoice-count cap**.
+- **Permissions** — added `Accounts Manager` (full) + `Accounts User` (no delete/cancel) alongside `System Manager`.
+- **`Daily` frequency — UAT/TEST ONLY.** Advances the next run by one day. Clearly commented in `FREQUENCY_STEP` + the Select options for easy removal after UAT. (Note templates are month-anchored, so `build_subscription_note` returns "" for Daily — harmless.)
+- **`print_format` made `allow_on_submit`** so the layout can be switched on a running subscription.
+- **Open-document link in the email** — `send_email` appends `frappe.utils.get_url_to_form(doctype, name)` so recipients click straight through to the generated invoice.
+- **07:00 run time.** Switched `hooks.py` from the generic `"daily"` slot to **cron `0 7 * * *`**. Frappe evaluates cron in the site timezone (`Africa/Johannesburg`), so it fires at **07:00 SAST** — invoice creation and the confirmation email happen together (no more midnight mail). Change the `7` to adjust.
+
+**Operating notes / gotchas:**
+
+- **Submit-locked fields:** `frequency` (and `print_format` before the fix) are not `allow_on_submit`, so they can't be changed on an already-submitted subscription — to switch a live sub to `Daily` you must amend it, or (cleaner) create a fresh subscription with the right frequency/print format set *before* submitting. `end_date`, `next_invoice_date`, `last_processed_date` ARE editable on submit.
+- **Deploy overwrote live DocType permissions.** `bench migrate` reset the permission rows to the app JSON and dropped the role the MCP connector user (`hello@syncflo.co.za`) relied on → it lost access to Business Subscription mid-session. Fix: granted it **Accounts Manager** (a role that's in the JSON, so it survives future migrates). See `gotchas/2026-05-20-frappe-deploy-overwrites-doctype-permissions.md`.
+- **Push/branch trap:** Git Bash eats backslash paths (use `/c/...`) and the branch is `version-16`, not `main`. See `gotchas/2026-05-20-gitbash-windows-path-and-default-branch.md`.
+
+**Deploy state (as of 2026-05-21):**
+
+- **Batch 1 — DEPLOYED** (live DocType `modified` = `2026-05-20 17:30`): reliability fixes + `Daily` + `end_date` + permissions. Confirmed working — the scheduler processed BS-0005 on 05-21 and correctly advanced `next_invoice_date` to 06-20; the first confirmation email was received.
+- **Batch 2 — PENDING:** `print_format` editable-on-submit + email open-link + 07:00 cron. Committed to `version-16`. The deploy was actually blocked by an **unrelated** bug: `nest_home` shipped a DocType (`Nest Home Layout Tile`) without its controller `.py`, crashing every *site* migrate with `ModuleNotFoundError` (it looked like a bench→site propagation issue but wasn't). Fixed 2026-05-21 by adding the missing controller — see `gotchas/2026-05-21-frappe-doctype-missing-controller-crashes-migrate.md`. Once the redeploy is green, populate BS-0005's `print_format` = `"2026 Invoice"` and `end_date`.
+
+**Test record:** `BS-0005` — Syncflo Testing / Arbor Care, item `Retainer` @ 8410 (Monthly), `send_email` on to `presales@syncflo.co.za` + `hello@syncflo.co.za`, submitted. For the 5-day **Daily** trial, create a fresh subscription with `Daily` + a 5-day `end_date` (don't try to flip BS-0005 — `frequency` is submit-locked).
