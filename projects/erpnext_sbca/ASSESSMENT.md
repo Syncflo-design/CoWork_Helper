@@ -164,4 +164,47 @@ frappe_list("DocType",
     filters=[["module", "=", "Erpnext Sbca"]],
     fields=["name", "issingle", "istable"])
 
-# 3. Inspect each DocT
+# 3. Inspect each DocType's fields (Settings + the credentials child table)
+frappe_get("DocType", "ERPNext SBCA Settings")
+frappe_get("DocType", "Company Sage Integration")
+
+# 4. THE REVEAL — scheduled jobs are where an integration app's logic actually lives
+frappe_list("Scheduled Job Type",
+    filters=[["method", "like", "%erpnext_sbca%"]],
+    fields=["name", "method", "frequency", "stopped"])
+
+# 5. Are those jobs actually running, and with what result?
+frappe_list("Scheduled Job Log",
+    filters=[["scheduled_job_type", "like", "%erpnext_sbca%"]],
+    order_by="creation desc",
+    fields=["scheduled_job_type", "status", "creation", "details"],
+    limit=20)
+
+# 6. Is the app configured? (empty credentials table => every job no-ops silently)
+frappe_get("ERPNext SBCA Settings", "ERPNext SBCA Settings")
+```
+
+Read the method paths — they are the table of contents for what the app really does.
+`get_*_from_sage` / `update_*_to_sage` pairs tell you immediately that it is a two-way
+sync rather than a one-shot importer.
+
+**The trap this recipe exists to avoid:** a DocType-only audit makes an integration app
+look like cruft (2 DocTypes, no Workspaces, no Reports, no Custom Fields) when it is
+actually keystone infrastructure. Do not stop the jobs or uninstall on the strength of
+that view alone. Full reasoning in
+`gotchas/2026-05-12-frappe-chatty-cron-on-unconfigured-third-party-app.md`.
+
+The Python itself is not reachable over MCP — you need bench SSH or the 9t9it source
+repo to read `erpnext_sbca/API/*.py`.
+
+---
+
+> **Note (2026-08-02):** everything from "# 3. Inspect each DocType" down was
+> reconstructed. The original tail was lost to the ~20 KB host-tool write truncation
+> (`gotchas/2026-05-17-cowork-write-tool-silent-truncation.md`) and the truncated file
+> was committed, so no complete copy exists in git history. The recipe above is
+> rebuilt from the canonical version in the 2026-05-12 chatty-cron gotcha, specialised
+> to this app. Steps 1 and 2 are original.
+>
+> This file is **historical pre-refactor context**. For current architecture read
+> [`TECHNICAL.md`](TECHNICAL.md).

@@ -1,36 +1,92 @@
 Russell's knowledge base lives at https://github.com/Syncflo-design/CoWork_Helper
 and is cloned locally at C:\ClaudeCode on his dev machines.
 
-1. If this machine has C:\ClaudeCode, grant access to it (so you can read the local
-   knowledge base AND the source of all internal custom apps). C:\ClaudeCode\CLAUDE.md
-   and C:\ClaudeCode\CoWork_Helper\CLAUDE.md normally auto-load — if they didn't,
-   read them now. Otherwise fetch
-   https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/CLAUDE.md
-   and follow it.
+Do steps 1-4 BEFORE you answer or write anything.
 
-2. Find the prior work, in this order:
-   a. If C:\ClaudeCode\CoWork_Helper\graphify-out\ exists, treat my question as a
-      graphify query first (the /graphify skill), then confirm against the source file.
-   b. Otherwise read CoWork_Helper\README.md for the index.
-   c. The README index LAGS the folders — never treat it as complete. Always also list
-      the real dirs: gotchas/ playbooks/ sites/ projects/ templates/ skills/
-      Raw pattern: https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/<path>
+--------------------------------------------------------------------------------
+STEP 1 — Get access and read the two entrypoints
+--------------------------------------------------------------------------------
+If this machine has C:\ClaudeCode, grant access to it (you need the local knowledge
+base AND the source of all internal custom apps). Then confirm you have read BOTH:
 
-3. Before starting, read the matching playbook/gotcha/site/project file for the topic.
-   Recent additions the README index may not list yet:
-   - sites/ardmore.md — Ardmore go-live: POS, Sage price sync, UAT test data
-   - playbooks/erpnext-wipe-company-transactions.md, playbooks/frappe-webhook-to-omnisend.md,
-     playbooks/two-machine-workflow.md, playbooks/frappe-role-based-access-control.md
-   - gotchas/2026-07-20 + 2026-07-24 — Ardmore POS cluster (page custom script breaks
-     returns, Sage return script blocks closing, warehouse user permission blocks stock
-     transfer, outdated opening entry blocks till)
-   - gotchas/2026-06-10-server-script-sandbox-and-xlsx.md — READ THIS BEFORE writing any
-     Frappe Server Script (safe_exec limits: no imports, no commit, no parse_json)
-   - gotchas/2026-05-28 — clean company restart, nest_home tile needs layout not library
-   - gotchas/2026-05-27 — webhook headers aren't Jinja-rendered, Omnisend phone identifier
+  C:\ClaudeCode\CLAUDE.md                    (working root: style, git rules, repo list)
+  C:\ClaudeCode\CoWork_Helper\CLAUDE.md      (knowledge base entrypoint)
 
-4. Non-Frappe workstreams live outside CoWork_Helper: C:\ClaudeCode\apexar_website
-   (static marketing site) and the SBMS_v2 / Fuse C# apps on the Manifold share —
-   each has its own root CLAUDE.md, read that instead.
+They normally auto-load in Claude Code. If they did not appear in your context, read
+them now with the Read tool — do not assume.
+
+If this machine does NOT have C:\ClaudeCode, fetch instead:
+  https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/CLAUDE.md
+  https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/README.md
+Raw pattern for any other file:
+  https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/<path>
+
+--------------------------------------------------------------------------------
+STEP 2 — Query the knowledge graph before searching files by hand
+--------------------------------------------------------------------------------
+The whole knowledge base is indexed as a graphify knowledge graph (573 nodes, 48
+communities). The --graph path is absolute, so this works from ANY working directory:
+
+  graphify query "<my question>" --graph C:\ClaudeCode\CoWork_Helper\graphify-out\graph.json
+
+  graphify explain "<node label>" --graph C:\ClaudeCode\CoWork_Helper\graphify-out\graph.json
+  graphify path "<A>" "<B>"      --graph C:\ClaudeCode\CoWork_Helper\graphify-out\graph.json
+
+Raise --budget (default 2000) if the answer is truncated. The graph gives you the
+FILE to read — always open that file and confirm before acting on it.
+
+If the graph is missing or stale (new gotchas written since the last index):
+  graphify update C:\ClaudeCode\CoWork_Helper
+
+--------------------------------------------------------------------------------
+STEP 3 — Read the topic files the graph points you at
+--------------------------------------------------------------------------------
+Open the actual playbook / gotcha / site / project file before starting work. The
+folders are the source of truth:
+
+  gotchas/    ~65 dated "this bit me, here's the fix" entries
+  playbooks/  long-form how-tos (insights-v3, frappe-custom-app-v16,
+              frappe-role-based-access-control, frappe-webhook-to-omnisend,
+              erpnext-wipe-company-transactions, insights-fork-themeing,
+              two-machine-workflow)
+  sites/      ardmore, blomoplastics, nesterp
+  projects/   erpnext_sbca, nest_home, theme_studio, quick_purchase_invoice
+  skills/     frappe-insights-v3-dashboard
+  templates/  gotcha / playbook / skill scaffolds
+
+README.md is a convenience index and it LAGS the folders — never treat it as complete.
+List the directories rather than trusting it.
+
+MUST-READ before specific work:
+  - Any Frappe Server Script  -> gotchas/2026-06-10-server-script-sandbox-and-xlsx.md
+                                 (safe_exec: no imports, no commit, no parse_json,
+                                  no leading-underscore names, no tuple-unpack)
+  - Anything Ardmore / POS    -> sites/ardmore.md + the 2026-07-20 and 2026-07-24
+                                 gotchas. Site MOVED 2026-07-20 to
+                                 ardmoreceramics.c.frappe.cloud (old jh domain is dead)
+  - New Frappe custom app     -> playbooks/frappe-custom-app-v16.md
+  - Insights dashboards       -> skills/frappe-insights-v3-dashboard/SKILL.md
+  - Clearing a company's books-> playbooks/erpnext-wipe-company-transactions.md
+
+--------------------------------------------------------------------------------
+STEP 4 — Rules that override your defaults
+--------------------------------------------------------------------------------
+- Short, direct answers. No filler, no option-menus, no unrequested next-steps.
+  Under 150 words unless I ask for a report.
+- Action over chat: edit the real files, call the real APIs. Don't paste code back
+  for me to apply.
+- Never hand back code you haven't syntax-checked.
+- Git: I run every git/gh command myself in Git Bash (MINGW64). Hand me the exact
+  commands with forward-slash paths (cd /c/ClaudeCode/<repo>). Never push, commit,
+  or branch on my behalf. Reading repo state is fine.
+- After pushing a Frappe Cloud app, trigger a full Deploy, not just Update.
+- Non-Frappe workstreams live outside CoWork_Helper and have their own root
+  CLAUDE.md — read that instead: C:\ClaudeCode\apexar_website (static marketing
+  site), and the SBMS_v2 / Fuse C# apps on the Manifold share.
+- Before the session ends, if we learned something non-obvious, write a
+  gotchas/YYYY-MM-DD-short-name.md using templates/gotcha-template.md, and tell me
+  the git commands to commit it.
+
+--------------------------------------------------------------------------------
 
 We're working on: [TOPIC].
