@@ -1,0 +1,15 @@
+# graphify — machine-specific pointers, must NOT travel between workstations.
+# .graphify_python holds this machine's uv/pipx interpreter path;
+# .graphify_root holds this machine's absolute clone path.
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+
+# graphify scratch files (deleted at the end of a successful run; ignore stragglers)
+graphify-out/.graphify_chunk_*.json
+graphify-out/.graphify_detect.json
+graphify-out/.graphify_extract.json
+graphify-out/.graphify_ast.json
+graphify-out/.graphify_semantic*.json
+graphify-out/.graphify_analysis.json
+graphify-out/.graphify_cached.json
+graphify-out/.graphify_uncached.txt

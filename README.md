@@ -19,6 +19,40 @@ After install, the workflow per new chat is:
 
 Re-run `install.bat` any time you add a new skill (junctions stay live, but the script also creates fresh ones for new folders).
 
+### Setting up a NEW workstation
+
+`install.bat` covers the skills and the shortcut. Three more things are per-machine and do
+**not** travel in git — the graphify CLI, the graphify skill, and the interpreter pointer:
+
+```bash
+# 1. Clone to the SAME path — the start-prompt uses absolute paths
+git clone https://github.com/Syncflo-design/CoWork_Helper.git /c/ClaudeCode/CoWork_Helper
+
+# 2. Install uv if the machine doesn't have it
+#    (PowerShell) irm https://astral.sh/uv/install.ps1 | iex
+
+# 3. Install the graphify CLI + register its skill with Claude Code
+uv tool install graphifyy
+graphify install
+
+# 4. Restore the interpreter pointer the .gitignore keeps out of the repo
+graphify update /c/ClaudeCode/CoWork_Helper
+```
+
+Then run `install.bat` for the skills + desktop shortcut, and the workflow is identical.
+
+**What travels in git:** `graphify-out/graph.json`, `graph.html`, `GRAPH_REPORT.md`,
+`manifest.json`, and the extraction `cache/` — so a new machine gets the built graph for
+free and never pays the ~740k-token extraction again (a username difference can miss the
+cache, in which case step 4 simply re-extracts).
+
+**What does not:** `graphify-out/.graphify_python` and `.graphify_root` (this machine's
+uv path and clone path) — both gitignored. Step 4 regenerates them.
+
+**Clone path matters.** `start-prompt.txt` hardcodes
+`C:\ClaudeCode\CoWork_Helper\graphify-out\graph.json`. Clone somewhere else and you must
+edit that path in `start-prompt.txt`.
+
 ## Index
 
 ### Skills (Claude auto-loadable)
