@@ -2,12 +2,35 @@ Russell's knowledge base lives at https://github.com/Syncflo-design/CoWork_Helpe
 and is cloned locally at C:\ClaudeCode on his dev machines.
 
 1. If this machine has C:\ClaudeCode, grant access to it (so you can read the local
-   knowledge base AND the source of all internal custom apps), then read
-   C:\ClaudeCode\CLAUDE.md and C:\ClaudeCode\CoWork_Helper\CLAUDE.md.
-   Otherwise fetch https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/CLAUDE.md
+   knowledge base AND the source of all internal custom apps). C:\ClaudeCode\CLAUDE.md
+   and C:\ClaudeCode\CoWork_Helper\CLAUDE.md normally auto-load — if they didn't,
+   read them now. Otherwise fetch
+   https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/CLAUDE.md
    and follow it.
-2. Read (local) or fetch README.md for the index of playbooks, gotchas, sites, templates.
-   Raw pattern: https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/<path>
-3. Before starting, read the matching playbook/gotcha/site file for the topic.
+
+2. Find the prior work, in this order:
+   a. If C:\ClaudeCode\CoWork_Helper\graphify-out\ exists, treat my question as a
+      graphify query first (the /graphify skill), then confirm against the source file.
+   b. Otherwise read CoWork_Helper\README.md for the index.
+   c. The README index LAGS the folders — never treat it as complete. Always also list
+      the real dirs: gotchas/ playbooks/ sites/ projects/ templates/ skills/
+      Raw pattern: https://raw.githubusercontent.com/Syncflo-design/CoWork_Helper/main/<path>
+
+3. Before starting, read the matching playbook/gotcha/site/project file for the topic.
+   Recent additions the README index may not list yet:
+   - sites/ardmore.md — Ardmore go-live: POS, Sage price sync, UAT test data
+   - playbooks/erpnext-wipe-company-transactions.md, playbooks/frappe-webhook-to-omnisend.md,
+     playbooks/two-machine-workflow.md, playbooks/frappe-role-based-access-control.md
+   - gotchas/2026-07-20 + 2026-07-24 — Ardmore POS cluster (page custom script breaks
+     returns, Sage return script blocks closing, warehouse user permission blocks stock
+     transfer, outdated opening entry blocks till)
+   - gotchas/2026-06-10-server-script-sandbox-and-xlsx.md — READ THIS BEFORE writing any
+     Frappe Server Script (safe_exec limits: no imports, no commit, no parse_json)
+   - gotchas/2026-05-28 — clean company restart, nest_home tile needs layout not library
+   - gotchas/2026-05-27 — webhook headers aren't Jinja-rendered, Omnisend phone identifier
+
+4. Non-Frappe workstreams live outside CoWork_Helper: C:\ClaudeCode\apexar_website
+   (static marketing site) and the SBMS_v2 / Fuse C# apps on the Manifold share —
+   each has its own root CLAUDE.md, read that instead.
 
 We're working on: [TOPIC].

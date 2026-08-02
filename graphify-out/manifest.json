@@ -1,0 +1,642 @@
+{
+  "apply-dashboard-styling.js": {
+    "mtime": 1778045216.3899865,
+    "ast_hash": "a4df050d150acf38b2e663391383c274",
+    "semantic_hash": "a4df050d150acf38b2e663391383c274"
+  },
+  "install.ps1": {
+    "mtime": 1778044198.8290255,
+    "ast_hash": "84c18d859e8cec94638ebba1bd56c132",
+    "semantic_hash": "84c18d859e8cec94638ebba1bd56c132"
+  },
+  "make-shortcut.ps1": {
+    "mtime": 1778044166.8414156,
+    "ast_hash": "f79346109f16b0eb8d53434fe2633aa3",
+    "semantic_hash": "f79346109f16b0eb8d53434fe2633aa3"
+  },
+  "projects/erpnext_sbca/commit_reconciliation_feature.sh": {
+    "mtime": 1778740028.8216257,
+    "ast_hash": "32a570349f3a0727f6f94f9e7211a27f",
+    "semantic_hash": "32a570349f3a0727f6f94f9e7211a27f"
+  },
+  "projects/quick_purchase_invoice/pyproject.toml": {
+    "mtime": 1778064689.2396731,
+    "ast_hash": "2c8a55886195dddef501a4f235c2f2cc",
+    "semantic_hash": "2c8a55886195dddef501a4f235c2f2cc"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/__init__.py": {
+    "mtime": 1778070651.3723323,
+    "ast_hash": "62ed0e3fab52e99813e3f82df85e39bb",
+    "semantic_hash": "62ed0e3fab52e99813e3f82df85e39bb"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/api.py": {
+    "mtime": 1778064861.0960097,
+    "ast_hash": "4c7b52e31fccf318f1535852d60f66bd",
+    "semantic_hash": "4c7b52e31fccf318f1535852d60f66bd"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/hooks.py": {
+    "mtime": 1778070653.0601125,
+    "ast_hash": "8e44955f62257630deb51f93d2c7b669",
+    "semantic_hash": "8e44955f62257630deb51f93d2c7b669"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/__init__.py": {
+    "mtime": 1778064711.734874,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/__init__.py": {
+    "mtime": 1778064712.8799706,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/__init__.py": {
+    "mtime": 1778064761.2919037,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.js": {
+    "mtime": 1778066997.023804,
+    "ast_hash": "147dd0a3ee0c9c86872a1a59a58dc31d",
+    "semantic_hash": "147dd0a3ee0c9c86872a1a59a58dc31d"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.json": {
+    "mtime": 1778067074.7193525,
+    "ast_hash": "bb93cb550bc7405ed22833dba01718e8",
+    "semantic_hash": "bb93cb550bc7405ed22833dba01718e8"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.py": {
+    "mtime": 1778064818.4527836,
+    "ast_hash": "923a97e741d27b687cfc6079a3536b4f",
+    "semantic_hash": "923a97e741d27b687cfc6079a3536b4f"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/__init__.py": {
+    "mtime": 1778064744.266495,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/quick_purchase_invoice_item.json": {
+    "mtime": 1778064753.2966135,
+    "ast_hash": "84b8831c7f2af11549bb738eef9c184c",
+    "semantic_hash": "84b8831c7f2af11549bb738eef9c184c"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/quick_purchase_invoice_item.py": {
+    "mtime": 1778064758.1153548,
+    "ast_hash": "11284162ea757bbad66ab2932e40ee07",
+    "semantic_hash": "11284162ea757bbad66ab2932e40ee07"
+  },
+  "sites/ardmore-pos-page-script-fixed.js": {
+    "mtime": 1784549502.0572996,
+    "ast_hash": "f2795f0d2fe827d13c8d01c94dc16c05",
+    "semantic_hash": "f2795f0d2fe827d13c8d01c94dc16c05"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/chart_bar.json": {
+    "mtime": 1778043093.9718144,
+    "ast_hash": "40bb41b10d2f48558e3bfa896cc35749",
+    "semantic_hash": "40bb41b10d2f48558e3bfa896cc35749"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/chart_number.json": {
+    "mtime": 1778043093.9382691,
+    "ast_hash": "453072eec6c291cbcc32a627d194b4e9",
+    "semantic_hash": "453072eec6c291cbcc32a627d194b4e9"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/chart_table.json": {
+    "mtime": 1778043274.159557,
+    "ast_hash": "2532556b0fe55b0c0c75c7a5342d2491",
+    "semantic_hash": "2532556b0fe55b0c0c75c7a5342d2491"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/dashboard_items.json": {
+    "mtime": 1778043094.0117984,
+    "ast_hash": "dc371923afd1066e5b8cbcd315afff5e",
+    "semantic_hash": "dc371923afd1066e5b8cbcd315afff5e"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/data_query.json": {
+    "mtime": 1778043093.9009104,
+    "ast_hash": "7ffbc89b2442d660173d7b67a17d2e2e",
+    "semantic_hash": "7ffbc89b2442d660173d7b67a17d2e2e"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/source_query.json": {
+    "mtime": 1778043093.8656452,
+    "ast_hash": "e1a0db5a3e84ebd43bbacc0b598d26e5",
+    "semantic_hash": "e1a0db5a3e84ebd43bbacc0b598d26e5"
+  },
+  "templates/blomoplastics-insights-theme.user.js": {
+    "mtime": 1778052592.6923356,
+    "ast_hash": "477c653879b9c18b326429cfd3f4444a",
+    "semantic_hash": "477c653879b9c18b326429cfd3f4444a"
+  },
+  "templates/dashboard-theme-industrial-pro.js": {
+    "mtime": 1778051296.0423427,
+    "ast_hash": "58d99b6f522175fdd98af150e7cd5bb6",
+    "semantic_hash": "58d99b6f522175fdd98af150e7cd5bb6"
+  },
+  "templates/insights-theme-all-sites.user.js": {
+    "mtime": 1778063015.2200263,
+    "ast_hash": "ee979ab455260cee50474fc48850b723",
+    "semantic_hash": "ee979ab455260cee50474fc48850b723"
+  },
+  "CLAUDE.md": {
+    "mtime": 1779453593.5741487,
+    "ast_hash": "1bf46b93b5d0aefe4f8cb3807b7d04f5",
+    "semantic_hash": "1bf46b93b5d0aefe4f8cb3807b7d04f5"
+  },
+  "DASHBOARD-POLISH-GUIDE.md": {
+    "mtime": 1778045233.4687283,
+    "ast_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27",
+    "semantic_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27"
+  },
+  "README.md": {
+    "mtime": 1785661725.7275803,
+    "ast_hash": "dda928635803009556b0a14fa46c3790",
+    "semantic_hash": "dda928635803009556b0a14fa46c3790"
+  },
+  "gotchas/2026-05-06-bash-vs-windows-git-ownership.md": {
+    "mtime": 1778067442.4326575,
+    "ast_hash": "ed2535e3f7b537341b6eb01f6aed5295",
+    "semantic_hash": "ed2535e3f7b537341b6eb01f6aed5295"
+  },
+  "gotchas/2026-05-06-bat-needs-pause-to-debug.md": {
+    "mtime": 1778067422.34539,
+    "ast_hash": "43c7e5dbed0183413df94a8083281e57",
+    "semantic_hash": "43c7e5dbed0183413df94a8083281e57"
+  },
+  "gotchas/2026-05-06-erpnext-purchase-invoice-blank-item-row.md": {
+    "mtime": 1778065005.8039105,
+    "ast_hash": "2ce5a8429dd785d9774038eb52f8ed4b",
+    "semantic_hash": "2ce5a8429dd785d9774038eb52f8ed4b"
+  },
+  "gotchas/2026-05-06-frappe-cloud-cdn-stale-assets.md": {
+    "mtime": 1778070720.7346134,
+    "ast_hash": "f8b8a063e100da98ae1faeb367bb16bb",
+    "semantic_hash": "f8b8a063e100da98ae1faeb367bb16bb"
+  },
+  "gotchas/2026-05-06-frappe-cloud-update-vs-deploy-assets.md": {
+    "mtime": 1778069372.5710797,
+    "ast_hash": "c41d08d319e32734a61677edfd892f04",
+    "semantic_hash": "c41d08d319e32734a61677edfd892f04"
+  },
+  "gotchas/2026-05-06-frappe-dynamic-link-in-grid.md": {
+    "mtime": 1778064992.5375154,
+    "ast_hash": "0e27d8f201a7abbba1aa66413c1da9f6",
+    "semantic_hash": "0e27d8f201a7abbba1aa66413c1da9f6"
+  },
+  "gotchas/2026-05-06-git-bash-bracketed-paste.md": {
+    "mtime": 1778062945.074731,
+    "ast_hash": "5deb2c547bc08c11fa68b7f8f40c5c5f",
+    "semantic_hash": "5deb2c547bc08c11fa68b7f8f40c5c5f"
+  },
+  "gotchas/2026-05-06-host-vs-bash-fs-sync.md": {
+    "mtime": 1778062976.1879165,
+    "ast_hash": "b17c8313f2db1f922bb85997181bf2ca",
+    "semantic_hash": "b17c8313f2db1f922bb85997181bf2ca"
+  },
+  "gotchas/2026-05-06-insights-code-vs-sql.md": {
+    "mtime": 1778043112.114324,
+    "ast_hash": "9763a9ad561b41f769c75c4d847866f3",
+    "semantic_hash": "9763a9ad561b41f769c75c4d847866f3"
+  },
+  "gotchas/2026-05-06-insights-dashboard-client-script-styling.md": {
+    "mtime": 1778046075.5333586,
+    "ast_hash": "a030ce9372a88f1b31d4fc2c01d28a7b",
+    "semantic_hash": "a030ce9372a88f1b31d4fc2c01d28a7b"
+  },
+  "gotchas/2026-05-06-insights-dashboard-filter-needs-source-column.md": {
+    "mtime": 1778079245.1750007,
+    "ast_hash": "59da6eea7be684e7d847e2749ea5e1d1",
+    "semantic_hash": "59da6eea7be684e7d847e2749ea5e1d1"
+  },
+  "gotchas/2026-05-06-insights-dashboard-layout-i-key.md": {
+    "mtime": 1778043132.383665,
+    "ast_hash": "804ee701febfdc051c90943054f36aaf",
+    "semantic_hash": "804ee701febfdc051c90943054f36aaf"
+  },
+  "gotchas/2026-05-06-insights-data-query-empty-stub.md": {
+    "mtime": 1778043123.154379,
+    "ast_hash": "fc03c7b49d59eb6e19a857709739f4a3",
+    "semantic_hash": "fc03c7b49d59eb6e19a857709739f4a3"
+  },
+  "gotchas/2026-05-06-insights-data-query-order-by-shape.md": {
+    "mtime": 1778079273.5549858,
+    "ast_hash": "04548e9d81436a87b0cefd1b09cb9683",
+    "semantic_hash": "04548e9d81436a87b0cefd1b09cb9683"
+  },
+  "gotchas/2026-05-06-insights-explicit-join-wrong-schema.md": {
+    "mtime": 1778081951.7259529,
+    "ast_hash": "c7919d0857d80e4286166066c4aac635",
+    "semantic_hash": "c7919d0857d80e4286166066c4aac635"
+  },
+  "gotchas/2026-05-06-insights-filter-order-vs-css-nth-child.md": {
+    "mtime": 1778079262.1191528,
+    "ast_hash": "11a88d90c76d3b4debb8d27ac51aa215",
+    "semantic_hash": "11a88d90c76d3b4debb8d27ac51aa215"
+  },
+  "gotchas/2026-05-06-insights-kpi-friendly-label.md": {
+    "mtime": 1778043151.2113235,
+    "ast_hash": "897bd506f49561aee9e86a0164135973",
+    "semantic_hash": "897bd506f49561aee9e86a0164135973"
+  },
+  "gotchas/2026-05-06-insights-spa-no-frappe-runtime.md": {
+    "mtime": 1778062922.674131,
+    "ast_hash": "17413a0e7b16cf34726fa7535280943e",
+    "semantic_hash": "17413a0e7b16cf34726fa7535280943e"
+  },
+  "gotchas/2026-05-06-insights-table-needs-rows-values.md": {
+    "mtime": 1778054038.0365603,
+    "ast_hash": "4a1a77a7c32d3933bd2aa39571426b1e",
+    "semantic_hash": "4a1a77a7c32d3933bd2aa39571426b1e"
+  },
+  "gotchas/2026-05-06-insights-vue-grid-vertical-compact.md": {
+    "mtime": 1778085463.158136,
+    "ast_hash": "18ddff98258f39024295a62dd4b9b533",
+    "semantic_hash": "18ddff98258f39024295a62dd4b9b533"
+  },
+  "gotchas/2026-05-06-mcp-user-restricted-doctypes.md": {
+    "mtime": 1778065020.9696448,
+    "ast_hash": "79d039dac70661ecdf079fb0ebec8820",
+    "semantic_hash": "79d039dac70661ecdf079fb0ebec8820"
+  },
+  "gotchas/2026-05-07-frappe-v16-modern-desk-click-interception.md": {
+    "mtime": 1778137807.3224442,
+    "ast_hash": "ae1929611c265966c518e51e4b4dda49",
+    "semantic_hash": "ae1929611c265966c518e51e4b4dda49"
+  },
+  "gotchas/2026-05-07-frappe-v16-realtime-registration-timing.md": {
+    "mtime": 1778142115.0243301,
+    "ast_hash": "0dec1e0339c809f08c85fbc123cdb443",
+    "semantic_hash": "0dec1e0339c809f08c85fbc123cdb443"
+  },
+  "gotchas/2026-05-07-frappe-workspace-per-user-api-blocked.md": {
+    "mtime": 1778146050.043349,
+    "ast_hash": "c717e7a1882c5a61e389a8b2869a6ed5",
+    "semantic_hash": "c717e7a1882c5a61e389a8b2869a6ed5"
+  },
+  "gotchas/2026-05-07-git-stale-index-lock.md": {
+    "mtime": 1778149919.0804288,
+    "ast_hash": "83d51fa0d5ac9c405e489166a91eda5e",
+    "semantic_hash": "83d51fa0d5ac9c405e489166a91eda5e"
+  },
+  "gotchas/2026-05-08-frappe-cloud-site-update-is-the-app-install-path.md": {
+    "mtime": 1778843129.1258752,
+    "ast_hash": "520a8e0eabc7f5bc40a341924feb5cfa",
+    "semantic_hash": "520a8e0eabc7f5bc40a341924feb5cfa"
+  },
+  "gotchas/2026-05-08-frappe-module-folder-vs-modulestxt-mismatch.md": {
+    "mtime": 1778843129.1691303,
+    "ast_hash": "ac9c453639fa26b73eca15f95bc8c987",
+    "semantic_hash": "ac9c453639fa26b73eca15f95bc8c987"
+  },
+  "gotchas/2026-05-08-frappe-patches-txt-needs-both-section-headers.md": {
+    "mtime": 1778435139.8396945,
+    "ast_hash": "6f87d5b6e05619fc0c295ecccbefb60e",
+    "semantic_hash": "6f87d5b6e05619fc0c295ecccbefb60e"
+  },
+  "gotchas/2026-05-10-frappe-v16-page-api-drift.md": {
+    "mtime": 1778843129.219447,
+    "ast_hash": "0e7399d0b6dd936846b78a47dd000b48",
+    "semantic_hash": "0e7399d0b6dd936846b78a47dd000b48"
+  },
+  "gotchas/2026-05-11-frappe-app-init-needs-version.md": {
+    "mtime": 1778843129.264615,
+    "ast_hash": "cf5e8854af5a47d8c01b72a8d35e79b9",
+    "semantic_hash": "cf5e8854af5a47d8c01b72a8d35e79b9"
+  },
+  "gotchas/2026-05-11-frappe-new-app-missing-nested-module-folder.md": {
+    "mtime": 1778843129.3081229,
+    "ast_hash": "b650230b96fecc68e1b506f6014800fd",
+    "semantic_hash": "b650230b96fecc68e1b506f6014800fd"
+  },
+  "gotchas/2026-05-11-frappe-v16-listview-formatters-stripped-to-text.md": {
+    "mtime": 1778843129.3493478,
+    "ast_hash": "e4157bb185e057f04e19564327c6d8ea",
+    "semantic_hash": "e4157bb185e057f04e19564327c6d8ea"
+  },
+  "gotchas/2026-05-11-frappe-v16-modern-desk-listview-hooks-untrustworthy.md": {
+    "mtime": 1778843129.391706,
+    "ast_hash": "3d147e6c040bd0a2570ffebca7a46950",
+    "semantic_hash": "3d147e6c040bd0a2570ffebca7a46950"
+  },
+  "gotchas/2026-05-11-host-vs-bash-write-truncation.md": {
+    "mtime": 1778843129.4402864,
+    "ast_hash": "fe20741229aebe24337dd89cb06650c4",
+    "semantic_hash": "fe20741229aebe24337dd89cb06650c4"
+  },
+  "gotchas/2026-05-12-frappe-chatty-cron-on-unconfigured-third-party-app.md": {
+    "mtime": 1778571869.2280805,
+    "ast_hash": "929fe10fd24deea5a2f7eb004167b752",
+    "semantic_hash": "929fe10fd24deea5a2f7eb004167b752"
+  },
+  "gotchas/2026-05-13-frappe-whitelisted-action-needs-return-value.md": {
+    "mtime": 1778667945.9838867,
+    "ast_hash": "c9f75bd0f24ac6d747be7e68081f546f",
+    "semantic_hash": "c9f75bd0f24ac6d747be7e68081f546f"
+  },
+  "gotchas/2026-05-13-pharoh-copilot-prompt-style.md": {
+    "mtime": 1778678853.6600654,
+    "ast_hash": "fcc45d56b187bb3e8e414fc8fa2e3542",
+    "semantic_hash": "fcc45d56b187bb3e8e414fc8fa2e3542"
+  },
+  "gotchas/2026-05-14-cowork-edit-tool-flips-lf-to-crlf.md": {
+    "mtime": 1778739817.6272736,
+    "ast_hash": "fabb99c32454fd977f02f24f78debf03",
+    "semantic_hash": "fabb99c32454fd977f02f24f78debf03"
+  },
+  "gotchas/2026-05-14-custom-app-hook-feedback-loop.md": {
+    "mtime": 1778755793.846546,
+    "ast_hash": "7d08195842bf6aa34fe5e4e182961151",
+    "semantic_hash": "7d08195842bf6aa34fe5e4e182961151"
+  },
+  "gotchas/2026-05-14-erpnext-party-group-must-be-leaf.md": {
+    "mtime": 1778755793.8572848,
+    "ast_hash": "b15b9e35d70038f0f0382607dccca4cd",
+    "semantic_hash": "b15b9e35d70038f0f0382607dccca4cd"
+  },
+  "gotchas/2026-05-15-frappe-dialog-grid-onchange-this-is-first-row.md": {
+    "mtime": 1778846059.5179112,
+    "ast_hash": "b7743dcfb7569e3b394641799c15170f",
+    "semantic_hash": "b7743dcfb7569e3b394641799c15170f"
+  },
+  "gotchas/2026-05-15-frappe-grid-edit-column-leftover-flex-space.md": {
+    "mtime": 1778841799.4608717,
+    "ast_hash": "c8768ba941a10992dd2138a7916da408",
+    "semantic_hash": "c8768ba941a10992dd2138a7916da408"
+  },
+  "gotchas/2026-05-17-cowork-write-tool-silent-truncation.md": {
+    "mtime": 1779021876.2451806,
+    "ast_hash": "ed7b19f12c00afeda8dac578c6ed8d28",
+    "semantic_hash": "ed7b19f12c00afeda8dac578c6ed8d28"
+  },
+  "gotchas/2026-05-20-cowork-sandbox-cannot-git-init-on-windows-mount.md": {
+    "mtime": 1779262949.7151425,
+    "ast_hash": "1a3ea33f7294a97b7e8777c532c2326f",
+    "semantic_hash": "1a3ea33f7294a97b7e8777c532c2326f"
+  },
+  "gotchas/2026-05-20-frappe-deploy-overwrites-doctype-permissions.md": {
+    "mtime": 1779344588.7876518,
+    "ast_hash": "5c3fe1aa07c04f89b744f58d1a1d0606",
+    "semantic_hash": "5c3fe1aa07c04f89b744f58d1a1d0606"
+  },
+  "gotchas/2026-05-20-gitbash-windows-path-and-default-branch.md": {
+    "mtime": 1779289923.2675917,
+    "ast_hash": "727ed04038ba8fa000591e57aabf642c",
+    "semantic_hash": "727ed04038ba8fa000591e57aabf642c"
+  },
+  "gotchas/2026-05-21-frappe-doctype-missing-controller-crashes-migrate.md": {
+    "mtime": 1779352849.4896047,
+    "ast_hash": "a9580128b2b9f45029cc7a5e4b77bb46",
+    "semantic_hash": "a9580128b2b9f45029cc7a5e4b77bb46"
+  },
+  "gotchas/2026-05-22-bash-mount-stale-not-host.md": {
+    "mtime": 1779453209.4374604,
+    "ast_hash": "8530cf39c49ee4afcffbb0165439db73",
+    "semantic_hash": "8530cf39c49ee4afcffbb0165439db73"
+  },
+  "gotchas/2026-05-27-frappe-webhook-headers-not-jinja-rendered.md": {
+    "mtime": 1779860529.7238612,
+    "ast_hash": "f9d5d92468072f1372664c42c2f660b2",
+    "semantic_hash": "f9d5d92468072f1372664c42c2f660b2"
+  },
+  "gotchas/2026-05-27-omnisend-phone-identifier-requires-sms-channel.md": {
+    "mtime": 1779860542.497865,
+    "ast_hash": "294dd06600fc9059e133b7e187d678ae",
+    "semantic_hash": "294dd06600fc9059e133b7e187d678ae"
+  },
+  "gotchas/2026-05-28-erpnext-clean-company-restart.md": {
+    "mtime": 1779986883.2383215,
+    "ast_hash": "415a5a7799fc01c57739dae33568d169",
+    "semantic_hash": "415a5a7799fc01c57739dae33568d169"
+  },
+  "gotchas/2026-05-28-nest-home-tile-needs-layout-not-just-library.md": {
+    "mtime": 1779952269.3363757,
+    "ast_hash": "0ff27853d806e75593498190988ceada",
+    "semantic_hash": "0ff27853d806e75593498190988ceada"
+  },
+  "gotchas/2026-06-10-server-script-sandbox-and-xlsx.md": {
+    "mtime": 1785234638.7612536,
+    "ast_hash": "5302bfb9bbb62343245d86215f5025fb",
+    "semantic_hash": "5302bfb9bbb62343245d86215f5025fb"
+  },
+  "gotchas/2026-07-20-frappe-pos-page-custom-script-breaks-returns.md": {
+    "mtime": 1784554275.470866,
+    "ast_hash": "af5067e728cd4d83d1eefc002c10755e",
+    "semantic_hash": "af5067e728cd4d83d1eefc002c10755e"
+  },
+  "gotchas/2026-07-20-sage-return-script-blocks-pos-closing.md": {
+    "mtime": 1784551554.7816799,
+    "ast_hash": "fa3e4d3db9d8d62301376d24dda220a5",
+    "semantic_hash": "fa3e4d3db9d8d62301376d24dda220a5"
+  },
+  "gotchas/2026-07-20-warehouse-user-permission-blocks-stock-transfer.md": {
+    "mtime": 1784549531.5762115,
+    "ast_hash": "02437603db22b4ba2223f282ea8137d7",
+    "semantic_hash": "02437603db22b4ba2223f282ea8137d7"
+  },
+  "gotchas/2026-07-24-pos-outdated-opening-entry-blocks-till.md": {
+    "mtime": 1784912354.07852,
+    "ast_hash": "fae37f10df2b4c2229cdf03e0917750d",
+    "semantic_hash": "fae37f10df2b4c2229cdf03e0917750d"
+  },
+  "playbooks/erpnext-wipe-company-transactions.md": {
+    "mtime": 1779987316.1061132,
+    "ast_hash": "69aa0d03802ccfd09f9dc13407f451eb",
+    "semantic_hash": "69aa0d03802ccfd09f9dc13407f451eb"
+  },
+  "playbooks/frappe-custom-app-v16.md": {
+    "mtime": 1778843129.4816244,
+    "ast_hash": "5fd2336025a6cbf6abd2727db2f8a6f7",
+    "semantic_hash": "5fd2336025a6cbf6abd2727db2f8a6f7"
+  },
+  "playbooks/frappe-role-based-access-control.md": {
+    "mtime": 1778151593.4893725,
+    "ast_hash": "c5432c765c7292ca687bb3a3e498487f",
+    "semantic_hash": "c5432c765c7292ca687bb3a3e498487f"
+  },
+  "playbooks/frappe-webhook-to-omnisend.md": {
+    "mtime": 1779860566.7783687,
+    "ast_hash": "71c678788c9052e0aba1667235606c4a",
+    "semantic_hash": "71c678788c9052e0aba1667235606c4a"
+  },
+  "playbooks/insights-fork-themeing.md": {
+    "mtime": 1778062892.0773995,
+    "ast_hash": "602525af3d706b3c77828582a68e23b7",
+    "semantic_hash": "602525af3d706b3c77828582a68e23b7"
+  },
+  "playbooks/insights-v3.md": {
+    "mtime": 1778043187.5729482,
+    "ast_hash": "6ddfacb4df9b2e000f50927bbefa2019",
+    "semantic_hash": "6ddfacb4df9b2e000f50927bbefa2019"
+  },
+  "playbooks/two-machine-workflow.md": {
+    "mtime": 1784894622.7735188,
+    "ast_hash": "622a99716d2690241793eebde3348178",
+    "semantic_hash": "622a99716d2690241793eebde3348178"
+  },
+  "projects/erpnext_sbca/ASSESSMENT.md": {
+    "mtime": 1778755830.2503111,
+    "ast_hash": "22231d9700fe0c0c52b7729cc41d170a",
+    "semantic_hash": "22231d9700fe0c0c52b7729cc41d170a"
+  },
+  "projects/erpnext_sbca/OPUS_PROMPT_PaymentReconciliation.md": {
+    "mtime": 1778737480.483354,
+    "ast_hash": "cefa348aa6d7ff26a80ac63d4f4831d5",
+    "semantic_hash": "cefa348aa6d7ff26a80ac63d4f4831d5"
+  },
+  "projects/erpnext_sbca/PAYMENT_RECONCILIATION_DESIGN.md": {
+    "mtime": 1778755793.8334684,
+    "ast_hash": "bc56c19eb2a72c0b08a6c5d2921a91d6",
+    "semantic_hash": "bc56c19eb2a72c0b08a6c5d2921a91d6"
+  },
+  "projects/erpnext_sbca/PHAROH_API_CONTRACT.md": {
+    "mtime": 1778835155.7594292,
+    "ast_hash": "57b09e6c0131c27e257e18f82700b0bc",
+    "semantic_hash": "57b09e6c0131c27e257e18f82700b0bc"
+  },
+  "projects/erpnext_sbca/Pharoh_Cancellation_Endpoint_Prompt.txt": {
+    "mtime": 1778678781.1648395,
+    "ast_hash": "e3b4ddd3bfcc591d9112cdfe246e8f0d",
+    "semantic_hash": "e3b4ddd3bfcc591d9112cdfe246e8f0d"
+  },
+  "projects/erpnext_sbca/Pharoh_DisableQtyTracking_Endpoint_Prompt.txt": {
+    "mtime": 1778829556.3734522,
+    "ast_hash": "f2070844c1c49a3bb21fb254e5e0a00c",
+    "semantic_hash": "f2070844c1c49a3bb21fb254e5e0a00c"
+  },
+  "projects/erpnext_sbca/Pharoh_GetStockLevels_Endpoint_Prompt.txt": {
+    "mtime": 1778829526.7600875,
+    "ast_hash": "461e0f58d0775f1677c5bc1d7c03f574",
+    "semantic_hash": "461e0f58d0775f1677c5bc1d7c03f574"
+  },
+  "projects/erpnext_sbca/Pharoh_JournalEntry_Update_Prompt.txt": {
+    "mtime": 1778672267.0514007,
+    "ast_hash": "ea735a667f8ab72e2f1cc75226a4dad4",
+    "semantic_hash": "ea735a667f8ab72e2f1cc75226a4dad4"
+  },
+  "projects/erpnext_sbca/Pharoh_Pagination_Audit_Prompt.md": {
+    "mtime": 1778837601.0891545,
+    "ast_hash": "a86c48815a37cac0e4f214231541f89a",
+    "semantic_hash": "a86c48815a37cac0e4f214231541f89a"
+  },
+  "projects/erpnext_sbca/Pharoh_Pagination_Audit_Prompt.txt": {
+    "mtime": 1778837892.8186002,
+    "ast_hash": "228dd30d91dd0b6e145c7f6a0e76cbcf",
+    "semantic_hash": "228dd30d91dd0b6e145c7f6a0e76cbcf"
+  },
+  "projects/erpnext_sbca/Pharoh_Reconciliation_Endpoint_Prompt.txt": {
+    "mtime": 1778746258.0253103,
+    "ast_hash": "2e47f7ceec62448ac871bcb9df6d34be",
+    "semantic_hash": "2e47f7ceec62448ac871bcb9df6d34be"
+  },
+  "projects/erpnext_sbca/Pharoh_StockAdjustment_Endpoint_Prompt.txt": {
+    "mtime": 1778678040.3630688,
+    "ast_hash": "3af3a82d26ad3ba3ba4983565fa572c6",
+    "semantic_hash": "3af3a82d26ad3ba3ba4983565fa572c6"
+  },
+  "projects/erpnext_sbca/TECHNICAL.md": {
+    "mtime": 1778672619.177149,
+    "ast_hash": "18937badef4ceec91c0504945829f646",
+    "semantic_hash": "18937badef4ceec91c0504945829f646"
+  },
+  "projects/nest_home/KICKOFF_PROMPT.md": {
+    "mtime": 1779259897.7003067,
+    "ast_hash": "40ee5d72463a374c36a5577c2a4edf0d",
+    "semantic_hash": "40ee5d72463a374c36a5577c2a4edf0d"
+  },
+  "projects/quick_purchase_invoice/DEPLOY.md": {
+    "mtime": 1778064931.416046,
+    "ast_hash": "a0620a0721d6d44b3c69f8d72fb83471",
+    "semantic_hash": "a0620a0721d6d44b3c69f8d72fb83471"
+  },
+  "projects/quick_purchase_invoice/DESIGN.md": {
+    "mtime": 1778064600.571641,
+    "ast_hash": "9077ad5ae2e6485b02a56082f1642582",
+    "semantic_hash": "9077ad5ae2e6485b02a56082f1642582"
+  },
+  "projects/quick_purchase_invoice/README.md": {
+    "mtime": 1778064699.593426,
+    "ast_hash": "6df63febbefd078212e56b916f20319b",
+    "semantic_hash": "6df63febbefd078212e56b916f20319b"
+  },
+  "projects/quick_purchase_invoice/license.txt": {
+    "mtime": 1778064703.4946349,
+    "ast_hash": "489c683c967174075186aaf6e76dfc3e",
+    "semantic_hash": "489c683c967174075186aaf6e76dfc3e"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/modules.txt": {
+    "mtime": 1778064706.207677,
+    "ast_hash": "c976220ae257bf498ec8eb8a8eb84233",
+    "semantic_hash": "c976220ae257bf498ec8eb8a8eb84233"
+  },
+  "projects/quick_purchase_invoice/quick_purchase_invoice/patches.txt": {
+    "mtime": 1778064707.3161752,
+    "ast_hash": "44ee86dbabe5b06d3a7286d728f4d20b",
+    "semantic_hash": "44ee86dbabe5b06d3a7286d728f4d20b"
+  },
+  "projects/theme_studio/DEPLOY.md": {
+    "mtime": 1778139939.0094671,
+    "ast_hash": "c496827c7f803f932fcff5d8959e7f82",
+    "semantic_hash": "c496827c7f803f932fcff5d8959e7f82"
+  },
+  "projects/theme_studio/PRIOR-ART.md": {
+    "mtime": 1778131144.1522589,
+    "ast_hash": "d5f5441f3eacfd0091fe122174da3e71",
+    "semantic_hash": "d5f5441f3eacfd0091fe122174da3e71"
+  },
+  "projects/theme_studio/SCOPE.md": {
+    "mtime": 1779250147.384888,
+    "ast_hash": "fb79a55f72075fdf5d7425afca6aa4be",
+    "semantic_hash": "fb79a55f72075fdf5d7425afca6aa4be"
+  },
+  "sites/ardmore-pos-console-fix.txt": {
+    "mtime": 1784553467.597252,
+    "ast_hash": "ea43294f4f2a879e928e14345d633632",
+    "semantic_hash": "ea43294f4f2a879e928e14345d633632"
+  },
+  "sites/ardmore.md": {
+    "mtime": 1785240653.694085,
+    "ast_hash": "a681f0390d1468f121022998e55c7759",
+    "semantic_hash": "a681f0390d1468f121022998e55c7759"
+  },
+  "sites/blomoplastics.md": {
+    "mtime": 1778843129.5468223,
+    "ast_hash": "8ffbf4f0cb36e247a1fe350c1acd7144",
+    "semantic_hash": "8ffbf4f0cb36e247a1fe350c1acd7144"
+  },
+  "sites/nesterp.md": {
+    "mtime": 1779986916.3048098,
+    "ast_hash": "f7b198c7ec9ffd32927313f130acaa97",
+    "semantic_hash": "f7b198c7ec9ffd32927313f130acaa97"
+  },
+  "skills/frappe-insights-v3-dashboard/SKILL.md": {
+    "mtime": 1778043093.8217542,
+    "ast_hash": "c773c6125cdde7ee113c447e91db72d2",
+    "semantic_hash": "c773c6125cdde7ee113c447e91db72d2"
+  },
+  "skills/frappe-insights-v3-dashboard/templates/full_build_recipe.md": {
+    "mtime": 1778043094.0388193,
+    "ast_hash": "0aaa4c94db999038c6c904afa88932a8",
+    "semantic_hash": "0aaa4c94db999038c6c904afa88932a8"
+  },
+  "start-prompt.md": {
+    "mtime": 1785661720.6336222,
+    "ast_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf",
+    "semantic_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf"
+  },
+  "start-prompt.txt": {
+    "mtime": 1785661358.6630192,
+    "ast_hash": "9be65613f784a9251b5c5c5c93bf8e4c",
+    "semantic_hash": "9be65613f784a9251b5c5c5c93bf8e4c"
+  },
+  "templates/gotcha-template.md": {
+    "mtime": 1778043076.249849,
+    "ast_hash": "16234d76f9c7d28f5c78cd36c1443954",
+    "semantic_hash": "16234d76f9c7d28f5c78cd36c1443954"
+  },
+  "templates/playbook-template.md": {
+    "mtime": 1778043082.2856193,
+    "ast_hash": "94506c82b62a41b84db62c2c49252350",
+    "semantic_hash": "94506c82b62a41b84db62c2c49252350"
+  },
+  "templates/skill-template/SKILL.md": {
+    "mtime": 1778043087.200489,
+    "ast_hash": "34fbd204107d33944eb5cc4c94be8df0",
+    "semantic_hash": "34fbd204107d33944eb5cc4c94be8df0"
+  }
+}

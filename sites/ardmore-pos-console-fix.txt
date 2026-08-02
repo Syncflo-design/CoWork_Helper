@@ -1,0 +1,68 @@
+RESTORE THE POS SALES-REP DROPDOWN, FIXED VERSION (30 seconds) - v4
+===================================================================
+Background: the previous attempt ended with the Page's custom code wiped
+(script = empty). The POS works stock-standard now (no crash), but the
+"Select POS User" dropdown is missing. This paste writes the complete,
+corrected code block back in one go. It does not read anything first, so
+nothing can interfere.
+
+1. In Chrome, logged in as Administrator, be on any ERPNext page of
+   ardmoreceramics.c.frappe.cloud/app
+   IMPORTANT: first CLOSE any tab still showing /desk/page/point-of-sale
+   (its Save button is what wiped the code).
+2. Press F12 -> click the "Console" tab.
+3. If Chrome says 'type "allow pasting"', type: allow pasting  and press Enter.
+4. Paste EVERYTHING below the line and press Enter.
+5. It should print: RESTORED - saved OK
+6. Close DevTools. Tills pick it up on their next hard refresh (Ctrl+Shift+R).
+
+--------------------------------------------------------------------------------
+(async () => {
+  const script = [
+    "// Ardmore custom: sales-rep selector in the POS header.",
+    "// Rewritten 2026-07-20 (Syncflo): scoped to the POS page, guarded lookups,",
+    "// insertAdjacentHTML instead of innerHTML +=, dedupe on #salesrep.",
+    "// Previous version crashed (undefined .style) and intermittently broke the",
+    "// Recent Orders summary / Return button.",
+    "",
+    "$(document).ready(function () {",
+    "    let interval = setInterval(() => {",
+    "        if (cur_frm && cur_frm.doc && frappe && cur_pos) {",
+    "            let options = '';",
+    "            let salesrep = '';",
+    "            cur_frm.changeSalesRep = function (value) {",
+    "                cur_frm.doc.custom_sales_representative = value;",
+    "            };",
+    "            frappe.call({",
+    "                method: 'server_scripts.public.py.pos.get_sales_reps',",
+    "                args: { pos_profile: cur_pos.pos_profile },",
+    "                callback: function (r) {",
+    "                    if (r.message) {",
+    "                        r.message.forEach((name) => {",
+    "                            options += `<option value='${name.user}'>${name.user}</option>`;",
+    "                        });",
+    "                        salesrep = `<select type=\"text\" onchange=\"cur_frm.changeSalesRep(this.value)\" autocomplete=\"off\" class=\"input-with-feedback form-control ellipsis bold\" maxlength=\"140\" style=\"width:200px\" id=\"salesrep\">",
+    "                        <option>Select POS User</option>",
+    "                        ${options}",
+    "                        </select>`;",
+    "                        setTimeout(function () {",
+    "                            var title = document.querySelector('#page-point-of-sale div.page-title');",
+    "                            if (title && !title.querySelector('#salesrep')) {",
+    "                                title.insertAdjacentHTML('beforeend', salesrep);",
+    "                                var pill = title.querySelector('span.indicator-pill');",
+    "                                if (pill) pill.style.marginRight = '10px';",
+    "                            }",
+    "                        }, 500);",
+    "                    }",
+    "                },",
+    "            });",
+    "            clearInterval(interval);",
+    "        }",
+    "    }, 1);",
+    "});",
+  ].join("\n");
+  const save = await frappe.call({ method: "frappe.client.set_value",
+    args: { doctype: "Page", name: "point-of-sale", fieldname: "script", value: script } });
+  console.log(save.message ? "RESTORED - saved OK" : "SAVE FAILED", "length:", script.length);
+})();
+--------------------------------------------------------------------------------

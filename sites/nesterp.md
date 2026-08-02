@@ -8,7 +8,7 @@ Syncflo's internal ERPNext instance. Frappe v16 / ERPNext v16.
 
 ## MCP connector
 
-`frappe-nesterp` (configured globally for this user). Restricted permissions on `Company` / `DocField` / `Account` — see `gotchas/2026-05-06-mcp-user-restricted-doctypes.md`.
+`frappe-nesterp` (configured globally for this user). Authenticates as **`hello@syncflo.co.za`** (Russell's day-to-day profile). **As of 2026-05-25 this account has FULL access** — the old `Company` / `DocField` / `Account` read restrictions are gone (see the 2026-05-25 section below). The historic restriction in `gotchas/2026-05-06-mcp-user-restricted-doctypes.md` no longer applies on this site.
 
 ## Apps installed
 
@@ -263,3 +263,33 @@ Recurring-billing engine (originally by **Chipo Hameja**). One submittable paren
 - **Batch 2 — PENDING:** `print_format` editable-on-submit + email open-link + 07:00 cron. Committed to `version-16`. The deploy was actually blocked by an **unrelated** bug: `nest_home` shipped a DocType (`Nest Home Layout Tile`) without its controller `.py`, crashing every *site* migrate with `ModuleNotFoundError` (it looked like a bench→site propagation issue but wasn't). Fixed 2026-05-21 by adding the missing controller — see `gotchas/2026-05-21-frappe-doctype-missing-controller-crashes-migrate.md`. Once the redeploy is green, populate BS-0005's `print_format` = `"2026 Invoice"` and `end_date`.
 
 **Test record:** `BS-0005` — Syncflo Testing / Arbor Care, item `Retainer` @ 8410 (Monthly), `send_email` on to `presales@syncflo.co.za` + `hello@syncflo.co.za`, submitted. For the 5-day **Daily** trial, create a fresh subscription with `Daily` + a 5-day `end_date` (don't try to flip BS-0005 — `frequency` is submit-locked).
+
+### hello@syncflo.co.za — granted full access + admin — 2026-05-25
+
+Russell asked for his day-to-day profile (`hello@syncflo.co.za`, also the account the `frappe-nesterp` MCP connector authenticates as) to have full access and admin rights.
+
+**Findings on inspection:** the account already held `System Manager` (+ ~24 other manager roles, role profile `Administrator`), `user_type = System User`, enabled. So admin *roles* were already in place. What was actually limiting it:
+
+1. **`block_modules`** — 19 modules hidden (Assets, Automation, Core, Custom, Manufacturing, Website, Workflow, Integrations, Telephony, Regional, etc.).
+2. **One `User Permission`** — `allow=Account`, `for_value="Accounts Receivable - Spl"`, `apply_to_all_doctypes=1`. This single record was the real cause of the long-documented "MCP user can't read Company/Account" symptom (`gotchas/2026-05-06-mcp-user-restricted-doctypes.md`) — it constrained Account visibility everywhere.
+
+**Changes made via MCP (as the user itself — System Manager let it edit its own User doc):**
+
+- Cleared `block_modules` → `[]` (all modules now visible).
+- Deleted the `Account` User Permission (`User Permission` record `fbl5phlv0t`).
+
+**Verified after:** `User Permission` list for the user is now empty; `Account` list returns the full COA; `Company` list returns all 3 companies (`Syncflo (Pty) Ltd`, `Syncflo Testing`, `TEMPLATE – MultiStore + Manufacturing`) — previously `[]`.
+
+**Side effect to remember:** because this is the MCP connector's identity, the `frappe-nesterp` connector now also has full read/write across the site. The "restricted by design" note in the 2026-05-06 gotcha is no longer true for nesterp. Did NOT touch the `api_key`/`api_secret`, so the connector keeps working.
+
+### Clean go-live restart — new company `Syncflo Pty Ltd` — 2026-05-28
+
+Tenant never went live on `Syncflo (Pty) Ltd` (test junk only). Wanted a zero-history 1-June start keeping the CRM. After fighting the in-place wipe (GL-link guards + Transaction Deletion Record UX), **pivoted to a new company**:
+
+- **`Syncflo Pty Ltd`** (abbr **SYN**, CoA cloned from `Syncflo (Pty) Ltd`, ZAR/SA) created and set as **Global Default Company**. Books empty.
+- **199 leads bulk-moved** from `Syncflo (Pty) Ltd` → (parked on `Syncflo Testing`) → `Syncflo Pty Ltd`. Customers/contacts/communications are site-wide, so they came along automatically. **Total lead count held at 199 throughout** (the safety metric).
+- Lead bulk-edit was blocked by mandatory **Source** — temporarily relaxed `Lead-source-reqd` + `Lead-utm_source-reqd` to `value=0`, moved leads, **restored to `1`**.
+- Old `Syncflo (Pty) Ltd` financials cleared to **0** via a UI Transaction Deletion Record (GL, SIs, payments, journals, orders, advance ledger). **Still pending:** `Payment Ledger Entry` (136 rows) — missed on first TDR pass; needs one more TDR row (`Payment Ledger Entry` / Company Field `company`) before the old company can be deleted.
+- Old company can be deleted once that's clear; the new company is the live entity.
+
+Full lessons (TDR API traps, lead protection, ledger-link guards): `gotchas/2026-05-28-erpnext-clean-company-restart.md`.
