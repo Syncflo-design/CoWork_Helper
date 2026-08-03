@@ -145,9 +145,9 @@
     "semantic_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27"
   },
   "README.md": {
-    "mtime": 1785669076.761739,
-    "ast_hash": "8e1734ae8b6649df12dbd18d41bd3ee5",
-    "semantic_hash": ""
+    "mtime": 1785661725.7275803,
+    "ast_hash": "dda928635803009556b0a14fa46c3790",
+    "semantic_hash": "dda928635803009556b0a14fa46c3790"
   },
   "gotchas/2026-05-06-bash-vs-windows-git-ownership.md": {
     "mtime": 1778067442.4326575,
@@ -590,9 +590,9 @@
     "semantic_hash": "ea43294f4f2a879e928e14345d633632"
   },
   "sites/ardmore.md": {
-    "mtime": 1785770243.441956,
-    "ast_hash": "50cb02d8a9413c43f4928424062d6f00",
-    "semantic_hash": ""
+    "mtime": 1785240653.694085,
+    "ast_hash": "a681f0390d1468f121022998e55c7759",
+    "semantic_hash": "a681f0390d1468f121022998e55c7759"
   },
   "sites/blomoplastics.md": {
     "mtime": 1778843129.5468223,
@@ -620,9 +620,9 @@
     "semantic_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf"
   },
   "start-prompt.txt": {
-    "mtime": 1785668926.1300416,
-    "ast_hash": "5f774d34b097a9641e6435c8bfd5e61c",
-    "semantic_hash": ""
+    "mtime": 1785661358.6630192,
+    "ast_hash": "9be65613f784a9251b5c5c5c93bf8e4c",
+    "semantic_hash": "9be65613f784a9251b5c5c5c93bf8e4c"
   },
   "templates/gotcha-template.md": {
     "mtime": 1778043076.249849,
@@ -638,20 +638,5 @@
     "mtime": 1778043087.200489,
     "ast_hash": "34fbd204107d33944eb5cc4c94be8df0",
     "semantic_hash": "34fbd204107d33944eb5cc4c94be8df0"
-  },
-  "gotchas/2026-08-03-frappe-child-row-insert-bypasses-parent-validation.md": {
-    "mtime": 1785770192.5563555,
-    "ast_hash": "83c703128e91edc7272679a2d67f62dd",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-03-label-width-caps-barcode-character-count.md": {
-    "mtime": 1785770168.1241446,
-    "ast_hash": "be070e8a90486a0a205f142a13d80352",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-03-zero-valuation-seed-stock-warns-on-every-transfer.md": {
-    "mtime": 1785770141.7231169,
-    "ast_hash": "f009aeb89afc58f6525356e6f4882540",
-    "semantic_hash": ""
   }
 }
