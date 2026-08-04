@@ -19,6 +19,40 @@ After install, the workflow per new chat is:
 
 Re-run `install.bat` any time you add a new skill (junctions stay live, but the script also creates fresh ones for new folders).
 
+### Setting up a NEW workstation
+
+`install.bat` covers the skills and the shortcut. Three more things are per-machine and do
+**not** travel in git — the graphify CLI, the graphify skill, and the interpreter pointer:
+
+```bash
+# 1. Clone to the SAME path — the start-prompt uses absolute paths
+git clone https://github.com/Syncflo-design/CoWork_Helper.git /c/ClaudeCode/CoWork_Helper
+
+# 2. Install uv if the machine doesn't have it
+#    (PowerShell) irm https://astral.sh/uv/install.ps1 | iex
+
+# 3. Install the graphify CLI + register its skill with Claude Code
+uv tool install graphifyy
+graphify install
+
+# 4. Restore the interpreter pointer the .gitignore keeps out of the repo
+graphify update /c/ClaudeCode/CoWork_Helper
+```
+
+Then run `install.bat` for the skills + desktop shortcut, and the workflow is identical.
+
+**What travels in git:** `graphify-out/graph.json`, `graph.html`, `GRAPH_REPORT.md`,
+`manifest.json`, and the extraction `cache/` — so a new machine gets the built graph for
+free and never pays the ~740k-token extraction again (a username difference can miss the
+cache, in which case step 4 simply re-extracts).
+
+**What does not:** `graphify-out/.graphify_python` and `.graphify_root` (this machine's
+uv path and clone path) — both gitignored. Step 4 regenerates them.
+
+**Clone path matters.** `start-prompt.txt` hardcodes
+`C:\ClaudeCode\CoWork_Helper\graphify-out\graph.json`. Clone somewhere else and you must
+edit that path in `start-prompt.txt`.
+
 ## Index
 
 ### Skills (Claude auto-loadable)
@@ -26,6 +60,11 @@ Re-run `install.bat` any time you add a new skill (junctions stay live, but the 
 | Skill | What it covers |
 |---|---|
 | [`frappe-insights-v3-dashboard`](skills/frappe-insights-v3-dashboard/SKILL.md) | Build dashboards in Frappe Insights v3 via API/MCP — queries, charts, layout |
+
+**Also installed machine-wide (not in this repo):** the `graphify` skill (`uv tool install graphifyy`,
+then `graphify install`) — turns a folder into a queryable knowledge graph. Index this folder by
+typing `/graphify CoWork_Helper` **in a Claude chat** (not Git Bash — the CLI only installs the
+skill), then ask questions instead of scrolling the index below. See `start-prompt.md`.
 
 ### Playbooks (model-neutral)
 
@@ -35,6 +74,9 @@ Re-run `install.bat` any time you add a new skill (junctions stay live, but the 
 | [`insights-fork-themeing.md`](playbooks/insights-fork-themeing.md) | Minimal-fork strategy for theming Insights v3 server-side (all users, all devices). Covers the additive-overlay pattern, exact files to add/edit, deploy steps on Frappe Cloud, and update procedure |
 | [`frappe-custom-app-v16.md`](playbooks/frappe-custom-app-v16.md) | Scaffolding a Frappe v16 / ERPNext v16 custom app from scratch — file layout, `pyproject.toml`, hooks.py, DocType JSON, child tables, form scripts, deploy via Frappe Cloud |
 | [`frappe-role-based-access-control.md`](playbooks/frappe-role-based-access-control.md) | Creating restricted custom roles that truly remove DocType access (incl. search) — full provisioning process, reusable across all company instances |
+| [`two-machine-workflow.md`](playbooks/two-machine-workflow.md) | Two-machine team contract — Design/Layout machine vs Dev/Review/Test machine: roles, handoff checklist, definition-of-done per stage, guardrails. (3rd QA/Audit instance planned, not active yet.) |
+| [`erpnext-wipe-company-transactions.md`](playbooks/erpnext-wipe-company-transactions.md) | Clear a company's books while keeping the CRM — batched count of every company-scoped doctype, then ONE desk-driven Transaction Deletion Record. Lists the shortcuts that don't work (API-submitted TDR, per-doc deletes) |
+| [`frappe-webhook-to-omnisend.md`](playbooks/frappe-webhook-to-omnisend.md) | Push ERPNext customers into Omnisend Contacts v3 with zero custom code — built-in Frappe Webhook + client script. Verified live on Ardmore 2026-05-27 |
 
 ### Gotchas (short fix-it entries)
 
@@ -65,6 +107,10 @@ Re-run `install.bat` any time you add a new skill (junctions stay live, but the 
 | 2026-05-07 | [`frappe-v16-realtime-registration-timing.md`](gotchas/2026-05-07-frappe-v16-realtime-registration-timing.md) | Realtime listeners registered before `socket.connected === true` get silently thrown out by Frappe v16's realtime init. Gate `frappe.realtime.on(...)` on the socket connection event, not just on `frappe.realtime.on` existing. Also re-register on `reconnect` |
 | 2026-05-07 | [`frappe-workspace-per-user-api-blocked.md`](gotchas/2026-05-07-frappe-workspace-per-user-api-blocked.md) | No API path exists to create per-user workspace overrides for other users. `frappe.client.insert` fails on name uniqueness; `new_page` raises PermissionError. Workaround: log in as the target user and hide via desk UI |
 | 2026-05-07 | [`git-stale-index-lock.md`](gotchas/2026-05-07-git-stale-index-lock.md) | `git add` fails with "Unable to create index.lock: File exists" — stale lock from crashed process. Fix: `rm .git/index.lock` then retry |
+| 2026-05-20 | [`gitbash-windows-path-and-default-branch.md`](gotchas/2026-05-20-gitbash-windows-path-and-default-branch.md) | Git Bash eats `\` in Windows paths (use `/c/...`); Frappe Cloud apps push to `version-16`, not `main` |
+| 2026-05-20 | [`frappe-deploy-overwrites-doctype-permissions.md`](gotchas/2026-05-20-frappe-deploy-overwrites-doctype-permissions.md) | `bench migrate` resets an app-owned DocType's permissions to the app JSON, silently dropping any roles added via the UI — keep needed roles in the JSON, grant users a role that's already in it |
+| 2026-05-22 | [`bash-mount-stale-not-host.md`](gotchas/2026-05-22-bash-mount-stale-not-host.md) | Inverse of the host↔bash sync gotcha: the bash mount served a STALE, truncated copy (old mtime) while the host Read was correct. Remount doesn't bust it — route syntax checks through the fresh **outputs** mount |
+| 2026-05-21 | [`frappe-doctype-missing-controller-crashes-migrate.md`](gotchas/2026-05-21-frappe-doctype-missing-controller-crashes-migrate.md) | A DocType folder shipped without its `<name>.py` controller passes `bench build` but hard-fails every site migrate with `ModuleNotFoundError`, blocking unrelated apps too — every doctype folder needs `__init__.py` + `<name>.json` + `<name>.py` (PascalCase class) |
 | 2026-05-08 | [`frappe-module-folder-vs-modulestxt-mismatch.md`](gotchas/2026-05-08-frappe-module-folder-vs-modulestxt-mismatch.md) | Renaming a module in `modules.txt` without renaming the on-disk folder makes Frappe v16 register the new module name but find no DocType/Page/Workspace content. Migrate half-completes; the site's Update Available pill never clears. Fix: `git mv <old_folder> <new_folder>` so the folder matches the snake_case of `modules.txt` |
 | 2026-05-08 | [`frappe-cloud-site-update-is-the-app-install-path.md`](gotchas/2026-05-08-frappe-cloud-site-update-is-the-app-install-path.md) | New custom apps land on a site via **Sites → \<site\> → Update Available** — there is no separate "Install App" button. The Bench → Apps "Update Bench" modal only lists apps with newer commits, not site-installs |
 | 2026-05-08 | [`frappe-patches-txt-needs-both-section-headers.md`](gotchas/2026-05-08-frappe-patches-txt-needs-both-section-headers.md) | `patches.txt` must contain both `[pre_model_sync]` AND `[post_model_sync]` headers, even if one section is empty. Migrate Site fails with `ValidationError: Patch type PatchType.post_model_sync not found in patches.txt` if either is missing. Empty file is fine; one-section file is not. The pre_sync patches run successfully BEFORE the failure, so it looks like everything's fine until post-sync explodes |
@@ -83,6 +129,15 @@ Re-run `install.bat` any time you add a new skill (junctions stay live, but the 
 | 2026-05-15 | [`frappe-grid-edit-column-leftover-flex-space.md`](gotchas/2026-05-15-frappe-grid-edit-column-leftover-flex-space.md) | A Frappe dialog grid's "too-wide" row-edit (pencil) column is usually unallocated flexbox space, not the column — field `columns` cap at ~10 units so the row never fills its 12-unit width, and the shortfall pools after the pencil. Shrinking `.btn-open-row` never touches the gap. Fix: let one field column take the slack with `flex-grow:1 !important; max-width:none !important` — both, because `col-xs-N` sets a `max-width` cap that blocks `flex-grow` on its own |
 | 2026-05-15 | [`frappe-dialog-grid-onchange-this-is-first-row.md`](gotchas/2026-05-15-frappe-dialog-grid-onchange-this-is-first-row.md) | In a `frappe.ui.Dialog` Table grid, a child field's onchange works on the first row but does nothing on rows added afterwards — all rows share one field def, so onchange fires with `this` bound to the FIRST row's control (`this.grid_row` / `this.doc` / `this.value` all point at row 0). Fix: drop the per-cell onchange and use a delegated `change` / `awesomplete-selectcomplete` listener on the grid wrapper, resolving the row from the event target |
 | 2026-05-17 | [`cowork-write-tool-silent-truncation.md`](gotchas/2026-05-17-cowork-write-tool-silent-truncation.md) | Cowork host Write/Edit tools silently truncate files >~20 KB; Read shows intent not disk; use bash heredoc and verify with `wc -c` + `tail -5`. Distinct from 2026-05-11 NULL-padding bite (this one is mid-string cut-off when GROWING a file) |
+| 2026-05-27 | [`frappe-webhook-headers-not-jinja-rendered.md`](gotchas/2026-05-27-frappe-webhook-headers-not-jinja-rendered.md) | Frappe Webhook **header values are not Jinja-rendered** — `{{ frappe.conf.my_key }}` is sent as a literal string and the endpoint 403s. Only the request body goes through Jinja. Put the real key in the header row (or move the call into a custom app) |
+| 2026-05-27 | [`omnisend-phone-identifier-requires-sms-channel.md`](gotchas/2026-05-27-omnisend-phone-identifier-requires-sms-channel.md) | Omnisend Contacts v3 rejects a phone identifier unless the payload also carries a `channels.sms` block — the error doesn't say so |
+| 2026-05-28 | [`erpnext-clean-company-restart.md`](gotchas/2026-05-28-erpnext-clean-company-restart.md) | For a "never went live, want clean books, keep CRM" restart, **create a NEW company** and move the Leads — don't wipe the old one. Only `Lead`/`Opportunity` are company-scoped; Customer/Contact/Address/Communication are site-wide and survive untouched |
+| 2026-05-28 | [`nest-home-tile-needs-layout-not-just-library.md`](gotchas/2026-05-28-nest-home-tile-needs-layout-not-just-library.md) | `nest_home`: adding an enabled, role-gated Nest Home Tile doesn't make it appear — if the user resolves to a Layout, the Layout's tile list wins and the library is ignored |
+| 2026-06-10 | [`server-script-sandbox-and-xlsx.md`](gotchas/2026-06-10-server-script-sandbox-and-xlsx.md) | **Read before writing ANY Server Script.** safe_exec blocks: all `import` (so no .xlsx parsing), any name starting with `_`, `frappe.db.commit`, tuple-unpacking; use `json.loads` not `parse_json`. Compile errors only surface at run time — the form saves happily |
+| 2026-07-20 | [`frappe-pos-page-custom-script-breaks-returns.md`](gotchas/2026-07-20-frappe-pos-page-custom-script-breaks-returns.md) | Hand-written JS appended to the standard `point-of-sale` Page doc crashes (`undefined.style`) and intermittently blocks the POS Return summary; fix is Administrator-only — corrected script in `sites/ardmore-pos-page-script-fixed.js` |
+| 2026-07-20 | [`warehouse-user-permission-blocks-stock-transfer.md`](gotchas/2026-07-20-warehouse-user-permission-blocks-stock-transfer.md) | A Warehouse User Permission (apply_to_all_doctypes) boxes a user into one warehouse — Stock Transfer shows "no items / no target warehouses" and POS shows nothing; check User Permission + Bin before believing any empty-dropdown report |
+| 2026-07-20 | [`sage-return-script-blocks-pos-closing.md`](gotchas/2026-07-20-sage-return-script-blocks-pos-closing.md) | The Sage credit-note Server Script had no `is_pos` skip (its sale-side sibling does) — its throw rolled back every POS Closing containing a refund. Fixed with a mirror guard; also: Script Manager role needed for Server Script edits, and role must go on the Role Profile, not the user |
+| 2026-07-24 | [`pos-outdated-opening-entry-blocks-till.md`](gotchas/2026-07-24-pos-outdated-opening-entry-blocks-till.md) | Leaving a POS Opening Entry open across a day boundary blocks the till next day with a red "Outdated POS Opening Entry" — reads as broken to users. Recovery: close the old entry via POS Closing, then reopen. Don't leave tills open at end of a UAT/handover session |
 
 ### Templates (reusable snippets)
 
@@ -98,6 +153,7 @@ Re-run `install.bat` any time you add a new skill (junctions stay live, but the 
 
 | Site | Notes |
 |---|---|
+| [`ardmore`](sites/ardmore.md) | Luxury SA ceramics/fashion/homeware. **Site moved 2026-07-20 → `ardmoreceramics.c.frappe.cloud`** (bench `Ardmore_KZN`; old `ardmore.jh.frappe.cloud` is dead). Multi-company, ZAR. In final UAT/go-live: POS, Sage price sync, Omnisend webhook, kiln-sheet importers, `nest_home` role layouts. Companion files: `ardmore-pos-page-script-fixed.js`, `ardmore-pos-console-fix.txt` |
 | [`blomoplastics`](sites/blomoplastics.md) | Plastics manufacturer; Insights v3 Manufacturing Operations dashboard live |
 | [`nesterp`](sites/nesterp.md) | Syncflo's internal ERPNext (Frappe v16); `quick_purchase_invoice` + `nest_theme` deployed; `nest_crm_tasks` v0.0.4 fix on disk 2026-05-11 (deploy + smoke pending); inherited `erpnext_sbca` (Sage integration, unconfigured) audited 2026-05-12 |
 
@@ -106,8 +162,9 @@ Re-run `install.bat` any time you add a new skill (junctions stay live, but the 
 | Project | What it is |
 |---|---|
 | [`quick_purchase_invoice`](projects/quick_purchase_invoice/) | Frappe v16 custom app — QuickBooks-style fast capture of Purchase Invoices with an Item-or-Account row toggle. Scaffolded, ready to push to GitHub + install on `nesterp`. See its [DESIGN.md](projects/quick_purchase_invoice/DESIGN.md) and [DEPLOY.md](projects/quick_purchase_invoice/DEPLOY.md) |
-| [`theme_studio`](projects/theme_studio/) | Frappe v16 custom app `nest_theme` — Syncflo-internal: **5-palette admin-only switcher** (Soft Professional, Accounting Crisp, Warm Earth, Corporate Navy, Minimal Mono — each with light + dark) + aggressively tightened section header padding + default Nest logo with customer logo override. Realtime swap on Settings save. **v0.3.0 (2026-05-07)** at `C:\ClaudeCode\nest_theme`. v0.1 toolbar widgets retired due to v16 click interception (`gotchas/2026-05-07-frappe-v16-modern-desk-click-interception.md`). **Internal use only**, no public release. See [SCOPE.md](projects/theme_studio/SCOPE.md) and [DEPLOY.md](projects/theme_studio/DEPLOY.md). |
+| [`theme_studio`](projects/theme_studio/) | Frappe v16 custom app `nest_theme` — Syncflo-internal: **6-palette admin-only switcher** (Soft Professional, Accounting Crisp, Warm Earth, Corporate Navy, Minimal Mono, Sage-inspired — each with light + dark) + aggressively tightened section header padding + default Nest logo with customer logo override. Realtime swap on Settings save. **v0.3.0 (2026-05-07)** at `C:\ClaudeCode\nest_theme`. v0.1 toolbar widgets retired due to v16 click interception (`gotchas/2026-05-07-frappe-v16-modern-desk-click-interception.md`). **Internal use only**, no public release. See [SCOPE.md](projects/theme_studio/SCOPE.md) and [DEPLOY.md](projects/theme_studio/DEPLOY.md). |
 | `nest_crm_tasks` | Frappe v16 custom app — sales-rep activity / tasks toolkit. Two desk Pages: **Lead Activity Hub** (`/desk/lead-activity/<lead>`) shows a lead's full ToDo history with mark-complete / reopen / add-task actions. **My Activities** (`/desk/my-activities`) is a custom replacement for the standard ToDo list — Lead-linked rows get a clickable `[👤 CRM-LEAD-...]` pill that one-shots to the Lead Activity Hub. Built as a Page (not via listview hooks) because v16 modern desk strips HTML from `listview_settings.formatters` returns. **v0.0.4 (2026-05-11)** — v0.0.3 hit the page-api-drift Variant 2 (silent empty body); v0.0.4 fix mounts `$main` inside `page.body`. Local at `C:\ClaudeCode\nest_crm_tasks` on the Dell. Repo: [Syncflo-design/nest_crm_tasks](https://github.com/Syncflo-design/nest_crm_tasks). |
+| [`nest_home`](projects/nest_home/) | Reusable **NestERP standard** Frappe v16 app at `C:\ClaudeCode\nest_home` — role-based branded landing page (`/desk/nest-home`) with the attention engine (my open ToDos, drafts awaiting me, ToDos I assigned out) plus data-driven quick-launch tiles. Deployed on nesterp; being rolled out to Ardmore as a 4-role layout. See [KICKOFF_PROMPT.md](projects/nest_home/KICKOFF_PROMPT.md) and `gotchas/2026-05-28-nest-home-tile-needs-layout-not-just-library.md` |
 | [`erpnext_sbca`](projects/erpnext_sbca/) | **Russell's Sage ↔ ERPNext bridge.** Two-way sync with Sage Business Cloud Accounting via the Pharoh middleware. Substantially refactored 2026-05-13: per-tenant Sage Tax mapping (`Sage Tax` + `Item Tax Template Sage Map`), Sage Account Opening Balance pull, Pull Customers + Pull Sales Persons, items pushed to Sage as non-stock services, `custom_sage_*_id` fields stamped on every pull, Settings reorganised with Taxes and Opening Balances tabs. **Read [`TECHNICAL.md`](projects/erpnext_sbca/TECHNICAL.md)** for the architecture of the non-obvious sync features (account + opening balances, additional price lists + item prices, sales reps + teams, tax mapping, stock-as-services). [`ASSESSMENT.md`](projects/erpnext_sbca/ASSESSMENT.md) is historical pre-refactor context only. **Do not stop the jobs / uninstall.** |
 
 ## Adding to this knowledge base

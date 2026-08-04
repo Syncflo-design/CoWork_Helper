@@ -385,3 +385,23 @@ function attachRealtime() {
 Captured as `gotchas/2026-05-07-frappe-v16-realtime-registration-timing.md` for future sessions.
 
 **Files touched:** `nest_theme/__init__.py` → 0.3.1, `nest_theme/public/js/syn_boot.bundle.js` → ~830 B added (handlers split out, socket-connected gate). JS now 4.6 KB.
+
+---
+
+## v0.3.2 — 2026-05-07 — 6th palette: Sage-inspired
+
+Added a Sage-flavoured palette to form a visual link with Sage Business Cloud Accounting for users working across the `erpnext_sbca` Sage↔ERPNext bridge. **Unofficial** — styled to resemble Sage, not affiliated with or endorsed by Sage. Disclaimer carried in the Settings `palette` field description.
+
+**Naming:** Russell picked "Sage-inspired" (slug `sage-inspired`) over Sage-style / Ledger Green / Bridge Green. The "-inspired" framing is the conventional non-endorsement signal.
+
+**Colour design:** Sage's brand green is `#00DC06` (confirmed via brandcolors.net / logotyp.us). That neon brand green fails contrast with white button text and vibrates on white surfaces, so it's reserved as the bright **accent** (`#00c805` light / `#00dc06` dark — used for "Paid"-style pills, highlights). The everyday **primary** (buttons, links, tab underline) is a deepened `#0a9e2e` (light) / `#2ecc5a` (dark) that stays legible. Canvas is faintly green-tinted neutral (`#f3f7f3` light) so it doesn't fatigue over a full day; dark mode is a deep green-black (`#0d1a10`).
+
+**Changed:**
+- `nest_theme/__init__.py` → 0.3.2
+- `nest_theme/boot.py` → `PALETTE_SLUG` gains `"Sage-inspired": "sage-inspired"`
+- `nest_theme/nest_theme/doctype/nest_theme_settings/nest_theme_settings.json` → 6th Select option + disclaimer appended to the palette field description
+- `nest_theme/public/css/syn_theme.bundle.css` → block 6 (`body.syn-palette-sage-inspired` light + dark). Bundle 16.3 KB → 23.7 KB.
+
+No JS change (palette swap mechanism is generic). No new doctype. Layout/spacing untouched (already palette-agnostic via `body[class*="syn-palette-"]`).
+
+**Six palettes now:** Soft Professional, Accounting Crisp, Warm Earth, Corporate Navy, Minimal Mono, Sage-inspired.
