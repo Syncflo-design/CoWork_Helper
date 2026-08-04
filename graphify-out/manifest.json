@@ -85,9 +85,9 @@
     "semantic_hash": "11284162ea757bbad66ab2932e40ee07"
   },
   "sites/ardmore-pos-page-script-fixed.js": {
-    "mtime": 1784549502.0572996,
-    "ast_hash": "f2795f0d2fe827d13c8d01c94dc16c05",
-    "semantic_hash": "f2795f0d2fe827d13c8d01c94dc16c05"
+    "mtime": 1785825396.1990716,
+    "ast_hash": "8e07e71773de92bec3e705f643e5cbce",
+    "semantic_hash": ""
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_bar.json": {
     "mtime": 1778043093.9718144,
@@ -135,9 +135,9 @@
     "semantic_hash": "ee979ab455260cee50474fc48850b723"
   },
   "CLAUDE.md": {
-    "mtime": 1779453593.5741487,
-    "ast_hash": "1bf46b93b5d0aefe4f8cb3807b7d04f5",
-    "semantic_hash": "1bf46b93b5d0aefe4f8cb3807b7d04f5"
+    "mtime": 1785825396.0202105,
+    "ast_hash": "037edfc5efe26be486819d4b4aeb209f",
+    "semantic_hash": ""
   },
   "DASHBOARD-POLISH-GUIDE.md": {
     "mtime": 1778045233.4687283,
@@ -145,8 +145,8 @@
     "semantic_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27"
   },
   "README.md": {
-    "mtime": 1785669076.761739,
-    "ast_hash": "8e1734ae8b6649df12dbd18d41bd3ee5",
+    "mtime": 1785825431.59759,
+    "ast_hash": "4d19f1f33e8ce144b00fa40f62a75145",
     "semantic_hash": ""
   },
   "gotchas/2026-05-06-bash-vs-windows-git-ownership.md": {
@@ -365,79 +365,79 @@
     "semantic_hash": "ed7b19f12c00afeda8dac578c6ed8d28"
   },
   "gotchas/2026-05-20-cowork-sandbox-cannot-git-init-on-windows-mount.md": {
-    "mtime": 1779262949.7151425,
-    "ast_hash": "1a3ea33f7294a97b7e8777c532c2326f",
-    "semantic_hash": "1a3ea33f7294a97b7e8777c532c2326f"
+    "mtime": 1785825396.0227242,
+    "ast_hash": "9286b12456ce458f88a0777fe5c736ef",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-20-frappe-deploy-overwrites-doctype-permissions.md": {
-    "mtime": 1779344588.7876518,
-    "ast_hash": "5c3fe1aa07c04f89b744f58d1a1d0606",
-    "semantic_hash": "5c3fe1aa07c04f89b744f58d1a1d0606"
+    "mtime": 1785825396.0227242,
+    "ast_hash": "8bbc0b6bf43b441424290fb9f593ebea",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-20-gitbash-windows-path-and-default-branch.md": {
-    "mtime": 1779289923.2675917,
-    "ast_hash": "727ed04038ba8fa000591e57aabf642c",
-    "semantic_hash": "727ed04038ba8fa000591e57aabf642c"
+    "mtime": 1785825396.02405,
+    "ast_hash": "4052167b1f99fc16b8882642c5665887",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-21-frappe-doctype-missing-controller-crashes-migrate.md": {
-    "mtime": 1779352849.4896047,
-    "ast_hash": "a9580128b2b9f45029cc7a5e4b77bb46",
-    "semantic_hash": "a9580128b2b9f45029cc7a5e4b77bb46"
+    "mtime": 1785825396.0260437,
+    "ast_hash": "76542a3da0f27791d01bbe2157fbdc6d",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-22-bash-mount-stale-not-host.md": {
-    "mtime": 1779453209.4374604,
-    "ast_hash": "8530cf39c49ee4afcffbb0165439db73",
-    "semantic_hash": "8530cf39c49ee4afcffbb0165439db73"
+    "mtime": 1785825396.0260437,
+    "ast_hash": "d7eeeefa40da211f30dca9165aa406b0",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-27-frappe-webhook-headers-not-jinja-rendered.md": {
-    "mtime": 1779860529.7238612,
-    "ast_hash": "f9d5d92468072f1372664c42c2f660b2",
-    "semantic_hash": "f9d5d92468072f1372664c42c2f660b2"
+    "mtime": 1785825396.0270455,
+    "ast_hash": "8b21048475a3a6da460430ef30dd607e",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-27-omnisend-phone-identifier-requires-sms-channel.md": {
-    "mtime": 1779860542.497865,
-    "ast_hash": "294dd06600fc9059e133b7e187d678ae",
-    "semantic_hash": "294dd06600fc9059e133b7e187d678ae"
+    "mtime": 1785825396.0280447,
+    "ast_hash": "6384dcc9588596592ca4498c3ba27868",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-28-erpnext-clean-company-restart.md": {
-    "mtime": 1779986883.2383215,
-    "ast_hash": "415a5a7799fc01c57739dae33568d169",
-    "semantic_hash": "415a5a7799fc01c57739dae33568d169"
+    "mtime": 1785825396.0285666,
+    "ast_hash": "6757396ffb770793333f3c53adf490da",
+    "semantic_hash": ""
   },
   "gotchas/2026-05-28-nest-home-tile-needs-layout-not-just-library.md": {
-    "mtime": 1779952269.3363757,
-    "ast_hash": "0ff27853d806e75593498190988ceada",
-    "semantic_hash": "0ff27853d806e75593498190988ceada"
+    "mtime": 1785825396.0295613,
+    "ast_hash": "0bf78bdb690a46c2bd72558cb21e3a3d",
+    "semantic_hash": ""
   },
   "gotchas/2026-06-10-server-script-sandbox-and-xlsx.md": {
-    "mtime": 1785234638.7612536,
-    "ast_hash": "5302bfb9bbb62343245d86215f5025fb",
-    "semantic_hash": "5302bfb9bbb62343245d86215f5025fb"
+    "mtime": 1785825396.0305624,
+    "ast_hash": "420ea9900195a2e3af9eb3c791f97b3f",
+    "semantic_hash": ""
   },
   "gotchas/2026-07-20-frappe-pos-page-custom-script-breaks-returns.md": {
-    "mtime": 1784554275.470866,
-    "ast_hash": "af5067e728cd4d83d1eefc002c10755e",
-    "semantic_hash": "af5067e728cd4d83d1eefc002c10755e"
+    "mtime": 1785825396.0315633,
+    "ast_hash": "0ded2dc69161dba77a22e0685a51106c",
+    "semantic_hash": ""
   },
   "gotchas/2026-07-20-sage-return-script-blocks-pos-closing.md": {
-    "mtime": 1784551554.7816799,
-    "ast_hash": "fa3e4d3db9d8d62301376d24dda220a5",
-    "semantic_hash": "fa3e4d3db9d8d62301376d24dda220a5"
+    "mtime": 1785825396.0325594,
+    "ast_hash": "e9415533b8018f55150fec9401f1a203",
+    "semantic_hash": ""
   },
   "gotchas/2026-07-20-warehouse-user-permission-blocks-stock-transfer.md": {
-    "mtime": 1784549531.5762115,
-    "ast_hash": "02437603db22b4ba2223f282ea8137d7",
-    "semantic_hash": "02437603db22b4ba2223f282ea8137d7"
+    "mtime": 1785825396.035614,
+    "ast_hash": "1786ae38d00bac9e7b988ec3b0b9804e",
+    "semantic_hash": ""
   },
   "gotchas/2026-07-24-pos-outdated-opening-entry-blocks-till.md": {
-    "mtime": 1784912354.07852,
-    "ast_hash": "fae37f10df2b4c2229cdf03e0917750d",
-    "semantic_hash": "fae37f10df2b4c2229cdf03e0917750d"
+    "mtime": 1785825396.0366082,
+    "ast_hash": "c7e4001f9bde79be15b39b1642ddce15",
+    "semantic_hash": ""
   },
   "playbooks/erpnext-wipe-company-transactions.md": {
-    "mtime": 1779987316.1061132,
-    "ast_hash": "69aa0d03802ccfd09f9dc13407f451eb",
-    "semantic_hash": "69aa0d03802ccfd09f9dc13407f451eb"
+    "mtime": 1785825396.1920407,
+    "ast_hash": "5cec8e6693d27450e5c2a0f7a33c2844",
+    "semantic_hash": ""
   },
   "playbooks/frappe-custom-app-v16.md": {
     "mtime": 1778843129.4816244,
@@ -450,9 +450,9 @@
     "semantic_hash": "c5432c765c7292ca687bb3a3e498487f"
   },
   "playbooks/frappe-webhook-to-omnisend.md": {
-    "mtime": 1779860566.7783687,
-    "ast_hash": "71c678788c9052e0aba1667235606c4a",
-    "semantic_hash": "71c678788c9052e0aba1667235606c4a"
+    "mtime": 1785825396.1930368,
+    "ast_hash": "3329f52b12ae956f546f66c5a06f8fde",
+    "semantic_hash": ""
   },
   "playbooks/insights-fork-themeing.md": {
     "mtime": 1778062892.0773995,
@@ -465,13 +465,13 @@
     "semantic_hash": "6ddfacb4df9b2e000f50927bbefa2019"
   },
   "playbooks/two-machine-workflow.md": {
-    "mtime": 1784894622.7735188,
-    "ast_hash": "622a99716d2690241793eebde3348178",
-    "semantic_hash": "622a99716d2690241793eebde3348178"
+    "mtime": 1785825396.1940353,
+    "ast_hash": "b65a2217021a1d02cf096bff30dd5b4e",
+    "semantic_hash": ""
   },
   "projects/erpnext_sbca/ASSESSMENT.md": {
-    "mtime": 1785664428.6095889,
-    "ast_hash": "6e6adfdd3498b4fcea72fabab355a57d",
+    "mtime": 1785825396.1955502,
+    "ast_hash": "36b7235cc1710c6135d5040e016736a8",
     "semantic_hash": ""
   },
   "projects/erpnext_sbca/OPUS_PROMPT_PaymentReconciliation.md": {
@@ -535,9 +535,9 @@
     "semantic_hash": "18937badef4ceec91c0504945829f646"
   },
   "projects/nest_home/KICKOFF_PROMPT.md": {
-    "mtime": 1779259897.7003067,
-    "ast_hash": "40ee5d72463a374c36a5577c2a4edf0d",
-    "semantic_hash": "40ee5d72463a374c36a5577c2a4edf0d"
+    "mtime": 1785825396.1965504,
+    "ast_hash": "54c5314ca7a1258e89d930c38a68e1a9",
+    "semantic_hash": ""
   },
   "projects/quick_purchase_invoice/DEPLOY.md": {
     "mtime": 1778064931.416046,
@@ -580,18 +580,18 @@
     "semantic_hash": "d5f5441f3eacfd0091fe122174da3e71"
   },
   "projects/theme_studio/SCOPE.md": {
-    "mtime": 1779250147.384888,
-    "ast_hash": "fb79a55f72075fdf5d7425afca6aa4be",
-    "semantic_hash": "fb79a55f72075fdf5d7425afca6aa4be"
+    "mtime": 1785825396.1975503,
+    "ast_hash": "b8b7dde152e77dc283a0e6d714a050e5",
+    "semantic_hash": ""
   },
   "sites/ardmore-pos-console-fix.txt": {
-    "mtime": 1784553467.597252,
-    "ast_hash": "ea43294f4f2a879e928e14345d633632",
-    "semantic_hash": "ea43294f4f2a879e928e14345d633632"
+    "mtime": 1785825396.198549,
+    "ast_hash": "eb13146078f3da216c4a04d5f08c7666",
+    "semantic_hash": ""
   },
   "sites/ardmore.md": {
-    "mtime": 1785770243.441956,
-    "ast_hash": "50cb02d8a9413c43f4928424062d6f00",
+    "mtime": 1785825396.2025936,
+    "ast_hash": "fac622fbc9b5905faf6357b382a7b729",
     "semantic_hash": ""
   },
   "sites/blomoplastics.md": {
@@ -600,9 +600,9 @@
     "semantic_hash": "8ffbf4f0cb36e247a1fe350c1acd7144"
   },
   "sites/nesterp.md": {
-    "mtime": 1779986916.3048098,
-    "ast_hash": "f7b198c7ec9ffd32927313f130acaa97",
-    "semantic_hash": "f7b198c7ec9ffd32927313f130acaa97"
+    "mtime": 1785825396.2041192,
+    "ast_hash": "46867f0f8fb68a866cfc18a4004adbde",
+    "semantic_hash": ""
   },
   "skills/frappe-insights-v3-dashboard/SKILL.md": {
     "mtime": 1778043093.8217542,
@@ -615,13 +615,13 @@
     "semantic_hash": "0aaa4c94db999038c6c904afa88932a8"
   },
   "start-prompt.md": {
-    "mtime": 1785661720.6336222,
-    "ast_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf",
-    "semantic_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf"
+    "mtime": 1785825396.2051098,
+    "ast_hash": "7416c8afa2478689883ea51e921eec89",
+    "semantic_hash": ""
   },
   "start-prompt.txt": {
-    "mtime": 1785668926.1300416,
-    "ast_hash": "5f774d34b097a9641e6435c8bfd5e61c",
+    "mtime": 1785825396.2066329,
+    "ast_hash": "f563411735421025df94529d389b3062",
     "semantic_hash": ""
   },
   "templates/gotcha-template.md": {
@@ -640,18 +640,18 @@
     "semantic_hash": "34fbd204107d33944eb5cc4c94be8df0"
   },
   "gotchas/2026-08-03-frappe-child-row-insert-bypasses-parent-validation.md": {
-    "mtime": 1785770192.5563555,
-    "ast_hash": "83c703128e91edc7272679a2d67f62dd",
+    "mtime": 1785825396.0381331,
+    "ast_hash": "52d3edb56a85b66b8dd0d39d0c4a0e8b",
     "semantic_hash": ""
   },
   "gotchas/2026-08-03-label-width-caps-barcode-character-count.md": {
-    "mtime": 1785770168.1241446,
-    "ast_hash": "be070e8a90486a0a205f142a13d80352",
+    "mtime": 1785825396.0391243,
+    "ast_hash": "e1d8ba245f2f1d6ed07af625621ef86c",
     "semantic_hash": ""
   },
   "gotchas/2026-08-03-zero-valuation-seed-stock-warns-on-every-transfer.md": {
-    "mtime": 1785770141.7231169,
-    "ast_hash": "f009aeb89afc58f6525356e6f4882540",
+    "mtime": 1785825396.0391243,
+    "ast_hash": "688037ecba5f6778694fbb874680a803",
     "semantic_hash": ""
   }
 }
