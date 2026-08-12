@@ -410,8 +410,8 @@
     "semantic_hash": ""
   },
   "gotchas/2026-06-10-server-script-sandbox-and-xlsx.md": {
-    "mtime": 1786533849.5497546,
-    "ast_hash": "1bb7bd10370061d4b3b0126942ce7525",
+    "mtime": 1785234638.7612536,
+    "ast_hash": "5302bfb9bbb62343245d86215f5025fb",
     "semantic_hash": ""
   },
   "gotchas/2026-07-20-frappe-pos-page-custom-script-breaks-returns.md": {
@@ -590,8 +590,8 @@
     "semantic_hash": ""
   },
   "sites/ardmore.md": {
-    "mtime": 1786533881.3664508,
-    "ast_hash": "0dc415c3b908045738b7680bef056a5a",
+    "mtime": 1785770243.441956,
+    "ast_hash": "50cb02d8a9413c43f4928424062d6f00",
     "semantic_hash": ""
   },
   "sites/blomoplastics.md": {
@@ -652,36 +652,6 @@
   "gotchas/2026-08-03-zero-valuation-seed-stock-warns-on-every-transfer.md": {
     "mtime": 1785770141.7231169,
     "ast_hash": "f009aeb89afc58f6525356e6f4882540",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-04-aspnet-cold-start-slow-first-page.md": {
-    "mtime": 1785855878.8494716,
-    "ast_hash": "d74f6cb4ad5732e06cc1c732d6b84276",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-06-client-script-listview-settings-assignment-wipes-indicators.md": {
-    "mtime": 1786008161.5043497,
-    "ast_hash": "37cdfb9966e37aa9704d3aa105095ebf",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-12-a-link-query-that-ignores-txt-looks-like-missing-data.md": {
-    "mtime": 1786533807.0112445,
-    "ast_hash": "700e278c30b3784b0d08e89c3b458e98",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-12-customize-form-blocks-int-to-float.md": {
-    "mtime": 1786533782.7815158,
-    "ast_hash": "d2cd034cc515280dfbab0d7ad16b68cc",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-12-db-set-value-skips-the-hooks-that-make-a-change-real.md": {
-    "mtime": 1786533766.5934658,
-    "ast_hash": "62a32f3bd30a7aa05dc53e33d9cb6487",
-    "semantic_hash": ""
-  },
-  "gotchas/2026-08-12-price-list-holding-two-vat-conventions-at-once.md": {
-    "mtime": 1786533832.17596,
-    "ast_hash": "16d4b7fa3a55fae0152299eec5cc78e5",
     "semantic_hash": ""
   }
 }

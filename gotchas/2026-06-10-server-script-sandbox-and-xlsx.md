@@ -17,6 +17,16 @@ Capture so we never do that again.
   runs `exec(code, _globals, _locals)`; `doc` and every top-level variable land in
   `_locals`, while a `def` captures `_globals`. So `def f(): return doc.company` dies
   with `name 'doc' is not defined` **only when f() is called**. Pass them as arguments.
+  - **This includes OTHER FUNCTIONS.** A `def` is a top-level name like any other, so one
+    helper cannot call another. `def setv(...)` calling `def is_blank(...)` died with
+    `name 'is_blank' is not defined` at runtime (2026-08-12, Home/Fashion importer) —
+    caught only because the rewrite was executed against real data before hand-over.
+    Either pass the function in as an argument, or **inline the logic**. Inlining is
+    usually clearer; leave a comment saying why, or the next person will "tidy" it back
+    into a call.
+  - Top-level code CAN call these functions freely. It is only function-to-function that
+    breaks, which is why a script can look fine for months until someone factors out a
+    helper.
 - `frappe.db.commit()` / `rollback()` / `add_index()` → available in **API** and
   **Scheduler Event** scripts, but **stripped from DocType Event scripts** —
   `ServerScript.execute_doc()` calls `safe_exec(..., restrict_commit_rollback=True)`,
