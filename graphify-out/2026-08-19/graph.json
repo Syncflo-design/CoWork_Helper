@@ -1851,94 +1851,6 @@
       "norm_label": "see also"
     },
     {
-      "label": "2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md"
-    },
-    {
-      "label": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "a desk page's css is served stale after deploy unless you bump its cache-buster"
-    },
-    {
-      "label": "Symptom",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_symptom",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "symptom"
-    },
-    {
-      "label": "Cause",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_cause",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "cause"
-    },
-    {
-      "label": "Fix",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_fix",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "fix"
-    },
-    {
-      "label": "How to tell this apart from a real CSS fault",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_how_to_tell_this_apart_from_a_real_css_fault",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "how to tell this apart from a real css fault"
-    },
-    {
-      "label": "The other half of the same afternoon",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L58",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_the_other_half_of_the_same_afternoon",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "the other half of the same afternoon"
-    },
-    {
-      "label": "See also",
-      "file_type": "document",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L68",
-      "_origin": "ast",
-      "id": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_see_also",
-      "community": 56,
-      "community_name": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster",
-      "norm_label": "see also"
-    },
-    {
       "label": "CoWork_Helper Knowledge Base",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -4080,7 +3992,7 @@
       "community": 9,
       "norm_label": "shared df.onchange first-row `this` binding",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_dialog_grid_onchange_this_is_first_row_shared_df_onchange_binding"
     },
     {
@@ -4095,7 +4007,7 @@
       "community": 9,
       "norm_label": "delegated grid-wrapper listener",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_dialog_grid_onchange_this_is_first_row_delegated_grid_wrapper_listener"
     },
     {
@@ -4110,7 +4022,7 @@
       "community": 9,
       "norm_label": "frappe.ui.dialog table grid",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_dialog_grid_onchange_this_is_first_row_frappe_ui_dialog_table_grid"
     },
     {
@@ -4125,7 +4037,7 @@
       "community": 9,
       "norm_label": "customer-quick-invoice client script",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_dialog_grid_onchange_this_is_first_row_customer_quick_invoice"
     },
     {
@@ -4140,7 +4052,7 @@
       "community": 9,
       "norm_label": "grid leftover flex space (fat pencil column illusion)",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_grid_edit_column_leftover_flex_space_leftover_flex_space"
     },
     {
@@ -4155,7 +4067,7 @@
       "community": 9,
       "norm_label": "setup_visible_columns",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_grid_edit_column_leftover_flex_space_setup_visible_columns"
     },
     {
@@ -4170,7 +4082,7 @@
       "community": 9,
       "norm_label": "col-xs-n max-width cap blocks flex-grow",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_grid_edit_column_leftover_flex_space_col_xs_max_width_cap"
     },
     {
@@ -4185,7 +4097,7 @@
       "community": 9,
       "norm_label": "qi-dialog wrapper scope class",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_05_15_frappe_grid_edit_column_leftover_flex_space_qi_dialog_scope_class"
     },
     {
@@ -4305,7 +4217,7 @@
       "community": 8,
       "norm_label": "bench migrate reimports and replaces docperms",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_20_frappe_deploy_overwrites_doctype_permissions_migrate_reimports_docperms"
     },
     {
@@ -4320,7 +4232,7 @@
       "community": 8,
       "norm_label": "app json permissions[] is the complete allow-list",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_20_frappe_deploy_overwrites_doctype_permissions_app_json_permissions_allowlist"
     },
     {
@@ -4335,7 +4247,7 @@
       "community": 8,
       "norm_label": "business_subscription.json",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_20_frappe_deploy_overwrites_doctype_permissions_business_subscription_json"
     },
     {
@@ -4350,7 +4262,7 @@
       "community": 8,
       "norm_label": "grant access via user roles, not doctype perms",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_20_frappe_deploy_overwrites_doctype_permissions_grant_via_user_roles"
     },
     {
@@ -4377,7 +4289,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "frappe cloud apps track version-16, not main",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4392,7 +4304,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "git push origin head rule of thumb",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4410,7 +4322,7 @@
       "community": 8,
       "norm_label": "missing doctype controller hard-fails site migrate",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_21_frappe_doctype_missing_controller_crashes_migrate_missing_controller_migrate_crash"
     },
     {
@@ -4422,7 +4334,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "doctype folder three-file requirement",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4440,7 +4352,7 @@
       "community": 8,
       "norm_label": "load_doctype_module / run_module_method",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_21_frappe_doctype_missing_controller_crashes_migrate_load_doctype_module"
     },
     {
@@ -4455,7 +4367,7 @@
       "community": 8,
       "norm_label": "nest home layout tile doctype",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_21_frappe_doctype_missing_controller_crashes_migrate_nest_home_layout_tile"
     },
     {
@@ -4725,7 +4637,7 @@
       "community": 8,
       "norm_label": "nest_home api.tiles_for_user()",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_28_nest_home_tile_needs_layout_not_just_library_tiles_for_user"
     },
     {
@@ -4740,7 +4652,7 @@
       "community": 8,
       "norm_label": "_layout_tiles vs _default_tiles dual path",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_28_nest_home_tile_needs_layout_not_just_library_layout_vs_library_paths"
     },
     {
@@ -4755,7 +4667,7 @@
       "community": 8,
       "norm_label": "resolve_layout() / boot._resolve_landing",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_28_nest_home_tile_needs_layout_not_just_library_resolve_layout"
     },
     {
@@ -4770,7 +4682,7 @@
       "community": 8,
       "norm_label": "nest home layout doctype",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_28_nest_home_tile_needs_layout_not_just_library_nest_home_layout"
     },
     {
@@ -4785,7 +4697,7 @@
       "community": 8,
       "norm_label": "allowed_roles honoured only on library fallback",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_28_nest_home_tile_needs_layout_not_just_library_allowed_roles_gating"
     },
     {
@@ -4800,7 +4712,7 @@
       "community": 8,
       "norm_label": "child-table updates replace, not merge",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_05_28_nest_home_tile_needs_layout_not_just_library_child_table_replace_semantics"
     },
     {
@@ -4812,7 +4724,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "server script safe_exec / restrictedpython sandbox",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4842,7 +4754,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "commit/rollback stripped in doctype event scripts",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4857,7 +4769,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "functions cannot see script-level names (globals/locals split)",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4872,7 +4784,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "nest_sheets.api.read_sheet",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4890,7 +4802,7 @@
       "community": 8,
       "norm_label": "script manager role requirement",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_06_10_server_script_sandbox_and_xlsx_script_manager_role"
     },
     {
@@ -4917,7 +4829,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "ardmore kiln sheet / home fashion importers",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -4935,7 +4847,7 @@
       "community": 9,
       "norm_label": "pos page script typeerror breaks the return flow",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_07_20_frappe_pos_page_custom_script_breaks_returns_pos_page_script_crash"
     },
     {
@@ -4950,7 +4862,7 @@
       "community": 9,
       "norm_label": "point-of-sale standard page doc",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_07_20_frappe_pos_page_custom_script_breaks_returns_point_of_sale_page_doc"
     },
     {
@@ -4965,7 +4877,7 @@
       "community": 9,
       "norm_label": "nest_help defensive pill-span shim",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_07_20_frappe_pos_page_custom_script_breaks_returns_nest_help_shim"
     },
     {
@@ -4980,7 +4892,7 @@
       "community": 9,
       "norm_label": "mata101/server_script app",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_07_20_frappe_pos_page_custom_script_breaks_returns_mata101_server_script_app"
     },
     {
@@ -4995,7 +4907,7 @@
       "community": 9,
       "norm_label": "getpage serves page script from bench files, not db",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "gotchas_2026_07_20_frappe_pos_page_custom_script_breaks_returns_getpage_serves_bench_files"
     },
     {
@@ -5055,7 +4967,7 @@
       "community": 8,
       "norm_label": "role profile overwrites directly added roles",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "gotchas_2026_07_20_sage_return_script_blocks_pos_closing_role_profile_overwrites_roles"
     },
     {
@@ -5262,7 +5174,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "frappe v16 app file layout",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5277,7 +5189,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "patches.txt (both section headers required)",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5292,7 +5204,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "pyproject.toml (flit_core, pep 621)",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5310,7 +5222,7 @@
       "community": 9,
       "norm_label": "hooks.py",
       "_origin": "semantic",
-      "community_name": "Shared df.onchange First-Row `this` Binding",
+      "community_name": "Frappe v16 App File Layout",
       "id": "playbooks_frappe_custom_app_v16_hooks_py"
     },
     {
@@ -5322,7 +5234,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "modules.txt (title-case module name)",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5340,7 +5252,7 @@
       "community": 8,
       "norm_label": "doctype json shape",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_custom_app_v16_doctype_json_shape"
     },
     {
@@ -5355,7 +5267,7 @@
       "community": 8,
       "norm_label": "child doctype istable flag",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_custom_app_v16_child_doctype_istable"
     },
     {
@@ -5367,7 +5279,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "before-push checklist (5 checks)",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5382,7 +5294,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "frappe cloud deploy flow",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5397,7 +5309,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "whitelisted methods in api.py",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5412,7 +5324,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "module folder / modules.txt / \"module\" field trinity",
       "_origin": "semantic",
       "community_name": "Frappe v16 App File Layout",
@@ -5430,7 +5342,7 @@
       "community": 8,
       "norm_label": "doctype json permissions[] array",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_custom_app_v16_doctype_permissions_array"
     },
     {
@@ -5445,7 +5357,7 @@
       "community": 8,
       "norm_label": "frappe permissions are additive \u2014 no per-user deny",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_additive_permissions_principle"
     },
     {
@@ -5460,7 +5372,7 @@
       "community": 8,
       "norm_label": "custom docperm record",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_custom_docperm"
     },
     {
@@ -5475,7 +5387,7 @@
       "community": 8,
       "norm_label": "custom role provisioning workflow",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_role_provisioning_workflow"
     },
     {
@@ -5490,7 +5402,7 @@
       "community": 8,
       "norm_label": "mandatory security audit checklist",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_security_audit_checklist"
     },
     {
@@ -5505,7 +5417,7 @@
       "community": 8,
       "norm_label": "presales user role (nesterp reference implementation)",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_presales_user_role"
     },
     {
@@ -5520,7 +5432,7 @@
       "community": 8,
       "norm_label": "block_modules user field (cosmetic layer)",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_block_modules"
     },
     {
@@ -5535,7 +5447,7 @@
       "community": 8,
       "norm_label": "doctype permission levels (permlevel)",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_permlevel"
     },
     {
@@ -5550,7 +5462,7 @@
       "community": 8,
       "norm_label": "standard doctype permissions invisible via api",
       "_origin": "semantic",
-      "community_name": "Frappe v16 App File Layout",
+      "community_name": "Frappe Permissions Are Additive \u2014 No Per-User Deny",
       "id": "playbooks_frappe_role_based_access_control_standard_perms_invisible_via_api"
     },
     {
@@ -6222,10 +6134,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "statement-balance reconciliation decision",
       "_origin": "semantic",
-      "community_name": "API/reconciliation.py daily worker",
+      "community_name": "erpnext_sbca (Sage \u2194 ERPNext bridge app)",
       "id": "projects_erpnext_sbca_payment_reconciliation_design_statement_balance_reconciliation"
     },
     {
@@ -6237,10 +6149,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "sage payments clearing account",
       "_origin": "semantic",
-      "community_name": "API/reconciliation.py daily worker",
+      "community_name": "erpnext_sbca (Sage \u2194 ERPNext bridge app)",
       "id": "projects_erpnext_sbca_payment_reconciliation_design_sage_payments_clearing"
     },
     {
@@ -6297,10 +6209,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "reconciliation journal entry",
       "_origin": "semantic",
-      "community_name": "API/reconciliation.py daily worker",
+      "community_name": "erpnext_sbca (Sage \u2194 ERPNext bridge app)",
       "id": "projects_erpnext_sbca_payment_reconciliation_design_reconciliation_journal_entry"
     },
     {
@@ -6327,10 +6239,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "sageid \u2192 custom_sage_customer_id match key",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_payment_reconciliation_design_party_match_key"
     },
     {
@@ -6387,10 +6299,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "post get-inventory-for-erpnext",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_api_contract_get_inventory_for_erpnext"
     },
     {
@@ -6402,10 +6314,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "two callers expect different response envelopes",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_api_contract_envelope_mismatch_quirk"
     },
     {
@@ -6807,10 +6719,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "pass-through pagination rule",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_pagination_audit_prompt_pass_through_pagination"
     },
     {
@@ -6822,10 +6734,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "{totalresults, returnedresults, items} envelope",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_pagination_audit_prompt_batch_envelope"
     },
     {
@@ -6837,10 +6749,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "services/sageservice.cs $skip layer",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_pagination_audit_prompt_sageservice"
     },
     {
@@ -6852,10 +6764,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "envelope conversion breaks erpnext consumers",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_pagination_audit_prompt_response_shape_break"
     },
     {
@@ -6867,10 +6779,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "pagination audit copilot brief (txt edition)",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_pagination_audit_prompt_copilot_brief_txt"
     },
     {
@@ -6912,10 +6824,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "drop the transactions[] array",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_reconciliation_endpoint_prompt_drop_transactions_array"
     },
     {
@@ -6927,10 +6839,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "partybalancedto",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_reconciliation_endpoint_prompt_partybalancedto"
     },
     {
@@ -6957,10 +6869,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "rev 2 correction \u2014 real transaction-listing shape",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_pharoh_reconciliation_endpoint_prompt_rev2_correction"
     },
     {
@@ -7062,10 +6974,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "custom_sage_<entity>_id field pattern",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_technical_custom_sage_id_field_pattern"
     },
     {
@@ -7077,10 +6989,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "match key order (sage id then natural key)",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_technical_match_key_order"
     },
     {
@@ -7122,10 +7034,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "price list.custom_sage_price_list_id bridge field",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_technical_custom_sage_price_list_id"
     },
     {
@@ -7137,10 +7049,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "scheduler ordering constraint",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_technical_scheduler_order_constraint"
     },
     {
@@ -7152,10 +7064,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 0,
       "norm_label": "sales person sync (custom_sage_rep_id)",
       "_origin": "semantic",
-      "community_name": "{TotalResults, ReturnedResults, Items} envelope",
+      "community_name": "API/reconciliation.py daily worker",
       "id": "projects_erpnext_sbca_technical_sales_person_sync"
     },
     {
@@ -7707,10 +7619,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 48,
       "norm_label": "mit license (syncflo, 2026)",
       "_origin": "semantic",
-      "community_name": "nest_theme Deploy recipe",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_quick_purchase_invoice_license_mit_license"
     },
     {
@@ -7722,10 +7634,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 48,
       "norm_label": "quick purchase invoice (frappe module)",
       "_origin": "semantic",
-      "community_name": "nest_theme Deploy recipe",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_quick_purchase_invoice_quick_purchase_invoice_modules_quick_purchase_invoice"
     },
     {
@@ -7827,10 +7739,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "palette switching live test (v0.3.0 addendum)",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_theme_studio_deploy_palette_switching_test"
     },
     {
@@ -7992,10 +7904,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "six-palette gallery (light + dark variants)",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_theme_studio_scope_palette_gallery"
     },
     {
@@ -8022,10 +7934,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 48,
       "norm_label": "accounting crisp palette",
       "_origin": "semantic",
-      "community_name": "nest_theme Deploy recipe",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_theme_studio_scope_accounting_crisp_palette"
     },
     {
@@ -8037,10 +7949,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "sage-inspired palette (unofficial)",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_theme_studio_scope_sage_inspired_palette"
     },
     {
@@ -8082,10 +7994,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "body[class*=\"syn-palette-\"] prefix selector refactor",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "projects_theme_studio_scope_body_class_prefix_selector"
     },
     {
@@ -8172,10 +8084,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "sage module (sage integration / company sage integration)",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_ardmore_sage_integration"
     },
     {
@@ -8532,10 +8444,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 48,
       "norm_label": "production_floor app (rm issue module)",
       "_origin": "semantic",
-      "community_name": "nest_theme Deploy recipe",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_blomoplastics_production_floor"
     },
     {
@@ -8547,10 +8459,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 48,
       "norm_label": "modules.txt vs module folder name mismatch",
       "_origin": "semantic",
-      "community_name": "nest_theme Deploy recipe",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_blomoplastics_module_folder_mismatch"
     },
     {
@@ -8712,10 +8624,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "syncflo_internal_v16 / nesterp site",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_nesterp_nesterp_site"
     },
     {
@@ -8727,10 +8639,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "frappe-nesterp mcp connector (hello@syncflo.co.za)",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_nesterp_frappe_nesterp_connector"
     },
     {
@@ -8742,10 +8654,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "erpnext_sbca (sage <-> erpnext bridge)",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_nesterp_erpnext_sbca"
     },
     {
@@ -8817,10 +8729,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 48,
       "norm_label": "quick_purchase_invoice deployment on nesterp",
       "_origin": "semantic",
-      "community_name": "nest_theme Deploy recipe",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_nesterp_quick_purchase_invoice"
     },
     {
@@ -8922,10 +8834,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "hello@syncflo.co.za full access unblock",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_nesterp_hello_syncflo_full_access"
     },
     {
@@ -8937,10 +8849,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 48,
       "norm_label": "clean go-live restart via new company syncflo pty ltd",
       "_origin": "semantic",
-      "community_name": "The five mistakes that wasted a day",
+      "community_name": "Quick Purchase Invoice (Frappe module)",
       "id": "sites_nesterp_clean_company_restart"
     },
     {
@@ -11008,83 +10920,6 @@
       "_origin": "ast",
       "source": "gotchas_2026_08_12_price_list_holding_two_vat_conventions_at_once_one_price_list_two_vat_conventions_the_till_charging_15_wrong_depending_on_who_wrote_last",
       "target": "gotchas_2026_08_12_price_list_holding_two_vat_conventions_at_once_why_this_is_non_obvious",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_cause",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_fix",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L52",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_how_to_tell_this_apart_from_a_real_css_fault",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L68",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_see_also",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_symptom",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md",
-      "source_location": "L58",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_a_desk_page_s_css_is_served_stale_after_deploy_unless_you_bump_its_cache_buster",
-      "target": "gotchas_2026_08_18_page_css_served_stale_when_the_cache_buster_is_not_bumped_the_other_half_of_the_same_afternoon",
       "confidence_score": 1.0
     },
     {
@@ -17815,5 +17650,5 @@
       "source_file": "projects/theme_studio/SCOPE.md"
     }
   ],
-  "built_at_commit": "204b5e5356445981c9f200e8745852f50099da4f"
+  "built_at_commit": "0036cd4b4d8e6cfe94f4203de0e54ce61e7a84cb"
 }

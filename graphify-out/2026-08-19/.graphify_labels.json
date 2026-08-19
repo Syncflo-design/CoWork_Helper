@@ -7,8 +7,8 @@
   "5": "v16 modern desk navbar swallows real mouse clicks",
   "6": "nest_theme Deploy recipe",
   "7": "ardmoreceramics.c.frappe.cloud site",
-  "8": "Frappe v16 App File Layout",
-  "9": "Shared df.onchange First-Row `this` Binding",
+  "8": "Frappe Permissions Are Additive — No Per-User Deny",
+  "9": "Frappe v16 App File Layout",
   "10": "InventorySyncController (merged)",
   "11": "quick_purchase_invoice.js",
   "12": "QuickPurchaseInvoice",
@@ -47,13 +47,12 @@
   "45": "doctype/quick_purchase_invoice/__init__.py",
   "46": "quick_purchase_invoice_item/__init__.py",
   "47": "quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/__init__.py",
-  "48": "{TotalResults, ReturnedResults, Items} envelope",
+  "48": "Quick Purchase Invoice (Frappe module)",
   "49": "StockAdjustmentSyncController",
   "50": "Bulk-updating 6,000 Items: insert the child row directly instead of `item.save()`",
   "51": "A 40mm label at 203 dpi holds a 9-character barcode — audit item code lengths BEFORE promising barcode printing",
   "52": "Stock seeded at valuation rate 0 makes every later transfer warn — re-value it, don't tick \"Allow Zero Valuation Rate\"",
   "53": "\"The site takes 30 seconds to load\" is ASP.NET cold start, not slow code",
   "54": "Customize Form refuses Int → Float, and forcing it past the check corrupts the data",
-  "55": "`frappe.db.set_value` writes the row but skips everything that makes the change take effect",
-  "56": "A desk Page's CSS is served stale after deploy unless you bump its cache-buster"
+  "55": "`frappe.db.set_value` writes the row but skips everything that makes the change take effect"
 }

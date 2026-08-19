@@ -683,10 +683,5 @@
     "mtime": 1786533832.17596,
     "ast_hash": "16d4b7fa3a55fae0152299eec5cc78e5",
     "semantic_hash": ""
-  },
-  "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md": {
-    "mtime": 1787123276.1041472,
-    "ast_hash": "4cae74fa5d0ba3db8329148aacd8789b",
-    "semantic_hash": ""
   }
 }

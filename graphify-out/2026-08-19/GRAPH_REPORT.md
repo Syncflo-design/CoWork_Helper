@@ -1,16 +1,16 @@
-# Graph Report - CoWork_Helper  (2026-08-19)
+# Graph Report - CoWork_Helper  (2026-08-12)
 
 ## Corpus Check
-- 126 files · ~96,074 words
+- 125 files · ~95,609 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 648 nodes · 746 edges · 57 communities (54 shown, 3 thin omitted)
+- 640 nodes · 739 edges · 56 communities (53 shown, 3 thin omitted)
 - Extraction: 87% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 92 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `204b5e53`
+- Built from commit: `0036cd4b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,8 +23,8 @@
 - v16 modern desk navbar swallows real mouse clicks
 - nest_theme Deploy recipe
 - ardmoreceramics.c.frappe.cloud site
+- Frappe Permissions Are Additive — No Per-User Deny
 - Frappe v16 App File Layout
-- Shared df.onchange First-Row `this` Binding
 - InventorySyncController (merged)
 - quick_purchase_invoice.js
 - QuickPurchaseInvoice
@@ -52,7 +52,7 @@
 - commit_reconciliation_feature.sh
 - ardmore-pos-page-script-fixed.js
 - quick_purchase_invoice
-- {TotalResults, ReturnedResults, Items} envelope
+- Quick Purchase Invoice (Frappe module)
 - StockAdjustmentSyncController
 - Bulk-updating 6,000 Items: insert the child row directly instead of `item.save()`
 - A 40mm label at 203 dpi holds a 9-character barcode — audit item code lengths BEFORE promising barcode printing
@@ -60,7 +60,6 @@
 - "The site takes 30 seconds to load" is ASP.NET cold start, not slow code
 - Customize Form refuses Int → Float, and forcing it past the check corrupts the data
 - `frappe.db.set_value` writes the row but skips everything that makes the change take effect
-- A desk Page's CSS is served stale after deploy unless you bump its cache-buster
 
 ## God Nodes (most connected - your core abstractions)
 1. `Gotchas Index` - 19 edges
@@ -106,19 +105,19 @@
 - **Insights v3 two-query sandwich pipeline** — skills_frappe_insights_v3_dashboard_skill_insights_workbook, skills_frappe_insights_v3_dashboard_skill_insights_query_v3, skills_frappe_insights_v3_dashboard_skill_insights_chart_v3, skills_frappe_insights_v3_dashboard_skill_insights_dashboard_v3, skills_frappe_insights_v3_dashboard_skill_two_query_sandwich [EXTRACTED 1.00]
 - **nest_theme boot / realtime / asset pipeline** — projects_theme_studio_scope_body_class_injection_at_boot, projects_theme_studio_scope_nest_theme_settings, projects_theme_studio_scope_realtime_instance_config_push, projects_theme_studio_scope_bundle_naming_convention, projects_theme_studio_scope_cached_settings_read [EXTRACTED 1.00]
 
-## Communities (57 total, 3 thin omitted)
+## Communities (56 total, 3 thin omitted)
 
 ### Community 0 - "API/reconciliation.py daily worker"
-Cohesion: 0.10
-Nodes (21): add_to_mailing_list Custom Field, Frappe Webhook Record (Customer on_update), Webhook headers are not Jinja-rendered, Every Omnisend identifier needs a channels block, Omnisend Contacts v3 API, on_update over after_insert, POS Customer UX Client Script, Webhook Request Log verification (+13 more)
+Cohesion: 0.06
+Nodes (34): add_to_mailing_list Custom Field, Frappe Webhook Record (Customer on_update), Webhook headers are not Jinja-rendered, Every Omnisend identifier needs a channels block, Omnisend Contacts v3 API, on_update over after_insert, POS Customer UX Client Script, Webhook Request Log verification (+26 more)
 
 ### Community 1 - "erpnext_sbca (Sage ↔ ERPNext bridge app)"
 Cohesion: 0.06
-Nodes (33): Per-stage Definition of Done, Independent review (no self-certification), Customer/Supplier category → group sync, Company Sage Integration child table, erpnext_sbca (Sage ↔ ERPNext bridge app), MCP audit recipe for inherited Frappe apps, OAuth redirect_back_to is stored, not computed, Sage Business Cloud Accounting (SBCA) (+25 more)
+Nodes (36): Per-stage Definition of Done, Independent review (no self-certification), Customer/Supplier category → group sync, Company Sage Integration child table, erpnext_sbca (Sage ↔ ERPNext bridge app), MCP audit recipe for inherited Frappe apps, OAuth redirect_back_to is stored, not computed, Sage Business Cloud Accounting (SBCA) (+28 more)
 
 ### Community 2 - "The five mistakes that wasted a day"
-Cohesion: 0.05
-Nodes (43): Palette switching live test (v0.3.0 addendum), body[class*="syn-palette-"] prefix selector refactor, Six-palette gallery (light + dark variants), Sage-inspired palette (unofficial), Soft Professional palette, Insights fork telemetry ImportError blocking deploys, Sage module (Sage Integration / Company Sage Integration), SVG chart palette recolourer (+35 more)
+Cohesion: 0.07
+Nodes (33): Soft Professional palette, Insights fork telemetry ImportError blocking deploys, SVG chart palette recolourer, Industrial Pro theme (retired), Syncflo-design/insights fork (syncflo-custom-theme), Invisible spacer tile (vue-grid vertical compact lock), KPI drill-through modal (syncflo-custom-drill-through.ts), Manufacturing Operations dashboard (0qj8e3nb4t) (+25 more)
 
 ### Community 3 - "Minimal Fork Overlay Pattern"
 Cohesion: 0.09
@@ -133,20 +132,20 @@ Cohesion: 0.07
 Nodes (39): Frappe MCP user cannot read Company / DocField, Introspect schema via referencing doctypes instead of DocField, v16 modern desk navbar swallows real mouse clicks, nest_theme custom Frappe v16 theme app, Render custom widgets outside header.desktop-navbar, attachRealtime() deferred-registration helper, Realtime listeners must register after socket.connected, Workspace autoname field:title defeats frappe.client.insert (+31 more)
 
 ### Community 6 - "nest_theme Deploy recipe"
-Cohesion: 0.06
-Nodes (34): MIT License (Syncflo, 2026), Quick Purchase Invoice (Frappe module), patches.txt pre/post model sync sections, Customer logo override (Nest Theme Settings.customer_logo), Frappe Cloud full Deploy vs Update, Git Bash bracketed-paste mangling, nest_theme Deploy recipe, nest_theme DevTools smoke test (+26 more)
+Cohesion: 0.08
+Nodes (28): patches.txt pre/post model sync sections, Customer logo override (Nest Theme Settings.customer_logo), Frappe Cloud full Deploy vs Update, Git Bash bracketed-paste mangling, nest_theme Deploy recipe, nest_theme DevTools smoke test, Prior-art evaluation deprioritised, Body class injection at boot (+20 more)
 
 ### Community 7 - "ardmoreceramics.c.frappe.cloud site"
 Cohesion: 0.08
 Nodes (29): allow_in_returns on POS Payment Methods, ardmoreceramics.c.frappe.cloud site, Item.custom_opening_qty, Item.custom_qty_pending_sage (local-qty flag), frappe-ardmore MCP connector, get-additional-prices-for-erpnext (price list sync), get-inventory-for-erpnext (item sync), get-inventory-qtyonhand-for-erpnext (QOH sync) (+21 more)
 
-### Community 8 - "Frappe v16 App File Layout"
-Cohesion: 0.06
-Nodes (42): App JSON permissions[] Is the Complete Allow-List, business_subscription.json, Grant Access via User Roles, Not DocType Perms, bench migrate Reimports and Replaces DocPerms, Frappe Cloud Apps Track version-16, Not main, git push origin HEAD Rule of Thumb, DocType Folder Three-File Requirement, load_doctype_module / run_module_method (+34 more)
+### Community 8 - "Frappe Permissions Are Additive — No Per-User Deny"
+Cohesion: 0.10
+Nodes (26): App JSON permissions[] Is the Complete Allow-List, business_subscription.json, Grant Access via User Roles, Not DocType Perms, bench migrate Reimports and Replaces DocPerms, load_doctype_module / run_module_method, Missing DocType Controller Hard-Fails Site Migrate, Nest Home Layout Tile DocType, allowed_roles Honoured Only on Library Fallback (+18 more)
 
-### Community 9 - "Shared df.onchange First-Row `this` Binding"
-Cohesion: 0.15
-Nodes (14): Customer-Quick-Invoice Client Script, Delegated Grid-Wrapper Listener, frappe.ui.Dialog Table Grid, Shared df.onchange First-Row `this` Binding, col-xs-N max-width Cap Blocks flex-grow, Grid Leftover Flex Space (Fat Pencil Column Illusion), qi-dialog Wrapper Scope Class, setup_visible_columns (+6 more)
+### Community 9 - "Frappe v16 App File Layout"
+Cohesion: 0.07
+Nodes (30): Customer-Quick-Invoice Client Script, Delegated Grid-Wrapper Listener, frappe.ui.Dialog Table Grid, Shared df.onchange First-Row `this` Binding, col-xs-N max-width Cap Blocks flex-grow, Grid Leftover Flex Space (Fat Pencil Column Illusion), qi-dialog Wrapper Scope Class, setup_visible_columns (+22 more)
 
 ### Community 10 - "InventorySyncController (merged)"
 Cohesion: 0.11
@@ -244,9 +243,9 @@ Nodes (3): Document, QuickPurchaseInvoiceItem, Child row of Quick Purchase Invoi
 Cohesion: 0.50
 Nodes (4): Business Subscription DocType, custom_subscription app, bench migrate overwrites live DocType permissions, Stuck-forever scheduler (== today -> <=) fix
 
-### Community 48 - "{TotalResults, ReturnedResults, Items} envelope"
-Cohesion: 0.13
-Nodes (16): sageId → custom_sage_customer_id match key, Two callers expect different response envelopes, POST get-inventory-for-erpnext, {TotalResults, ReturnedResults, Items} envelope, Pagination audit Copilot brief (txt edition), Pass-through pagination rule, Envelope conversion breaks ERPNext consumers, Services/SageService.cs $skip layer (+8 more)
+### Community 48 - "Quick Purchase Invoice (Frappe module)"
+Cohesion: 0.12
+Nodes (16): MIT License (Syncflo, 2026), Quick Purchase Invoice (Frappe module), Palette switching live test (v0.3.0 addendum), Accounting Crisp palette, body[class*="syn-palette-"] prefix selector refactor, Six-palette gallery (light + dark variants), Sage-inspired palette (unofficial), Sage module (Sage Integration / Company Sage Integration) (+8 more)
 
 ### Community 49 - "StockAdjustmentSyncController"
 Cohesion: 0.11
@@ -276,10 +275,6 @@ Nodes (6): Cause, Customize Form refuses Int → Float, and forcing it past the 
 Cohesion: 0.29
 Nodes (6): Cause, Fix, `frappe.db.set_value` writes the row but skips everything that makes the change take effect, See also, Symptom, Why this is non-obvious
 
-### Community 56 - "A desk Page's CSS is served stale after deploy unless you bump its cache-buster"
-Cohesion: 0.25
-Nodes (7): A desk Page's CSS is served stale after deploy unless you bump its cache-buster, Cause, Fix, How to tell this apart from a real CSS fault, See also, Symptom, The other half of the same afternoon
-
 ## Ambiguous Edges - Review These
 - `apply-dashboard-styling.js` → `Insights v3 Is a Standalone Vue SPA (no frappe runtime)`  [AMBIGUOUS]
   DASHBOARD-POLISH-GUIDE.md · relation: conceptually_related_to
@@ -287,7 +282,7 @@ Nodes (7): A desk Page's CSS is served stale after deploy unless you bump its ca
   gotchas/2026-05-07-git-stale-index-lock.md · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **162 isolated node(s):** `quick_purchase_invoice`, `SITE_THEMES`, `CHART_PALETTE_EXTRAS`, `paletteSet`, `Symptom` (+157 more)
+- **156 isolated node(s):** `quick_purchase_invoice`, `SITE_THEMES`, `CHART_PALETTE_EXTRAS`, `paletteSet`, `Symptom` (+151 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -300,11 +295,11 @@ _Questions this graph is uniquely positioned to answer:_
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
 - **Why does `Sage credentials envelope + apikey query param` connect `erpnext_sbca (Sage ↔ ERPNext bridge app)` to `InventorySyncController (merged)`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `InventorySyncController (merged)` connect `InventorySyncController (merged)` to `{TotalResults, ReturnedResults, Items} envelope`, `erpnext_sbca (Sage ↔ ERPNext bridge app)`, `StockAdjustmentSyncController`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `erpnext_sbca (Sage ↔ ERPNext bridge app)` connect `erpnext_sbca (Sage ↔ ERPNext bridge app)` to `API/reconciliation.py daily worker`, `StockAdjustmentSyncController`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `InventorySyncController (merged)` connect `InventorySyncController (merged)` to `API/reconciliation.py daily worker`, `erpnext_sbca (Sage ↔ ERPNext bridge app)`, `StockAdjustmentSyncController`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `erpnext_sbca (Sage ↔ ERPNext bridge app)` connect `erpnext_sbca (Sage ↔ ERPNext bridge app)` to `StockAdjustmentSyncController`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `Windows-Owned .git Blocks Linux Bash Sandbox Pushes` (e.g. with `Git Bash Bracketed-Paste Mangles Multi-Line Commands` and `packed-refs Trailing-NULL Corruption`) actually correct?**
   _`Windows-Owned .git Blocks Linux Bash Sandbox Pushes` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `quick_purchase_invoice`, `SITE_THEMES`, `CHART_PALETTE_EXTRAS` to the rest of the system?**
-  _162 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _156 weakly-connected nodes found - possible documentation gaps or missing edges._
