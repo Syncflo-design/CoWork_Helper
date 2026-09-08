@@ -53,6 +53,13 @@ uses `frappe.model.set_value` and `frm.savesubmit()`.
 | `POS Return Item Picker` | Wraps `cur_pos.make_return_invoice`: after the upstream call, a dialog lists the sold lines with tick + qty (unticked by default). Unticked → `frappe.model.clear_doc(row)`; ticked → `row.qty = -qty`; then `frm.cscript.calculate_taxes_and_totals()`. Refund goes on the mode that carried most of the sale. Cancel → `make_new_invoice()`. Rates are never touched (using `set_value('qty')` would call `apply_pricing_rule` and could re-price a return at today's list price). |
 | `POS Closing - Cashier UX` (POS Closing Entry / Form) | Hides taxes; polls the reconciliation rows and pre-fills `closing_amount = expected_amount`; `after_save` → `frm.save('Submit')` (no confirm dialog). |
 
+Receipt: the POS prints `frm.pos_print_format` = POS Profile `print_format` (else the
+standard "POS Invoice"). Standard formats cannot be edited on Frappe Cloud, so a custom
+`Ardmore POS Receipt` (copy of "POS Invoice with Item Image" + Voucher No + payments
+block) is set on every profile. Custom Jinja formats get the same `layout` /
+`print_settings` context as standard ones, so the `{% for page in layout %}` template
+works unchanged.
+
 Config, same day: **Cash removed from the payment modes of every till**
 (Airport, Caversham, Joburg, Cermaics_User2, POS_Test2, Online Store Test; the
 online OL_* profiles never had it). The user-less `Test` profile keeps Cash —
