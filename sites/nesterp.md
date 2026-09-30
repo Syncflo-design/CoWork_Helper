@@ -2,7 +2,7 @@
 
 **Site name on Frappe Cloud:** `Syncflo_internal_V16`
 **Canonical URL:** `https://syncflo-internal.c.frappe.cloud`
-**Custom domain:** `https://www.nesterp.co.za` (apex `nesterp.co.za` has no DNS — always use the `www.` form)
+**Custom domain:** `https://www.nesterp.co.za` — the ERPNext desk. **2026-08-25: the apex `nesterp.co.za` now serves the Nest ERP marketing site** (a separate public site, not this bench). Use the `www.` form for anything desk- or asset-related; the apex is no longer a dead host.
 
 Syncflo's internal ERPNext instance. Frappe v16 / ERPNext v16.
 
