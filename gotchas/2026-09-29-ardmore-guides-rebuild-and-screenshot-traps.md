@@ -19,7 +19,7 @@ in the **session scratchpad** under `%TEMP%\claude\...`. That folder was cleaned
 
 ## Fix
 
-Everything now lives in **`C:\ClaudeCode\_uatdoc`** (not temp):
+Everything now lives in **`S:\Ardmore\_uatdoc`** (not temp):
 
 | File | What it is |
 |---|---|
