@@ -20,9 +20,10 @@ Intacct is not. Document names are only unique within one life of the site.
 
 ## Fix
 
-Put something that changes per life of the document into the purpose. fuse_projects does
-this with `commercial.stamped(doc, purpose)`, which appends `doc.creation`. A retry of the
-same document keeps the same creation time, so replay protection still holds.
+Put something that changes per life of the document into the purpose, e.g. append
+`doc.creation`: `purpose=f"{purpose}:{doc.creation}"`. A retry of the same document keeps the
+same creation time, so replay protection still holds. (fuse_projects 0.2.0 did this for its
+construction postings; 0.2.1 dropped those postings, so no shipped code does it today.)
 
 The stock postings in fuse_manufacturing do NOT do this. They have not hit it only because
 `post_movements` is off on the demo site. Turn it on for a demo that is restored between runs
@@ -49,4 +50,4 @@ assumption that a name is used once.
 ## See also
 
 - `S:\Products\Fuse\demo_profiles\PROFILES.md`
-- `fuse_projects/fuse_projects/commercial.py` (`stamped`, `post_first_accepted`)
+- `fuse_core/fuse_core/rules.py` (`control_id_for`)
