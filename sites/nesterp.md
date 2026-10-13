@@ -293,3 +293,60 @@ Tenant never went live on `Syncflo (Pty) Ltd` (test junk only). Wanted a zero-hi
 - Old company can be deleted once that's clear; the new company is the live entity.
 
 Full lessons (TDR API traps, lead protection, ledger-link guards): `gotchas/2026-05-28-erpnext-clean-company-restart.md`.
+
+### Frappe CRM installed as "Prospects" for big-client pipeline — 2026-10-12
+
+- **Frappe CRM v1.87.0** installed (route `/crm`). Split agreed with Russell: Frappe CRM = big,
+  long-cycle clients (demos, several stakeholders, e.g. Leader, Protea Tyres, DatronX), converted
+  to ERPNext Projects "as and when" (manual step, not auto on Won). ERPNext CRM (Lead/Opportunity +
+  `nest_crm_tasks`) **stays** for quick product sign-ups. Nothing deleted from ERPNext CRM.
+- **No bulk data copy.** Russell picks which prospects move over (Lyndsay to review the live leads).
+  First record: `CRM-DEAL-2026-00007` Leader Rubber Company, status **Won**, primary contact Anton
+  Walters; Griesel Consulting & Advisory (ERPNext Sales Partner, 35% commission to 2026-12-17)
+  added as a CRM Organization with contacts Abrie and Friedrich Springhorn (Director, involved in
+  the Leadertread implementation) — contacts also linked to the Sales Partner in ERPNext.
+- **nest_home tiles:** `NEST-TILE-0019` **Prospects** (`/crm`, allowed roles Sales User/Manager +
+  System Manager) and `NEST-TILE-0020` **Projects** (`/app/project`, Projects User/Manager + System
+  Manager), first two tiles on all three layouts (Administrator, Administrator Profile, PreSales).
+- **Layout trap:** the browser signed in as the `Administrator` *user* has no role profile, so it
+  resolves the **Administrator** (System Manager role) layout, not **Administrator Profile**
+  (Russell's `hello@syncflo.co.za`). Update both when changing admin tiles.
+- Frappe CRM defaults worth knowing: deal statuses Qualification → Demo/Making →
+  Proposal/Quotation → Negotiation → Ready to Close → Won/Lost; setting Won stamps `closed_date`
+  = today; new CRM Organizations default `no_of_employees` to "1-10".
+- Planned, not built: "Deals slipping" nest_home attention source; Convert to Project button;
+  SaaS project templates per product (Fuse, NestERP); contractor (partner developer) access +
+  timesheets; Teams transcript → AI meeting note.
+- **2026-10-13 Kanban + consultant field:** Custom Field `CRM Deal.custom_consulting_organization`
+  (Link → CRM Organization, label "Consulting Organisation"), added to the `CRM Deal-Side Panel`
+  CRM Fields Layout after `organization`. Shared Deals Kanban = `CRM View Settings` #10 with
+  `is_standard=1` and `user=""` — `crm.api.views.get_views` returns `user==""` rows to EVERY user, so
+  one record sets the board for all current and future users (a user who saves their own Kanban
+  settings gets a personal standard view instead). Cards: consulting org, email, mobile, assigned,
+  modified — `annual_revenue` (the "value") removed. Frontend caches views (`crm-views`): hard refresh.
+  PE Chemicals = `CRM-DEAL-2026-00008` (Demo/Making), consultants Enable CFO (Reynier Koen, Beon Smit).
+- **2026-10-13 Next Step = next task:** Server Scripts `CRM Deal - Next Step from Tasks (save)`
+  (CRM Task, After Save) and `(delete)` (After Delete) set `CRM Deal.next_step` to the earliest-due
+  CRM Task that is not Done/Canceled and has a due date, as "<title> (dd MMM)"; blank when none.
+  Written with `frappe.db.set_value(..., update_modified=False)`. `next_step` made read-only
+  (Property Setter) and added to the shared Kanban card fields. Sandbox trap hit:
+  `date.strftime` raises `KeyError: '__import__'` — use `frappe.utils.formatdate`.
+- **2026-10-13 Primary contact on the card:** Custom Field `CRM Deal.custom_primary_contact` (Data,
+  read-only) filled by Server Script `CRM Deal - Primary Contact Name` (CRM Deal, Before Save) from the
+  `contacts` row with `is_primary`. Kanban card fields now: primary contact, consulting org, next step,
+  email, mobile, modified — `_assign` (deal-owner avatar) removed because Russell read it as "the contact".
+  CEA Group = `CRM-DEAL-2026-00009` (Ready to Close, SNG Grant Thornton lead consultant, Enable CFO
+  Intacct partner); built from the "CEA Group Proposal" email + engagement letter, reusing Lyndsay's
+  ERPNext Customer/Contact "CEA Group" / "Wendy Hlupeko".
+- **2026-10-13 Demo brief + Debrief (Claude):** no app, all site records. Single custom DocType
+  `Prospects AI Settings` (module FCRM; Password `api_key`, `model` = claude-opus-5-5, `effort` = low,
+  `product_notes` DRAFT for Russell to correct). API Server Scripts `prospects_demo_brief` (deal facts +
+  contacts + notes + comments + tasks -> Anthropic Messages API raw HTTP via `frappe.make_post_request`,
+  `fallbacks: "default"` + beta `server-side-fallback-2026-07-01`, timeout (10,110); saves FCRM Note
+  "Demo brief - dd MMM yyyy"; skips earlier briefs when gathering notes) and `prospects_debrief` (text ->
+  escaped, dated Comment on the deal). Buttons via legacy CRM Form Script `Deal - Demo Brief and Debrief`
+  (`setupForm` returning `actions`; `$dialog` html + browser SpeechRecognition `en-ZA` for dictation).
+  Sandbox notes: `frappe.make_post_request` is the SSRF-guarded wrapper (default timeout (10,300), pass
+  `timeout`), error body is not readable; safe utils include strip_html, escape_html, fmt_money, formatdate.
+  Tested: brief stops cleanly without key; debrief comment saved + escaped (test deleted). Brief itself
+  untested until the key is in.
