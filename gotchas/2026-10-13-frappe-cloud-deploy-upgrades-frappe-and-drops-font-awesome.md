@@ -54,6 +54,25 @@ After any deploy call `get_versions` (MCP `frappe_call`) and compare with the pr
 in `sites/<site>.md`. A framework jump means re-testing the till (POS client scripts,
 opening dialog, returns, Sage posting) before go-live, not just the feature shipped.
 
+## The second casualty: every `/app/` link is dead (Frappe 16.5x serves the desk at `/desk/`)
+
+Found by Russell an hour later: the Guides page's "Back to the home screen" (`/app/nest-home`)
+gave "Page not found". Sweep of the site and the apps on 2026-10-13 evening:
+
+| Where | Fix |
+|---|---|
+| Web Page `guides` back link | `/desk/nest-home` (temp server script; API user has no Web Page role) |
+| Nest Home Tiles NEST-TILE-0001..0006 (`/app/...`, re-created by nest_home's fixture on every migrate) | routes made relative on the site AND in `nest_home/fixtures/nest_home_tile.json` |
+| Nest Home tile opened in a new tab (Insights) | `nest_home.js` built `origin + '/app/' + route`; 0.0.28 builds `/desk/` and accepts `/desk` or `/app` in stored routes. Site workaround until deploy: route `/desk/insights` (an absolute non-desk path is opened as-is) |
+| nest_help: 31 help pages, "Back to Home" and "navigate to /app/x" | sed `/app/` -> `/desk/`, 0.0.7 (needs push + Deploy; help pages are static assets) |
+| Role home_page: Ardmore Finance `/app/accounting`, Ardmore Marketing `/app/selling` | `/desk/...` |
+| Custom HTML Block `CustomBlock1` (POS tile on a workspace) | `/desk/point-of-sale` |
+| Client Script `nest-crm-todo-intercept` (fixture of nest_crm_tasks) | `/desk/party-activity/` on the site and in the app (0.0.22, incl. my_activities.js / party_activity.js) |
+| Workspace shortcuts/links, Print Formats, Email Templates, Notifications, Web Pages, User home_settings | scanned, clean |
+
+Rule: after a framework update grep every app and the site for `'/app/` and `"/app/`. Tile routes
+and in-app links must be relative (`sales-order/new`); only website pages are absolute (`/guides`).
+
 ## See also
 
 - `gotchas/2026-05-10-frappe-v16-page-api-drift.md` (the same kind of framework drift,
