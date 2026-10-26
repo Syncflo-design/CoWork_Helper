@@ -24,7 +24,12 @@ Working list. Feeds the summary to send Ardmore. Add to it as Russell dictates.
 - Sage sales rep ids per till name, per entity (returns need them).
 - Surnames for Kelly and Oscar.
 - Whose VAT number, address and bank details print on the tax invoice.
-- Go-live date.
+- Go-live date: TARGET Monday 2 November 2026 (Russell, 16 Oct; 1 Nov is a Sunday, no trading).
+
+## Go-live weekend (set 16 Oct)
+- Sat 31 Oct: Ardmore counts Hyde Park + JHB Holding, corrects Sage.
+- Sun 1 Nov: on-site training (JHB Holding + Hyde Park staff). Sage accurate by the afternoon -> switch-on Sunday afternoon/evening (lock lift, integrations' default warehouse + cash customer + rep, first full stock pull, count sheets moved in as transfers, training company retired, passwords).
+- Mon 2 Nov: start of business live.
 
 ## Still to come
 - Rest is in Russell's notebook / the Go-Live Plan document.
