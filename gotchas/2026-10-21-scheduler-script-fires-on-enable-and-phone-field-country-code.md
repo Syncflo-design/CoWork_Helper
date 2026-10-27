@@ -37,6 +37,13 @@
   anything else -> blank). Email: take the first token containing `@` and `.`.
 - Sandbox has no `re`; write the digit filter as a loop.
 
+6. (27 Oct) A Scheduler Event script that switches itself off with
+   `frappe.db.set_value("Server Script", name, "disabled", 1)` keeps running: the flag is
+   only read when the Server Script is SAVED (on_update syncs the Scheduled Job Type).
+   The customer cleanup ran every 2 minutes for a day logging "finished". Also set
+   `stopped = 1` on the Scheduled Job Type (frappe.db.set_value works for that one, the
+   scheduler reads it directly).
+
 ## Related
 
 - `sites/ardmore.md` 2026-10-21 (Account Sales + customer sync).

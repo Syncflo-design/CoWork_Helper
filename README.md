@@ -190,3 +190,4 @@ skill), then ask questions instead of scrolling the index below. See `start-prom
 ## Adding to this knowledge base
 
 Run a session, hit a snag, fix it, then before closing the session: write a 5-line gotcha. The format is in `templates/gotcha-template.md`. Don't optimise for prose — optimise for "would this save me 30 minutes if I read it before doing X again".
+- [sites/ardmore-handover-2026-10-27.md](sites/ardmore-handover-2026-10-27.md) - go-live weekend hand-over: roadmap, option-1 final test, stock-movement sequence to confirm, open items. READ FIRST on the site laptop.
