@@ -1,0 +1,144 @@
+================================================================================
+PHAROH ENDPOINT BRIEF - Get Items By Code
+================================================================================
+
+Endpoint to build:   POST /api/InventorySync/get-items-by-code-for-erpnext
+Controller:          SageErpNextAPI - Controllers/InventorySyncController.cs
+Consumed by:         Ardmore site, API Server Script "ardmore-count-load" (create step)
+Status:              NOT YET LIVE. The ERPNext side is built and waiting on this.
+Needed for:          Ardmore go-live count load, Sunday 1 Nov 2026.
+
+--------------------------------------------------------------------------------
+1. PURPOSE
+--------------------------------------------------------------------------------
+The ITEM CODE is the only link between the Sage companies. The same code has a
+DIFFERENT SelectionID in each Sage company (Home, Ceramics, Fashion), and a
+SelectionID is never duplicated in Sage.
+
+When a count sheet is loaded, ERPNext must hold, for every counted item, that
+item's SelectionID in EACH company. Today ERPNext only learns a company's
+SelectionID through get-inventory-for-erpnext, which returns items with stock on
+hand in that company - so an item that exists in a company with zero stock never
+gets its id. post-new-item-to-sage then (correctly) rejects the code, but with a
+bare "400 Failed to create item in Sage." and no id.
+
+This endpoint answers one question per code: "does this code exist in this Sage
+company, and if so what is its SelectionID?" Only the codes ERPNext sends are
+looked up - never the whole item list.
+
+--------------------------------------------------------------------------------
+2. AUTH / COMPANY SCOPING
+--------------------------------------------------------------------------------
+- apikey in the query string: ?apikey={apikey}
+- The apikey says which Sage company the request is for. ERPNext calls once per
+  company (three calls for Home, Ceramics, Fashion).
+- Sage credentials in the body under "credentials" (wrapped shape), honouring
+  basic vs OAuth the same way as the other endpoints.
+
+--------------------------------------------------------------------------------
+3. REQUEST
+--------------------------------------------------------------------------------
+POST /api/InventorySync/get-items-by-code-for-erpnext?apikey=<API_KEY>
+Content-Type: application/json
+
+{
+  "credentials": {
+    "loginName":    "<sage login>",
+    "loginPwd":     "<sage password>",
+    "useOAuth":     false,
+    "sessionToken": null,
+    "provider":     null
+  },
+  "itemCodes": [
+    "AM748AUG26",
+    "CUSHCCD50",
+    "SCAPPD90"
+  ]
+}
+
+Field requirements:
+  credentials  (object)            REQUIRED. Standard Sage credential block.
+  itemCodes    (array of strings)  REQUIRED. 1 to 200 item codes. ERPNext sends
+                                   larger sheets in chunks of 200.
+
+--------------------------------------------------------------------------------
+4. BEHAVIOUR
+--------------------------------------------------------------------------------
+For each code in itemCodes:
+  - Look it up in the Sage company identified by the apikey, by Code (exact
+    match after trimming spaces).
+  - Found     -> return its SelectionID, whether it is active, and its
+                 description.
+  - Not found -> return found: false. Not an error.
+  - Inactive items ARE found (found: true, active: false). ERPNext must not try
+    to create a code that already exists, active or not.
+
+Process codes independently: one bad code must not abort the rest.
+Read only - nothing is written to Sage.
+
+Pacing: Sage's request limits are per company. If the Sage API allows several
+codes in one call (e.g. an OData filter on Code), batch them rather than one
+Sage call per code.
+
+--------------------------------------------------------------------------------
+5. RESPONSE
+--------------------------------------------------------------------------------
+HTTP 200, JSON OBJECT:
+
+{
+  "success": true,
+  "results": [
+    { "itemCode": "AM748AUG26", "found": true,  "selectionId": 102889512, "active": true,  "description": "Ardmore bowl ..." },
+    { "itemCode": "CUSHCCD50",  "found": true,  "selectionId": 102889535, "active": false, "description": "Cushion - Camp Critters Delta 50x50 Cotton" },
+    { "itemCode": "SCAPPD90",   "found": false, "selectionId": null,      "active": null,  "description": null }
+  ],
+  "errors": [
+    "XYZ-001: Sage returned an error looking this code up: <reason>"
+  ]
+}
+
+Field requirements:
+  success   (boolean)  REQUIRED. true if the request ran to completion, even if
+                       some codes errored. false only for a whole-request
+                       failure (auth, Sage unreachable, malformed request).
+  results   (array)    REQUIRED. One entry per code that was looked up
+                       successfully, in request order:
+                         itemCode     (string)  the code as sent
+                         found        (bool)
+                         selectionId  (int or null)  the SelectionID in THIS company
+                         active       (bool or null)
+                         description  (string or null)
+  errors    (array of strings)  REQUIRED (may be empty). A code whose lookup
+                       FAILED goes here, not into results. ERPNext treats such a
+                       code as unknown and does NOT create it.
+
+IMPORTANT: "not found" and "lookup failed" must be told apart. found: false is
+the ONLY answer that makes ERPNext create the item. If Pharoh is not sure
+(timeout, Sage error), the code goes into errors.
+
+--------------------------------------------------------------------------------
+6. ERROR HANDLING
+--------------------------------------------------------------------------------
+- Whole-request failure: non-200 with a readable error body. ERPNext stops the
+  create step for that company and shows the error.
+- Partial failure: HTTP 200, success: true, failed codes in errors.
+
+--------------------------------------------------------------------------------
+7. WHAT ERPNext DOES WITH THE RESPONSE (for context)
+--------------------------------------------------------------------------------
+For each counted item code, for each company (Home, Ceramics, Fashion):
+  1. ERPNext already holds the company's SelectionID -> nothing to do.
+  2. Otherwise it calls this endpoint (codes in chunks of 200):
+       found: true   -> save the SelectionID for that code + company
+                        (Sage Item Selection) and move on. Nothing is created.
+       found: false  -> call post-new-item-to-sage for that company (qty 0) and
+                        save the SelectionID it returns.
+       in errors     -> listed back to the operator; nothing created.
+
+--------------------------------------------------------------------------------
+8. SMALL ASK ON THE EXISTING CREATE CALL (optional)
+--------------------------------------------------------------------------------
+post-new-item-to-sage returns only "400 Failed to create item in Sage." when the
+code already exists (seen on Sage TEST, CUSHCCD50, 31 Oct 2026). Passing Sage's
+own reason through (e.g. "item code already exists") would let ERPNext tell a
+duplicate apart from a real failure.

@@ -5,8 +5,28 @@
       "input_tokens": 742714,
       "output_tokens": 0,
       "files": 128
+    },
+    {
+      "date": "2026-10-28T08:44:54.113278+00:00",
+      "input_tokens": 552097,
+      "output_tokens": 0,
+      "files": 73,
+      "note": "incremental --update; subagent totals (in+out combined)"
+    },
+    {
+      "date": "2026-11-01T19:16:14.323720+00:00",
+      "input_tokens": 162643,
+      "output_tokens": 0,
+      "files": 4,
+      "note": "update: 4 docs; subagent total only, no in/out split"
+    },
+    {
+      "date": "2026-11-02T09:01:07.605588+00:00",
+      "input_tokens": 323666,
+      "output_tokens": 0,
+      "files": 2
     }
   ],
-  "total_input_tokens": 742714,
+  "total_input_tokens": 1781120,
   "total_output_tokens": 0
 }

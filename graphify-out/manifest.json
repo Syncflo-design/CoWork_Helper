@@ -1,143 +1,171 @@
 {
   "apply-dashboard-styling.js": {
     "mtime": 1778045216.3899865,
+    "seen": 1793177021.6217058,
     "ast_hash": "a4df050d150acf38b2e663391383c274",
     "semantic_hash": "a4df050d150acf38b2e663391383c274"
   },
   "install.ps1": {
     "mtime": 1778044198.8290255,
+    "seen": 1793177021.621713,
     "ast_hash": "84c18d859e8cec94638ebba1bd56c132",
     "semantic_hash": "84c18d859e8cec94638ebba1bd56c132"
   },
   "make-shortcut.ps1": {
     "mtime": 1778044166.8414156,
+    "seen": 1793177021.621716,
     "ast_hash": "f79346109f16b0eb8d53434fe2633aa3",
     "semantic_hash": "f79346109f16b0eb8d53434fe2633aa3"
   },
   "projects/erpnext_sbca/commit_reconciliation_feature.sh": {
     "mtime": 1778740028.8216257,
+    "seen": 1793177021.6217177,
     "ast_hash": "32a570349f3a0727f6f94f9e7211a27f",
     "semantic_hash": "32a570349f3a0727f6f94f9e7211a27f"
   },
   "projects/quick_purchase_invoice/pyproject.toml": {
     "mtime": 1778064689.2396731,
+    "seen": 1793177021.6217194,
     "ast_hash": "2c8a55886195dddef501a4f235c2f2cc",
     "semantic_hash": "2c8a55886195dddef501a4f235c2f2cc"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/__init__.py": {
     "mtime": 1778070651.3723323,
+    "seen": 1793177021.6217208,
     "ast_hash": "62ed0e3fab52e99813e3f82df85e39bb",
     "semantic_hash": "62ed0e3fab52e99813e3f82df85e39bb"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/api.py": {
     "mtime": 1778064861.0960097,
+    "seen": 1793177021.6217222,
     "ast_hash": "4c7b52e31fccf318f1535852d60f66bd",
     "semantic_hash": "4c7b52e31fccf318f1535852d60f66bd"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/hooks.py": {
     "mtime": 1778070653.0601125,
+    "seen": 1793177021.6217234,
     "ast_hash": "8e44955f62257630deb51f93d2c7b669",
     "semantic_hash": "8e44955f62257630deb51f93d2c7b669"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/__init__.py": {
     "mtime": 1778064711.734874,
+    "seen": 1793177021.6217248,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/__init__.py": {
     "mtime": 1778064712.8799706,
+    "seen": 1793177021.6217265,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/__init__.py": {
     "mtime": 1778064761.2919037,
+    "seen": 1793177021.6217277,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.js": {
     "mtime": 1778066997.023804,
+    "seen": 1793177021.6217296,
     "ast_hash": "147dd0a3ee0c9c86872a1a59a58dc31d",
     "semantic_hash": "147dd0a3ee0c9c86872a1a59a58dc31d"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.json": {
     "mtime": 1778067074.7193525,
+    "seen": 1793177021.621731,
     "ast_hash": "bb93cb550bc7405ed22833dba01718e8",
     "semantic_hash": "bb93cb550bc7405ed22833dba01718e8"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.py": {
     "mtime": 1778064818.4527836,
+    "seen": 1793177021.6217322,
     "ast_hash": "923a97e741d27b687cfc6079a3536b4f",
     "semantic_hash": "923a97e741d27b687cfc6079a3536b4f"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/__init__.py": {
     "mtime": 1778064744.266495,
+    "seen": 1793177021.621734,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/quick_purchase_invoice_item.json": {
     "mtime": 1778064753.2966135,
+    "seen": 1793177021.621735,
     "ast_hash": "84b8831c7f2af11549bb738eef9c184c",
     "semantic_hash": "84b8831c7f2af11549bb738eef9c184c"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/quick_purchase_invoice_item.py": {
     "mtime": 1778064758.1153548,
+    "seen": 1793177021.6217365,
     "ast_hash": "11284162ea757bbad66ab2932e40ee07",
     "semantic_hash": "11284162ea757bbad66ab2932e40ee07"
   },
   "sites/ardmore-pos-page-script-fixed.js": {
     "mtime": 1784549502.0572996,
+    "seen": 1793177021.6217377,
     "ast_hash": "f2795f0d2fe827d13c8d01c94dc16c05",
-    "semantic_hash": ""
+    "semantic_hash": "f2795f0d2fe827d13c8d01c94dc16c05"
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_bar.json": {
     "mtime": 1778043093.9718144,
+    "seen": 1793177021.6217391,
     "ast_hash": "40bb41b10d2f48558e3bfa896cc35749",
     "semantic_hash": "40bb41b10d2f48558e3bfa896cc35749"
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_number.json": {
     "mtime": 1778043093.9382691,
+    "seen": 1793177021.6217403,
     "ast_hash": "453072eec6c291cbcc32a627d194b4e9",
     "semantic_hash": "453072eec6c291cbcc32a627d194b4e9"
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_table.json": {
     "mtime": 1778043274.159557,
+    "seen": 1793177021.6217418,
     "ast_hash": "2532556b0fe55b0c0c75c7a5342d2491",
     "semantic_hash": "2532556b0fe55b0c0c75c7a5342d2491"
   },
   "skills/frappe-insights-v3-dashboard/templates/dashboard_items.json": {
     "mtime": 1778043094.0117984,
+    "seen": 1793177021.621743,
     "ast_hash": "dc371923afd1066e5b8cbcd315afff5e",
     "semantic_hash": "dc371923afd1066e5b8cbcd315afff5e"
   },
   "skills/frappe-insights-v3-dashboard/templates/data_query.json": {
     "mtime": 1778043093.9009104,
+    "seen": 1793177021.6217444,
     "ast_hash": "7ffbc89b2442d660173d7b67a17d2e2e",
     "semantic_hash": "7ffbc89b2442d660173d7b67a17d2e2e"
   },
   "skills/frappe-insights-v3-dashboard/templates/source_query.json": {
     "mtime": 1778043093.8656452,
+    "seen": 1793177021.6217456,
     "ast_hash": "e1a0db5a3e84ebd43bbacc0b598d26e5",
     "semantic_hash": "e1a0db5a3e84ebd43bbacc0b598d26e5"
   },
   "templates/blomoplastics-insights-theme.user.js": {
     "mtime": 1778052592.6923356,
+    "seen": 1793177021.6217468,
     "ast_hash": "477c653879b9c18b326429cfd3f4444a",
     "semantic_hash": "477c653879b9c18b326429cfd3f4444a"
   },
   "templates/dashboard-theme-industrial-pro.js": {
     "mtime": 1778051296.0423427,
+    "seen": 1793177021.6217482,
     "ast_hash": "58d99b6f522175fdd98af150e7cd5bb6",
     "semantic_hash": "58d99b6f522175fdd98af150e7cd5bb6"
   },
   "templates/insights-theme-all-sites.user.js": {
     "mtime": 1778063015.2200263,
+    "seen": 1793177021.6217494,
     "ast_hash": "ee979ab455260cee50474fc48850b723",
     "semantic_hash": "ee979ab455260cee50474fc48850b723"
   },
   "CLAUDE.md": {
     "mtime": 1779453593.5741487,
+    "seen": 1793177021.6217506,
     "ast_hash": "1bf46b93b5d0aefe4f8cb3807b7d04f5",
-    "semantic_hash": ""
+    "semantic_hash": "1bf46b93b5d0aefe4f8cb3807b7d04f5"
   },
   "DASHBOARD-POLISH-GUIDE.md": {
     "mtime": 1778045233.4687283,
@@ -145,9 +173,10 @@
     "semantic_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27"
   },
   "README.md": {
-    "mtime": 1785669076.761739,
-    "ast_hash": "8e1734ae8b6649df12dbd18d41bd3ee5",
-    "semantic_hash": ""
+    "mtime": 1793097120.2930808,
+    "seen": 1793177021.6217518,
+    "ast_hash": "2840be73a00d051c726123afdad0ab93",
+    "semantic_hash": "2840be73a00d051c726123afdad0ab93"
   },
   "gotchas/2026-05-06-bash-vs-windows-git-ownership.md": {
     "mtime": 1778067442.4326575,
@@ -366,78 +395,93 @@
   },
   "gotchas/2026-05-20-cowork-sandbox-cannot-git-init-on-windows-mount.md": {
     "mtime": 1779262949.7151425,
+    "seen": 1793177021.6217546,
     "ast_hash": "1a3ea33f7294a97b7e8777c532c2326f",
-    "semantic_hash": ""
+    "semantic_hash": "1a3ea33f7294a97b7e8777c532c2326f"
   },
   "gotchas/2026-05-20-frappe-deploy-overwrites-doctype-permissions.md": {
     "mtime": 1779344588.7876518,
+    "seen": 1793177021.6217558,
     "ast_hash": "5c3fe1aa07c04f89b744f58d1a1d0606",
-    "semantic_hash": ""
+    "semantic_hash": "5c3fe1aa07c04f89b744f58d1a1d0606"
   },
   "gotchas/2026-05-20-gitbash-windows-path-and-default-branch.md": {
     "mtime": 1779289923.2675917,
+    "seen": 1793177021.6217573,
     "ast_hash": "727ed04038ba8fa000591e57aabf642c",
-    "semantic_hash": ""
+    "semantic_hash": "727ed04038ba8fa000591e57aabf642c"
   },
   "gotchas/2026-05-21-frappe-doctype-missing-controller-crashes-migrate.md": {
     "mtime": 1779352849.4896047,
+    "seen": 1793177021.6217585,
     "ast_hash": "a9580128b2b9f45029cc7a5e4b77bb46",
-    "semantic_hash": ""
+    "semantic_hash": "a9580128b2b9f45029cc7a5e4b77bb46"
   },
   "gotchas/2026-05-22-bash-mount-stale-not-host.md": {
     "mtime": 1779453209.4374604,
+    "seen": 1793177021.6217594,
     "ast_hash": "8530cf39c49ee4afcffbb0165439db73",
-    "semantic_hash": ""
+    "semantic_hash": "8530cf39c49ee4afcffbb0165439db73"
   },
   "gotchas/2026-05-27-frappe-webhook-headers-not-jinja-rendered.md": {
     "mtime": 1779860529.7238612,
+    "seen": 1793177021.621761,
     "ast_hash": "f9d5d92468072f1372664c42c2f660b2",
-    "semantic_hash": ""
+    "semantic_hash": "f9d5d92468072f1372664c42c2f660b2"
   },
   "gotchas/2026-05-27-omnisend-phone-identifier-requires-sms-channel.md": {
     "mtime": 1779860542.497865,
+    "seen": 1793177021.6217623,
     "ast_hash": "294dd06600fc9059e133b7e187d678ae",
-    "semantic_hash": ""
+    "semantic_hash": "294dd06600fc9059e133b7e187d678ae"
   },
   "gotchas/2026-05-28-erpnext-clean-company-restart.md": {
     "mtime": 1779986883.2383215,
+    "seen": 1793177021.6217635,
     "ast_hash": "415a5a7799fc01c57739dae33568d169",
-    "semantic_hash": ""
+    "semantic_hash": "415a5a7799fc01c57739dae33568d169"
   },
   "gotchas/2026-05-28-nest-home-tile-needs-layout-not-just-library.md": {
     "mtime": 1779952269.3363757,
+    "seen": 1793177021.621765,
     "ast_hash": "0ff27853d806e75593498190988ceada",
-    "semantic_hash": ""
+    "semantic_hash": "0ff27853d806e75593498190988ceada"
   },
   "gotchas/2026-06-10-server-script-sandbox-and-xlsx.md": {
     "mtime": 1786533849.5497546,
+    "seen": 1793177021.6217659,
     "ast_hash": "1bb7bd10370061d4b3b0126942ce7525",
-    "semantic_hash": ""
+    "semantic_hash": "1bb7bd10370061d4b3b0126942ce7525"
   },
   "gotchas/2026-07-20-frappe-pos-page-custom-script-breaks-returns.md": {
     "mtime": 1784554275.470866,
+    "seen": 1793177021.6217675,
     "ast_hash": "af5067e728cd4d83d1eefc002c10755e",
-    "semantic_hash": ""
+    "semantic_hash": "af5067e728cd4d83d1eefc002c10755e"
   },
   "gotchas/2026-07-20-sage-return-script-blocks-pos-closing.md": {
     "mtime": 1784551554.7816799,
+    "seen": 1793177021.6217687,
     "ast_hash": "fa3e4d3db9d8d62301376d24dda220a5",
-    "semantic_hash": ""
+    "semantic_hash": "fa3e4d3db9d8d62301376d24dda220a5"
   },
   "gotchas/2026-07-20-warehouse-user-permission-blocks-stock-transfer.md": {
     "mtime": 1784549531.5762115,
+    "seen": 1793177021.6217697,
     "ast_hash": "02437603db22b4ba2223f282ea8137d7",
-    "semantic_hash": ""
+    "semantic_hash": "02437603db22b4ba2223f282ea8137d7"
   },
   "gotchas/2026-07-24-pos-outdated-opening-entry-blocks-till.md": {
     "mtime": 1784912354.07852,
+    "seen": 1793177021.621771,
     "ast_hash": "fae37f10df2b4c2229cdf03e0917750d",
-    "semantic_hash": ""
+    "semantic_hash": "fae37f10df2b4c2229cdf03e0917750d"
   },
   "playbooks/erpnext-wipe-company-transactions.md": {
     "mtime": 1779987316.1061132,
+    "seen": 1793177021.6218355,
     "ast_hash": "69aa0d03802ccfd09f9dc13407f451eb",
-    "semantic_hash": ""
+    "semantic_hash": "69aa0d03802ccfd09f9dc13407f451eb"
   },
   "playbooks/frappe-custom-app-v16.md": {
     "mtime": 1778843129.4816244,
@@ -451,8 +495,9 @@
   },
   "playbooks/frappe-webhook-to-omnisend.md": {
     "mtime": 1779860566.7783687,
+    "seen": 1793177021.621837,
     "ast_hash": "71c678788c9052e0aba1667235606c4a",
-    "semantic_hash": ""
+    "semantic_hash": "71c678788c9052e0aba1667235606c4a"
   },
   "playbooks/insights-fork-themeing.md": {
     "mtime": 1778062892.0773995,
@@ -466,13 +511,15 @@
   },
   "playbooks/two-machine-workflow.md": {
     "mtime": 1784894622.7735188,
+    "seen": 1793177021.6218395,
     "ast_hash": "622a99716d2690241793eebde3348178",
-    "semantic_hash": ""
+    "semantic_hash": "622a99716d2690241793eebde3348178"
   },
   "projects/erpnext_sbca/ASSESSMENT.md": {
     "mtime": 1785664428.6095889,
+    "seen": 1793177021.621841,
     "ast_hash": "6e6adfdd3498b4fcea72fabab355a57d",
-    "semantic_hash": ""
+    "semantic_hash": "6e6adfdd3498b4fcea72fabab355a57d"
   },
   "projects/erpnext_sbca/OPUS_PROMPT_PaymentReconciliation.md": {
     "mtime": 1778737480.483354,
@@ -536,8 +583,9 @@
   },
   "projects/nest_home/KICKOFF_PROMPT.md": {
     "mtime": 1779259897.7003067,
+    "seen": 1793177021.6218421,
     "ast_hash": "40ee5d72463a374c36a5577c2a4edf0d",
-    "semantic_hash": ""
+    "semantic_hash": "40ee5d72463a374c36a5577c2a4edf0d"
   },
   "projects/quick_purchase_invoice/DEPLOY.md": {
     "mtime": 1778064931.416046,
@@ -581,18 +629,21 @@
   },
   "projects/theme_studio/SCOPE.md": {
     "mtime": 1779250147.384888,
+    "seen": 1793177021.6218433,
     "ast_hash": "fb79a55f72075fdf5d7425afca6aa4be",
-    "semantic_hash": ""
+    "semantic_hash": "fb79a55f72075fdf5d7425afca6aa4be"
   },
   "sites/ardmore-pos-console-fix.txt": {
     "mtime": 1784553467.597252,
+    "seen": 1793177021.621846,
     "ast_hash": "ea43294f4f2a879e928e14345d633632",
-    "semantic_hash": ""
+    "semantic_hash": "ea43294f4f2a879e928e14345d633632"
   },
   "sites/ardmore.md": {
-    "mtime": 1786533881.3664508,
-    "ast_hash": "0dc415c3b908045738b7680bef056a5a",
-    "semantic_hash": ""
+    "mtime": 1793609066.1553931,
+    "seen": 1793610016.4373603,
+    "ast_hash": "0232c152edda42f72a828f58d949ad89",
+    "semantic_hash": "0232c152edda42f72a828f58d949ad89"
   },
   "sites/blomoplastics.md": {
     "mtime": 1778843129.5468223,
@@ -600,9 +651,10 @@
     "semantic_hash": "8ffbf4f0cb36e247a1fe350c1acd7144"
   },
   "sites/nesterp.md": {
-    "mtime": 1779986916.3048098,
-    "ast_hash": "f7b198c7ec9ffd32927313f130acaa97",
-    "semantic_hash": ""
+    "mtime": 1791904144.87738,
+    "seen": 1793177021.6218548,
+    "ast_hash": "6dbc5557eab770885a3900473c590f3c",
+    "semantic_hash": "6dbc5557eab770885a3900473c590f3c"
   },
   "skills/frappe-insights-v3-dashboard/SKILL.md": {
     "mtime": 1778043093.8217542,
@@ -616,13 +668,15 @@
   },
   "start-prompt.md": {
     "mtime": 1785661720.6336222,
+    "seen": 1793177021.621856,
     "ast_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf",
-    "semantic_hash": ""
+    "semantic_hash": "eb2b1865e78bbd5a7b652a7bf0f42bdf"
   },
   "start-prompt.txt": {
     "mtime": 1785668926.1300416,
+    "seen": 1793177021.621857,
     "ast_hash": "5f774d34b097a9641e6435c8bfd5e61c",
-    "semantic_hash": ""
+    "semantic_hash": "5f774d34b097a9641e6435c8bfd5e61c"
   },
   "templates/gotcha-template.md": {
     "mtime": 1778043076.249849,
@@ -641,52 +695,296 @@
   },
   "gotchas/2026-08-03-frappe-child-row-insert-bypasses-parent-validation.md": {
     "mtime": 1785770192.5563555,
+    "seen": 1793177021.6217885,
     "ast_hash": "83c703128e91edc7272679a2d67f62dd",
-    "semantic_hash": ""
+    "semantic_hash": "83c703128e91edc7272679a2d67f62dd"
   },
   "gotchas/2026-08-03-label-width-caps-barcode-character-count.md": {
     "mtime": 1785770168.1241446,
+    "seen": 1793177021.6217904,
     "ast_hash": "be070e8a90486a0a205f142a13d80352",
-    "semantic_hash": ""
+    "semantic_hash": "be070e8a90486a0a205f142a13d80352"
   },
   "gotchas/2026-08-03-zero-valuation-seed-stock-warns-on-every-transfer.md": {
     "mtime": 1785770141.7231169,
+    "seen": 1793177021.6217918,
     "ast_hash": "f009aeb89afc58f6525356e6f4882540",
-    "semantic_hash": ""
+    "semantic_hash": "f009aeb89afc58f6525356e6f4882540"
   },
   "gotchas/2026-08-04-aspnet-cold-start-slow-first-page.md": {
     "mtime": 1785855878.8494716,
+    "seen": 1793177021.621793,
     "ast_hash": "d74f6cb4ad5732e06cc1c732d6b84276",
-    "semantic_hash": ""
+    "semantic_hash": "d74f6cb4ad5732e06cc1c732d6b84276"
   },
   "gotchas/2026-08-06-client-script-listview-settings-assignment-wipes-indicators.md": {
     "mtime": 1786008161.5043497,
+    "seen": 1793177021.6217945,
     "ast_hash": "37cdfb9966e37aa9704d3aa105095ebf",
-    "semantic_hash": ""
+    "semantic_hash": "37cdfb9966e37aa9704d3aa105095ebf"
   },
   "gotchas/2026-08-12-a-link-query-that-ignores-txt-looks-like-missing-data.md": {
     "mtime": 1786533807.0112445,
+    "seen": 1793177021.6217957,
     "ast_hash": "700e278c30b3784b0d08e89c3b458e98",
-    "semantic_hash": ""
+    "semantic_hash": "700e278c30b3784b0d08e89c3b458e98"
   },
   "gotchas/2026-08-12-customize-form-blocks-int-to-float.md": {
     "mtime": 1786533782.7815158,
+    "seen": 1793177021.6217968,
     "ast_hash": "d2cd034cc515280dfbab0d7ad16b68cc",
-    "semantic_hash": ""
+    "semantic_hash": "d2cd034cc515280dfbab0d7ad16b68cc"
   },
   "gotchas/2026-08-12-db-set-value-skips-the-hooks-that-make-a-change-real.md": {
     "mtime": 1786533766.5934658,
+    "seen": 1793177021.621798,
     "ast_hash": "62a32f3bd30a7aa05dc53e33d9cb6487",
-    "semantic_hash": ""
+    "semantic_hash": "62a32f3bd30a7aa05dc53e33d9cb6487"
   },
   "gotchas/2026-08-12-price-list-holding-two-vat-conventions-at-once.md": {
     "mtime": 1786533832.17596,
+    "seen": 1793177021.6217997,
     "ast_hash": "16d4b7fa3a55fae0152299eec5cc78e5",
-    "semantic_hash": ""
+    "semantic_hash": "16d4b7fa3a55fae0152299eec5cc78e5"
   },
   "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md": {
     "mtime": 1787123276.1041472,
+    "seen": 1793177021.621801,
     "ast_hash": "4cae74fa5d0ba3db8329148aacd8789b",
-    "semantic_hash": ""
+    "semantic_hash": "4cae74fa5d0ba3db8329148aacd8789b"
+  },
+  "gotchas/2026-05-17-claude-desktop-msix-config-path.md": {
+    "mtime": 1779010669.1029391,
+    "seen": 1793177021.621753,
+    "ast_hash": "0a828dcb3d7fc183e6e4acc52df6875a",
+    "semantic_hash": "0a828dcb3d7fc183e6e4acc52df6875a"
+  },
+  "gotchas/2026-08-24-erpnext-lead-status-reverts-to-opportunity.md": {
+    "mtime": 1787556528.5784872,
+    "seen": 1793177021.6218023,
+    "ast_hash": "8b28cd16590be2c0d47b01f4ec8c9501",
+    "semantic_hash": "8b28cd16590be2c0d47b01f4ec8c9501"
+  },
+  "gotchas/2026-08-24-frappe-grid-columns-overridden-by-user-settings.md": {
+    "mtime": 1787555201.133835,
+    "seen": 1793177021.6218033,
+    "ast_hash": "347c7b9f493583825feedce9be114ca0",
+    "semantic_hash": "347c7b9f493583825feedce9be114ca0"
+  },
+  "gotchas/2026-08-26-web-page-css-field-for-additive-restyling.md": {
+    "mtime": 1787763430.2834811,
+    "seen": 1793177021.6218042,
+    "ast_hash": "1d65fda10034926c9dbde0e350c2ade2",
+    "semantic_hash": "1d65fda10034926c9dbde0e350c2ade2"
+  },
+  "gotchas/2026-08-26-website-route-redirect-source-is-slash-stripped.md": {
+    "mtime": 1787763410.8096168,
+    "seen": 1793177021.621806,
+    "ast_hash": "eaae367bee00a449943f4655d8a9f9f1",
+    "semantic_hash": "eaae367bee00a449943f4655d8a9f9f1"
+  },
+  "gotchas/2026-09-04-iis-child-apps-borrow-default-document-from-root.md": {
+    "mtime": 1788504167.1255693,
+    "seen": 1793177021.6218069,
+    "ast_hash": "ac1e85ad3d5e517ba4aeca5b198f3b88",
+    "semantic_hash": "ac1e85ad3d5e517ba4aeca5b198f3b88"
+  },
+  "gotchas/2026-09-07-disabled-default-price-list-and-stale-bootinfo.md": {
+    "mtime": 1788772935.244847,
+    "seen": 1793177021.621808,
+    "ast_hash": "cb9d8d6bd0053d2d25ead28ef5f7a8e8",
+    "semantic_hash": "cb9d8d6bd0053d2d25ead28ef5f7a8e8"
+  },
+  "gotchas/2026-09-07-pos-invoice-client-scripts-run-inside-pos-page.md": {
+    "mtime": 1788769049.164618,
+    "seen": 1793177021.6218092,
+    "ast_hash": "951581c9ee141164a8a27a14837233c0",
+    "semantic_hash": "951581c9ee141164a8a27a14837233c0"
+  },
+  "gotchas/2026-09-21-pos-sales-never-reached-sage-stock-leak.md": {
+    "mtime": 1789987178.0043182,
+    "seen": 1793177021.6218104,
+    "ast_hash": "01dd91ae787c9740f7f612a00a08146e",
+    "semantic_hash": "01dd91ae787c9740f7f612a00a08146e"
+  },
+  "gotchas/2026-09-22-ardmore-uat-sage-test-lock-register.md": {
+    "mtime": 1793094944.6254632,
+    "seen": 1793177021.6218114,
+    "ast_hash": "8db6be34ec1019b14c70ec8044ba7c82",
+    "semantic_hash": "8db6be34ec1019b14c70ec8044ba7c82"
+  },
+  "gotchas/2026-09-29-ardmore-guides-rebuild-and-screenshot-traps.md": {
+    "mtime": 1790750240.3625314,
+    "seen": 1793177021.6218126,
+    "ast_hash": "b0395d6161902d77f8bbc25225dde475",
+    "semantic_hash": "b0395d6161902d77f8bbc25225dde475"
+  },
+  "gotchas/2026-09-29-insights-fork-sqlglot-pin-breaks-frappe-migrate.md": {
+    "mtime": 1790689143.10648,
+    "seen": 1793177021.6218138,
+    "ast_hash": "7bc3bb719a80881f57f2e3fed72cc3c5",
+    "semantic_hash": "7bc3bb719a80881f57f2e3fed72cc3c5"
+  },
+  "gotchas/2026-09-29-sage-returns-and-retry.md": {
+    "mtime": 1790692719.104293,
+    "seen": 1793177021.6218147,
+    "ast_hash": "35e760cb3f51098777f35abaae0c427f",
+    "semantic_hash": "35e760cb3f51098777f35abaae0c427f"
+  },
+  "gotchas/2026-09-30-print-format-pdf-margins-come-from-css.md": {
+    "mtime": 1790760101.266318,
+    "seen": 1793177021.6218162,
+    "ast_hash": "dc092ea2929cc0f1a0da37677cfb6ab8",
+    "semantic_hash": "dc092ea2929cc0f1a0da37677cfb6ab8"
+  },
+  "gotchas/2026-10-07-v16-custom-sidebar-patch-fails-on-removed-app.md": {
+    "mtime": 1791363037.677954,
+    "seen": 1793177021.621817,
+    "ast_hash": "a7e6f3afff4af0413d7535546f69adee",
+    "semantic_hash": "a7e6f3afff4af0413d7535546f69adee"
+  },
+  "gotchas/2026-10-08-fuse-demo-restore-replays-intacct-control-ids.md": {
+    "mtime": 1791904144.81862,
+    "seen": 1793177021.6218183,
+    "ast_hash": "01acd83774d2d9183e798dc636db2d68",
+    "semantic_hash": "01acd83774d2d9183e798dc636db2d68"
+  },
+  "gotchas/2026-10-08-new-form-numbers-are-zero-and-workflow-needs-cancelled-state.md": {
+    "mtime": 1791477953.3735158,
+    "seen": 1793177021.6218195,
+    "ast_hash": "d2ff1798c7045ea7da1cdfadf33f936d",
+    "semantic_hash": "d2ff1798c7045ea7da1cdfadf33f936d"
+  },
+  "gotchas/2026-10-13-batch-reference-to-unsaved-document-fails.md": {
+    "mtime": 1791957779.4605467,
+    "seen": 1793177021.6218207,
+    "ast_hash": "a9f8a6025734b0d7368385db93cc42f1",
+    "semantic_hash": "a9f8a6025734b0d7368385db93cc42f1"
+  },
+  "gotchas/2026-10-13-counter-sales-of-inspected-items-need-qi-after-delivery.md": {
+    "mtime": 1791957779.542036,
+    "seen": 1793177021.6218216,
+    "ast_hash": "45e40f396f4a9dcd13d8a0843274410a",
+    "semantic_hash": "45e40f396f4a9dcd13d8a0843274410a"
+  },
+  "gotchas/2026-10-13-erpnext-v16-qi-reading-1-vs-reading-value.md": {
+    "mtime": 1791957779.1586175,
+    "seen": 1793177021.621823,
+    "ast_hash": "b5f7c5b0de4bca70338017558409e303",
+    "semantic_hash": "b5f7c5b0de4bca70338017558409e303"
+  },
+  "gotchas/2026-10-13-frappe-cloud-deploy-upgrades-frappe-and-drops-font-awesome.md": {
+    "mtime": 1791909889.1011133,
+    "seen": 1793177021.621824,
+    "ast_hash": "12f41110664e3fe13393364d51aae930",
+    "semantic_hash": "12f41110664e3fe13393364d51aae930"
+  },
+  "gotchas/2026-10-13-git-on-network-drive-needs-safe-directory.md": {
+    "mtime": 1791957779.711708,
+    "seen": 1793177021.6218252,
+    "ast_hash": "30dea02b0f3c332eaa1f658a4bcf3c22",
+    "semantic_hash": "30dea02b0f3c332eaa1f658a4bcf3c22"
+  },
+  "gotchas/2026-10-13-installed-application-version-lags-deployed-code.md": {
+    "mtime": 1791957779.807004,
+    "seen": 1793177021.6218264,
+    "ast_hash": "0a83d710edfb7ef70b89418cebfa9bce",
+    "semantic_hash": "0a83d710edfb7ef70b89418cebfa9bce"
+  },
+  "gotchas/2026-10-13-pos-opening-entry-needs-sales-manager.md": {
+    "mtime": 1791957779.62437,
+    "seen": 1793177021.6218271,
+    "ast_hash": "cb498cb5478118710fc1915f2544cf73",
+    "semantic_hash": "cb498cb5478118710fc1915f2544cf73"
+  },
+  "gotchas/2026-10-13-submit-after-quality-inspection-needs-reload.md": {
+    "mtime": 1791957779.3811946,
+    "seen": 1793177021.6218283,
+    "ast_hash": "78dcf54c1596e6bd39143b2b83152ff8",
+    "semantic_hash": "78dcf54c1596e6bd39143b2b83152ff8"
+  },
+  "gotchas/2026-10-13-validate-check-refusing-drafts-blocks-inspected-lines.md": {
+    "mtime": 1791957779.297383,
+    "seen": 1793177021.6218293,
+    "ast_hash": "903e774adb69edb05d49cab107d61913",
+    "semantic_hash": "903e774adb69edb05d49cab107d61913"
+  },
+  "gotchas/2026-10-14-standard-print-format-change-needs-modified-bump.md": {
+    "mtime": 1791957779.8993883,
+    "seen": 1793177021.6218307,
+    "ast_hash": "6c1232f0f33d3822396ccf7fdad4dec2",
+    "semantic_hash": "6c1232f0f33d3822396ccf7fdad4dec2"
+  },
+  "gotchas/2026-10-20-insights-v3-dashboard-filters-and-duckdb.md": {
+    "mtime": 1792487580.260779,
+    "seen": 1793177021.6218317,
+    "ast_hash": "6a0fe4efae7afe27919625d009f36754",
+    "semantic_hash": "6a0fe4efae7afe27919625d009f36754"
+  },
+  "gotchas/2026-10-21-scheduler-script-fires-on-enable-and-phone-field-country-code.md": {
+    "mtime": 1793092125.583173,
+    "seen": 1793177021.6218328,
+    "ast_hash": "08781b7a58ae77bb70f845cc1dd48557",
+    "semantic_hash": "08781b7a58ae77bb70f845cc1dd48557"
+  },
+  "gotchas/2026-10-23-frappe-v16-query-and-assignment-changes.md": {
+    "mtime": 1792745204.9021387,
+    "seen": 1793177021.621834,
+    "ast_hash": "5eec2f2c3090948419e7fe18f6f29b86",
+    "semantic_hash": "5eec2f2c3090948419e7fe18f6f29b86"
+  },
+  "playbooks/new-laptop-setup.md": {
+    "mtime": 1792997914.524667,
+    "seen": 1793177021.621838,
+    "ast_hash": "c4260efb41672e711ace494163bac57b",
+    "semantic_hash": "c4260efb41672e711ace494163bac57b"
+  },
+  "sites/ardmore-handover-2026-10-27.md": {
+    "mtime": 1793455013.3828459,
+    "seen": 1793560511.9810426,
+    "ast_hash": "78142c04656876b8f2b518baac733534",
+    "semantic_hash": "78142c04656876b8f2b518baac733534"
+  },
+  "sites/ardmore-switch-on-hyde-park-and-online.md": {
+    "mtime": 1791904144.8727376,
+    "seen": 1793177021.6218474,
+    "ast_hash": "a669e2e65dd671e97c0f93338e6ae46d",
+    "semantic_hash": "a669e2e65dd671e97c0f93338e6ae46d"
+  },
+  "sites/ardmore-uat-items-2026-09-22.md": {
+    "mtime": 1790058658.7941918,
+    "seen": 1793177021.621851,
+    "ast_hash": "13a89371647054f65cafdeabb5c976d6",
+    "semantic_hash": "13a89371647054f65cafdeabb5c976d6"
+  },
+  "sites/ardmore_visit_2026-10-14_recap.md": {
+    "mtime": 1792157834.285862,
+    "seen": 1793177021.6218534,
+    "ast_hash": "dfd480206681d7419c5da7e840f595cd",
+    "semantic_hash": "dfd480206681d7419c5da7e840f595cd"
+  },
+  "gotchas/2026-11-01-ardmore-first-live-stock-pull.md": {
+    "mtime": 1793559733.2347577,
+    "seen": 1793560511.9810374,
+    "ast_hash": "796b5d44d5dacab4199f1bbc1a9cd4c0",
+    "semantic_hash": "796b5d44d5dacab4199f1bbc1a9cd4c0"
+  },
+  "projects/erpnext_sbca/Pharoh_GetItemsByCode_Endpoint_Brief.txt": {
+    "mtime": 1793435817.8673506,
+    "seen": 1793560511.9810395,
+    "ast_hash": "15612dba6063843841d2a8b881ef5602",
+    "semantic_hash": "15612dba6063843841d2a8b881ef5602"
+  },
+  "sites/ardmore-golive-requirements-2026-11-01.md": {
+    "mtime": 1793559915.7657135,
+    "seen": 1793560511.9810412,
+    "ast_hash": "c99d7addc4661e3813d0f5d2f2264ae1",
+    "semantic_hash": "c99d7addc4661e3813d0f5d2f2264ae1"
+  },
+  "gotchas/2026-11-02-sage-default-price-list-empty-in-erpnext.md": {
+    "mtime": 1793603968.8737614,
+    "seen": 1793610016.437358,
+    "ast_hash": "62535a26b16c17d6f8addf7c407951fa",
+    "semantic_hash": "62535a26b16c17d6f8addf7c407951fa"
   }
 }
