@@ -25,8 +25,15 @@
       "input_tokens": 323666,
       "output_tokens": 0,
       "files": 2
+    },
+    {
+      "date": "2026-11-09T06:40:56.559958+00:00",
+      "input_tokens": 584138,
+      "output_tokens": 0,
+      "files": 35,
+      "note": "update: subagent totals (in+out combined)"
     }
   ],
-  "total_input_tokens": 1781120,
+  "total_input_tokens": 2365258,
   "total_output_tokens": 0
 }

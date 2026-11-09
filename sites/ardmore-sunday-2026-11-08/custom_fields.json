@@ -1,0 +1,9 @@
+[
+  {"dt": "Company Sage Integration", "fieldname": "custom_sales_other_section", "fieldtype": "Section Break", "label": "Sales Other (till)", "insert_after": "custom_physical_address"},
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_sales_other_account", "fieldtype": "Data", "label": "Sage Account", "read_only": 1, "insert_after": "custom_sales_other_section", "description": "The one Sage account every Sales Other line on this company's tills posts to."},
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_sales_other_account_id", "fieldtype": "Int", "label": "Sage Account ID", "read_only": 1, "insert_after": "custom_sage_sales_other_account"},
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_sales_other_select", "fieldtype": "Button", "label": "Select Account", "insert_after": "custom_sage_sales_other_account_id"},
+  {"dt": "Item", "fieldname": "custom_sage_post_status", "fieldtype": "Select", "label": "Sage Post Status", "options": "\nCreate\nUpdate\nRepair\nDone\nFailed", "read_only": 1, "no_copy": 1, "search_index": 1, "insert_after": "custom_qty_pending_sage", "description": "Set by the importers. Sent to Sage 25 at a time."},
+  {"dt": "Item", "fieldname": "custom_sage_post_attempts", "fieldtype": "Int", "label": "Sage Post Attempts", "read_only": 1, "no_copy": 1, "hidden": 1, "insert_after": "custom_sage_post_status"},
+  {"dt": "Item", "fieldname": "custom_sage_post_error", "fieldtype": "Small Text", "label": "Sage Post Error", "read_only": 1, "no_copy": 1, "insert_after": "custom_sage_post_attempts"}
+]

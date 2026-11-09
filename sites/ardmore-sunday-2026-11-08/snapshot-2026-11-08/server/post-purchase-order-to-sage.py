@@ -1,0 +1,262 @@
+
+payload = {}
+
+def convert_timestamp(ts):
+    return ts.isoformat()
+    
+try:
+    sage = frappe.get_doc("Sage Integration", {"company": doc.company})
+    apikey = sage.get_password("api_key")
+    loginName = sage.username
+    loginPwd = sage.get_password("password")
+
+    if not apikey or not loginName or not loginPwd:
+        frappe.throw("Sage credentials missing in Sage Integration.")
+
+    url = f"https://pharoh.co.za/api/PurchaseOrder/post-purchaseorder-to-sage?apikey={apikey}"
+
+    supplier_doc = frappe.get_doc("Supplier", doc.supplier)
+    sage_supplier_id = supplier_doc.get("custom_sage_supplier_id")
+    supplier_id = 0
+    if not sage_supplier_id:
+        frappe.throw(f"Sage Supplier ID missing on supplier: {doc.supplier}")
+    try:
+        supplier_id = int(sage_supplier_id)
+    except:
+        frappe.throw("Sage Supplier ID must be numeric.")
+
+
+    if not doc.items:
+        frappe.throw("No items found in Sales Invoice.")
+    lines = []
+    for item in doc.items:
+        item_doc = frappe.get_doc("Item", item.item_code)
+        selection_raw = item_doc.get("custom_sage_selection_id")
+        if not selection_raw:
+            frappe.throw(
+
+                f"Sage Selection ID missing for item: {item.item_code}. "
+
+                f"Please sync this item to Sage first."
+
+            )
+        try:
+            selection_raw = int(selection_raw)
+        except:
+            frappe.throw("Sage Supplier ID must be numeric.")
+        tax_type_id = int(item_doc.get("tax_typeid_sales") or item_doc.get("custom_sage_tax_type_id") or 0)
+        item_exclusive = float(item.net_amount or item.amount or 0)
+        item_rate_excl = float(item.net_rate or item.rate or 0)
+        item_rate_incl = float(item.rate or 0)
+        item_tax = 0
+        tax_details = doc.item_wise_tax_details
+        if tax_details != []:
+            for tax in tax_details:
+                if item.name == tax.get("item_row"):
+                    item_tax = tax.get("amount")
+        item_total = item.base_amount
+        lines.append ({
+            
+        "selectionId": selection_raw,
+        "id": 0,
+        "lineType": 0,
+        "description": item.description or item.item_name or "",
+        "unit": item.uom or "",
+        "comments": "",
+        "quantity": float(item.qty or 0),
+        "unitPriceExclusive": item_rate_excl,
+        "unitPriceInclusive": item_rate_incl,
+        "unitCost": float(item.valuation_rate or item.net_rate or item.rate or 0),
+        "exclusive": item_exclusive,
+        "discount": float(item.discount_amount or 0),
+        "tax": item_tax,
+        "total": item_total,
+        "taxPercentage": 0,
+        "discountPercentage": float(item.discount_percentage or 0),
+        "taxTypeId": tax_type_id,
+        "currencyId": 0,
+        "analysisCategoryId1": 0,
+        "analysisCategoryId2": 0,
+        "analysisCategoryId3": 0
+            
+            })
+   
+    payload = {
+
+        "credentials": {
+
+            "loginName": loginName,
+            "loginPwd": loginPwd,
+            "useOAuth": False,
+            "sessionToken": None,
+            "provider": None
+
+        },
+        "order": {
+        "id": 0,
+        "documentNumber": doc.name,
+        "date": convert_timestamp(doc.creation),
+        "deliveryDate": convert_timestamp(doc.creation),
+        "status": "Yes", # not sure
+        "supplier": {
+            "id": supplier_id,
+            "name": "",
+            "taxReference": "",
+            "contactName": "",
+            "telephone": "",
+            "fax": "",
+            "mobile": "",
+            "email": "",
+            "webAddress": "",
+            "active": True,
+            "isObfuscated": True,
+            "balance": 0,
+            "creditLimit": 0,
+            "postalAddress01": doc.billing_address,
+            "postalAddress02": doc.billing_address,
+            "postalAddress03": doc.billing_address,
+            "postalAddress04": doc.billing_address,
+            "postalAddress05": doc.billing_address,
+            "deliveryAddress01": doc.billing_address,
+            "deliveryAddress02": doc.billing_address,
+            "deliveryAddress03": doc.billing_address,
+            "deliveryAddress04": doc.billing_address,
+            "deliveryAddress05": doc.billing_address,
+            "autoAllocateToOldestInvoice": True,
+            "textField1": "",
+            "textField2": "",
+            "textField3": "",
+            "numericField1": 0,
+            "numericField2": 0,
+            "numericField3": 0,
+            "yesNoField1": True,
+            "yesNoField2": True,
+            "yesNoField3": True,
+            "dateField1": convert_timestamp(doc.creation),
+            "dateField2": convert_timestamp(doc.creation),
+            "dateField3": convert_timestamp(doc.creation),
+            "accountingAgreement": True,
+            "hasSpecialCountryTaxActivity": True,
+            "modified": convert_timestamp(doc.modified),
+            "created": convert_timestamp(doc.creation),
+            "businessRegistrationNumber": "",
+            "rmcdApprovalNumber": "",
+            "taxStatusVerified": convert_timestamp(doc.creation),
+            "currencyId": 0,
+            "currencySymbol": "",
+            "hasActivity": True,
+            "defaultDiscountPercentage": 0,
+            "defaultTaxTypeId": 0,
+            "dueDateMethodId": 0,
+            "dueDateMethodValue": 0,
+            "subjectToDRCVat": True
+            },
+            "total": float(doc.grand_total or 0),
+            "tax": float(doc.total_taxes_and_charges or 0),
+            "discount": float(doc.discount_amount or 0),
+            "reference": doc.name or "",
+            "message": doc.remarks or "",
+            "lines": lines,
+            "addresses": [
+            {
+                "addressType": "",
+                "line1": "",
+                "line2": "",
+                "city": "",
+                "province": "",
+                "postalCode": "",
+                "country": ""
+            }
+            ],
+            "inclusive": True,
+            "discountPercentage": float(doc.additional_discount_percentage or 0),
+            "taxReference": "",
+            "exclusive": float(doc.grand_total or 0),
+            "rounding": float(doc.rounding_adjustment or 0),
+            "amountDue": float(doc.outstanding_amount or 0),
+            "externalReference": "",
+            "supplier_CurrencyId": 0,
+            "supplier_ExchangeRate": 0,
+            "useForeignCurrency": True,
+            "postalAddress01": "doc.billing_address",
+            "postalAddress02": "doc.billing_address",
+            "postalAddress03": "doc.billing_address",
+            "postalAddress04": "doc.billing_address",
+            "postalAddress05": "doc.billing_address",
+            "deliveryAddress01": "doc.billing_address",
+            "deliveryAddress02": "doc.billing_address",
+            "deliveryAddress03": "doc.billing_address",
+            "deliveryAddress04": "doc.billing_address",
+            "deliveryAddress05": "doc.billing_address"
+        }
+    }
+    
+    sage_response_text = "No response captured"
+    payload = json.dumps(payload)
+    
+    try:
+        response = frappe.make_post_request(
+
+            url,
+
+            data=payload,
+
+            headers={"Content-Type": "application/json"}
+
+        )
+        if response and response.get("success"):
+
+            doc.db_set("custom_sage_order_id", str(response.get("sageOrderId") or ""))
+
+            doc.db_set("custom_sage_document_number", str(response.get("documentNumber") or ""))
+
+            try:
+
+                doc.db_set("custom_sage_sync_status", "Synced")
+
+            except Exception:
+
+                pass
+
+            frappe.msgprint(
+
+                f"✅ Sage Sync Successful!\n"
+
+                f"Sage Order ID: {response.get('sageOrderId')}\n"
+
+                f"Document Number: {response.get('documentNumber')}"
+
+            )
+
+        else:
+
+            error_msg = response.get("errorMessage") or str(response) if response else "Unknown"
+
+            frappe.throw(f"Sage API Error: {error_msg}")
+
+    except Exception as http_err:
+        frappe.log_error(str(http_err), "SupplierReturn API Error")
+        raise
+
+except Exception as e:
+
+    frappe.log_error(
+
+        message=f"Purchase Order: {doc.name}\nCustomer: {doc.supplier}\nError: {str(e)}\nPayload: {str(payload)}",
+
+        title="Sage Purchase Order Sync Error"
+
+    )
+    try:
+        doc.db_set("custom_sage_sync_status", "Failed")
+
+    except Exception:
+
+        pass
+
+    frappe.throw(f"Sage Sync Failed: {str(e)}")
+
+finally:
+    doc.reload() 
+
+   

@@ -158,6 +158,7 @@ skill), then ask questions instead of scrolling the index below. See `start-prom
 | 2026-10-13 | [`git-on-network-drive-needs-safe-directory.md`](gotchas/2026-10-13-git-on-network-drive-needs-safe-directory.md) | Repos on S: fail with "dubious ownership": run git as `git -c safe.directory='*' ...` |
 | 2026-10-13 | [`installed-application-version-lags-deployed-code.md`](gotchas/2026-10-13-installed-application-version-lags-deployed-code.md) | Installed Application's version is refreshed by migrate, not by the code swap: it can show an older version than is running (and vice versa). Check behaviour, not the listing |
 | 2026-10-14 | [`standard-print-format-change-needs-modified-bump.md`](gotchas/2026-10-14-standard-print-format-change-needs-modified-bump.md) | A standard Print Format (Page, Report, DocType) JSON change is skipped on migrate unless `modified` is bumped. 0.10.3's certificate fix never reached the site; 0.10.4 bumps it. Standard formats cannot be edited by API outside developer mode |
+| 2026-11-08 | [`sage-item-cost-and-frappe-sandbox.md`](gotchas/2026-11-08-sage-item-cost-and-frappe-sandbox.md) | Sage costs a create from the selling price; adjustment cost replaces the average; additional list rates are VAT-inclusive; three more Server Script traps |
 
 ### Templates (reusable snippets)
 
@@ -190,4 +191,5 @@ skill), then ask questions instead of scrolling the index below. See `start-prom
 ## Adding to this knowledge base
 
 Run a session, hit a snag, fix it, then before closing the session: write a 5-line gotcha. The format is in `templates/gotcha-template.md`. Don't optimise for prose — optimise for "would this save me 30 minutes if I read it before doing X again".
+- [sites/ardmore-handover-2026-11-09.md](sites/ardmore-handover-2026-11-09.md) - CURRENT hand-over: state on Live, how imports reach Sage, open list. READ FIRST for Ardmore.
 - [sites/ardmore-handover-2026-10-27.md](sites/ardmore-handover-2026-10-27.md) - go-live weekend hand-over: roadmap, option-1 final test, stock-movement sequence to confirm, open items. READ FIRST on the site laptop.

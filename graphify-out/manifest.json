@@ -173,10 +173,10 @@
     "semantic_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27"
   },
   "README.md": {
-    "mtime": 1793097120.2930808,
-    "seen": 1793177021.6217518,
-    "ast_hash": "2840be73a00d051c726123afdad0ab93",
-    "semantic_hash": "2840be73a00d051c726123afdad0ab93"
+    "mtime": 1794205457.7148294,
+    "seen": 1794206390.065272,
+    "ast_hash": "810d3b2149cf1ed19d6d50ad56f80697",
+    "semantic_hash": "810d3b2149cf1ed19d6d50ad56f80697"
   },
   "gotchas/2026-05-06-bash-vs-windows-git-ownership.md": {
     "mtime": 1778067442.4326575,
@@ -640,10 +640,10 @@
     "semantic_hash": "ea43294f4f2a879e928e14345d633632"
   },
   "sites/ardmore.md": {
-    "mtime": 1793609066.1553931,
-    "seen": 1793610016.4373603,
-    "ast_hash": "0232c152edda42f72a828f58d949ad89",
-    "semantic_hash": "0232c152edda42f72a828f58d949ad89"
+    "mtime": 1794205457.7168398,
+    "seen": 1794206390.0652978,
+    "ast_hash": "3417a332ab267f229f0cfeb7b988cf7c",
+    "semantic_hash": "3417a332ab267f229f0cfeb7b988cf7c"
   },
   "sites/blomoplastics.md": {
     "mtime": 1778843129.5468223,
@@ -754,10 +754,10 @@
     "semantic_hash": "4cae74fa5d0ba3db8329148aacd8789b"
   },
   "gotchas/2026-05-17-claude-desktop-msix-config-path.md": {
-    "mtime": 1779010669.1029391,
-    "seen": 1793177021.621753,
-    "ast_hash": "0a828dcb3d7fc183e6e4acc52df6875a",
-    "semantic_hash": "0a828dcb3d7fc183e6e4acc52df6875a"
+    "mtime": 1793691200.0365076,
+    "seen": 1794206390.0652735,
+    "ast_hash": "f38c1c1f9e8240c6461e7081691954cd",
+    "semantic_hash": "f38c1c1f9e8240c6461e7081691954cd"
   },
   "gotchas/2026-08-24-erpnext-lead-status-reverts-to-opportunity.md": {
     "mtime": 1787556528.5784872,
@@ -832,16 +832,16 @@
     "semantic_hash": "35e760cb3f51098777f35abaae0c427f"
   },
   "gotchas/2026-09-30-print-format-pdf-margins-come-from-css.md": {
-    "mtime": 1790760101.266318,
-    "seen": 1793177021.6218162,
-    "ast_hash": "dc092ea2929cc0f1a0da37677cfb6ab8",
-    "semantic_hash": "dc092ea2929cc0f1a0da37677cfb6ab8"
+    "mtime": 1793691200.0365076,
+    "seen": 1794206390.0652754,
+    "ast_hash": "16d9b1450e6176d266b032a37438a4ae",
+    "semantic_hash": "16d9b1450e6176d266b032a37438a4ae"
   },
   "gotchas/2026-10-07-v16-custom-sidebar-patch-fails-on-removed-app.md": {
-    "mtime": 1791363037.677954,
-    "seen": 1793177021.621817,
-    "ast_hash": "a7e6f3afff4af0413d7535546f69adee",
-    "semantic_hash": "a7e6f3afff4af0413d7535546f69adee"
+    "mtime": 1793691200.0365076,
+    "seen": 1794206390.0652769,
+    "ast_hash": "d829143033552b1dd2191d215afd4de5",
+    "semantic_hash": "d829143033552b1dd2191d215afd4de5"
   },
   "gotchas/2026-10-08-fuse-demo-restore-replays-intacct-control-ids.md": {
     "mtime": 1791904144.81862,
@@ -850,10 +850,10 @@
     "semantic_hash": "01acd83774d2d9183e798dc636db2d68"
   },
   "gotchas/2026-10-08-new-form-numbers-are-zero-and-workflow-needs-cancelled-state.md": {
-    "mtime": 1791477953.3735158,
-    "seen": 1793177021.6218195,
-    "ast_hash": "d2ff1798c7045ea7da1cdfadf33f936d",
-    "semantic_hash": "d2ff1798c7045ea7da1cdfadf33f936d"
+    "mtime": 1793691200.0377393,
+    "seen": 1794206390.0652788,
+    "ast_hash": "3a1ce7dc16b73633bb55b18cf44296b9",
+    "semantic_hash": "3a1ce7dc16b73633bb55b18cf44296b9"
   },
   "gotchas/2026-10-13-batch-reference-to-unsaved-document-fails.md": {
     "mtime": 1791957779.4605467,
@@ -964,27 +964,177 @@
     "semantic_hash": "dfd480206681d7419c5da7e840f595cd"
   },
   "gotchas/2026-11-01-ardmore-first-live-stock-pull.md": {
-    "mtime": 1793559733.2347577,
-    "seen": 1793560511.9810374,
-    "ast_hash": "796b5d44d5dacab4199f1bbc1a9cd4c0",
-    "semantic_hash": "796b5d44d5dacab4199f1bbc1a9cd4c0"
+    "mtime": 1793691200.0377393,
+    "seen": 1794206390.0652819,
+    "ast_hash": "dff5351e71de8b3c79a36dbf7cfde331",
+    "semantic_hash": "dff5351e71de8b3c79a36dbf7cfde331"
   },
   "projects/erpnext_sbca/Pharoh_GetItemsByCode_Endpoint_Brief.txt": {
-    "mtime": 1793435817.8673506,
-    "seen": 1793560511.9810395,
-    "ast_hash": "15612dba6063843841d2a8b881ef5602",
-    "semantic_hash": "15612dba6063843841d2a8b881ef5602"
+    "mtime": 1793691200.0771947,
+    "seen": 1794206390.0652888,
+    "ast_hash": "76fb9841612b1097b7aaa19738b1713a",
+    "semantic_hash": "76fb9841612b1097b7aaa19738b1713a"
   },
   "sites/ardmore-golive-requirements-2026-11-01.md": {
-    "mtime": 1793559915.7657135,
-    "seen": 1793560511.9810412,
-    "ast_hash": "c99d7addc4661e3813d0f5d2f2264ae1",
-    "semantic_hash": "c99d7addc4661e3813d0f5d2f2264ae1"
+    "mtime": 1793691200.0771947,
+    "seen": 1794206390.0652905,
+    "ast_hash": "9f4b9ad6361c609345989c93d9d033f3",
+    "semantic_hash": "9f4b9ad6361c609345989c93d9d033f3"
   },
   "gotchas/2026-11-02-sage-default-price-list-empty-in-erpnext.md": {
-    "mtime": 1793603968.8737614,
-    "seen": 1793610016.437358,
-    "ast_hash": "62535a26b16c17d6f8addf7c407951fa",
-    "semantic_hash": "62535a26b16c17d6f8addf7c407951fa"
+    "mtime": 1793691200.0387397,
+    "seen": 1794206390.0652833,
+    "ast_hash": "535e9bc8679ac287adf2d529448c4e3c",
+    "semantic_hash": "535e9bc8679ac287adf2d529448c4e3c"
+  },
+  "sites/ardmore-sunday-2026-11-08/client/Company Sage Integration - Sales Other Account.js": {
+    "mtime": 1793964943.7394593,
+    "seen": 1794206390.0651174,
+    "ast_hash": "a8a38e697ed38b9cf92dafef1aad19aa",
+    "semantic_hash": "a8a38e697ed38b9cf92dafef1aad19aa"
+  },
+  "sites/ardmore-sunday-2026-11-08/client/POS Sales Other.js": {
+    "mtime": 1793964943.8067055,
+    "seen": 1794206390.0651197,
+    "ast_hash": "69a68647a5ca234b9c5f17e19bd9e435",
+    "semantic_hash": "69a68647a5ca234b9c5f17e19bd9e435"
+  },
+  "sites/ardmore-sunday-2026-11-08/custom_fields.json": {
+    "mtime": 1793965021.346124,
+    "seen": 1794206390.0651217,
+    "ast_hash": "fbcce457fb0e7fb48a471d6ca54fb318",
+    "semantic_hash": "fbcce457fb0e7fb48a471d6ca54fb318"
+  },
+  "sites/ardmore-sunday-2026-11-08/make_patched.py": {
+    "mtime": 1793965021.4225867,
+    "seen": 1794206390.0651226,
+    "ast_hash": "bb4f3f42d4affb6eb13c7849702e0e7c",
+    "semantic_hash": "bb4f3f42d4affb6eb13c7849702e0e7c"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/Home_Fashion_Importer_-_Import.py": {
+    "mtime": 1794133995.8335135,
+    "seen": 1794206390.065228,
+    "ast_hash": "d5092f64db8a8bbc967d9514e4ba47ff",
+    "semantic_hash": "d5092f64db8a8bbc967d9514e4ba47ff"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/Kiln_Sheet_Importer_-_Import.py": {
+    "mtime": 1794133995.8335135,
+    "seen": 1794206390.0652304,
+    "ast_hash": "814cbbf419a8d949e167bab811247486",
+    "semantic_hash": "814cbbf419a8d949e167bab811247486"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/POS_Cart_Quantity.js": {
+    "mtime": 1794114760.6494012,
+    "seen": 1794206390.0652318,
+    "ast_hash": "9c99d76d664b06542518c6f8ca684836",
+    "semantic_hash": "9c99d76d664b06542518c6f8ca684836"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/POS_Return_Item_Picker.js": {
+    "mtime": 1794114760.6494012,
+    "seen": 1794206390.065233,
+    "ast_hash": "7f824f427c6220c7bc660ef9f1812251",
+    "semantic_hash": "7f824f427c6220c7bc660ef9f1812251"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/get-inventory-for-erpnext.py": {
+    "mtime": 1794114760.6494012,
+    "seen": 1794206390.0652344,
+    "ast_hash": "c02efcdd55abb9ee428ed6ad63697dcb",
+    "semantic_hash": "c02efcdd55abb9ee428ed6ad63697dcb"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/post-customerreturn-to-sage.py": {
+    "mtime": 1794114760.6494012,
+    "seen": 1794206390.0652356,
+    "ast_hash": "a619af4be4b796b56254fac81e76b059",
+    "semantic_hash": "a619af4be4b796b56254fac81e76b059"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/post-intercompany-sale-to-sage.py": {
+    "mtime": 1794114760.6494012,
+    "seen": 1794206390.065237,
+    "ast_hash": "a7387754f6c68d2175c7c37f3de7ff19",
+    "semantic_hash": "a7387754f6c68d2175c7c37f3de7ff19"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/post-taxinvoice-to-sage.py": {
+    "mtime": 1794114760.6479306,
+    "seen": 1794206390.065238,
+    "ast_hash": "f6471773056b67d5a17928fbf0669009",
+    "semantic_hash": "f6471773056b67d5a17928fbf0669009"
+  },
+  "sites/ardmore-sunday-2026-11-08/patched/sync-home-retail-prices.py": {
+    "mtime": 1794114760.6494012,
+    "seen": 1794206390.065239,
+    "ast_hash": "91ed06ab50b199caf0e6c7b447b51a53",
+    "semantic_hash": "91ed06ab50b199caf0e6c7b447b51a53"
+  },
+  "sites/ardmore-sunday-2026-11-08/server/Sales Invoice - Sales Other.py": {
+    "mtime": 1793964943.5151434,
+    "seen": 1794206390.065241,
+    "ast_hash": "9d3482a7459a63c1c38b336a5c0aebd8",
+    "semantic_hash": "9d3482a7459a63c1c38b336a5c0aebd8"
+  },
+  "sites/ardmore-sunday-2026-11-08/server/pos-sales-other-setup.py": {
+    "mtime": 1793964943.6095264,
+    "seen": 1794206390.0652442,
+    "ast_hash": "dacdfef12d9f69f21e5b48a0ab1bb66e",
+    "semantic_hash": "dacdfef12d9f69f21e5b48a0ab1bb66e"
+  },
+  "sites/ardmore-sunday-2026-11-08/server/post-pending-items-to-sage.py": {
+    "mtime": 1794134218.7986498,
+    "seen": 1794206390.0652459,
+    "ast_hash": "e58f143a27946eec52e7dcd674c3db12",
+    "semantic_hash": "e58f143a27946eec52e7dcd674c3db12"
+  },
+  "sites/ardmore-sunday-2026-11-08/server/post_new_item_to_sage.py": {
+    "mtime": 1793965021.1970391,
+    "seen": 1794206390.0652483,
+    "ast_hash": "16d8e2b725aa2a5d52bacc668ee71d17",
+    "semantic_hash": "16d8e2b725aa2a5d52bacc668ee71d17"
+  },
+  "sites/ardmore-sunday-2026-11-08/server/sage-accounts-for-company.py": {
+    "mtime": 1793964943.673679,
+    "seen": 1794206390.0652509,
+    "ast_hash": "78ad0436728cce244f13811f6cf1ff8e",
+    "semantic_hash": "78ad0436728cce244f13811f6cf1ff8e"
+  },
+  "gotchas/2026-10-28-pos-register-empty-in-sales-invoice-mode.md": {
+    "mtime": 1793691199.9905188,
+    "seen": 1794206390.06528,
+    "ast_hash": "778a5d0d9444bc053a2490729442d2d4",
+    "semantic_hash": "778a5d0d9444bc053a2490729442d2d4"
+  },
+  "gotchas/2026-11-05-job-card-save-refused-before-earlier-step.md": {
+    "mtime": 1794205468.095533,
+    "seen": 1794206390.0652845,
+    "ast_hash": "f2136dde99307091e0e77d2903591484",
+    "semantic_hash": "f2136dde99307091e0e77d2903591484"
+  },
+  "gotchas/2026-11-06-list-onload-filter-narrows-fresh-drilldown.md": {
+    "mtime": 1794205468.121706,
+    "seen": 1794206390.065286,
+    "ast_hash": "5d85d84649c44d635072624acb520dcf",
+    "semantic_hash": "5d85d84649c44d635072624acb520dcf"
+  },
+  "gotchas/2026-11-08-sage-item-cost-and-frappe-sandbox.md": {
+    "mtime": 1794205456.6960297,
+    "seen": 1794206390.065287,
+    "ast_hash": "17fcdf97ebea76db9dbb8ef47e064517",
+    "semantic_hash": "17fcdf97ebea76db9dbb8ef47e064517"
+  },
+  "sites/ardmore-handover-2026-11-09.md": {
+    "mtime": 1794205456.6285331,
+    "seen": 1794206390.065292,
+    "ast_hash": "c2c9ad23fc02c43280bd64833d2133dd",
+    "semantic_hash": "c2c9ad23fc02c43280bd64833d2133dd"
+  },
+  "sites/ardmore-sunday-2026-11-08/README.md": {
+    "mtime": 1794134554.5228748,
+    "seen": 1794206390.065293,
+    "ast_hash": "2138e2acb0be5ce964219b09eb10c1ce",
+    "semantic_hash": "2138e2acb0be5ce964219b09eb10c1ce"
+  },
+  "sites/ardmore-sunday-2026-11-08/pharoh-prompt-2026-11-08.md": {
+    "mtime": 1794124704.256266,
+    "seen": 1794206390.0652955,
+    "ast_hash": "87c115bdf5cef955fba40df8259d1377",
+    "semantic_hash": "87c115bdf5cef955fba40df8259d1377"
   }
 }

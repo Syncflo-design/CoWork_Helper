@@ -1,0 +1,1 @@
+frappe.call("server_scripts.server_scripts.read_excel.read_excel")
