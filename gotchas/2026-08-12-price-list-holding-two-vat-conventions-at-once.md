@@ -70,3 +70,9 @@ snapshot would have cost nothing.**
 
 - `gotchas/2026-08-12-db-set-value-skips-the-hooks-that-make-a-change-real.md`
 - `sites/ardmore.md` — 2026-08-12 work log
+
+## Superseded in part (10 Nov 2026)
+
+Step 2 ("gross the Sage sync up by 1.15") is reversed: Pharoh's additional-price feed now returns Sage's
+VAT-INCLUSIVE price, so the gross-up was adding VAT twice. See
+`gotchas/2026-11-10-ardmore-price-sync-double-vat-and-half-lists.md`.

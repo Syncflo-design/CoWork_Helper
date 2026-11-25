@@ -1,163 +1,136 @@
 {
   "apply-dashboard-styling.js": {
     "mtime": 1778045216.3899865,
-    "seen": 1793177021.6217058,
     "ast_hash": "a4df050d150acf38b2e663391383c274",
     "semantic_hash": "a4df050d150acf38b2e663391383c274"
   },
   "install.ps1": {
     "mtime": 1778044198.8290255,
-    "seen": 1793177021.621713,
     "ast_hash": "84c18d859e8cec94638ebba1bd56c132",
     "semantic_hash": "84c18d859e8cec94638ebba1bd56c132"
   },
   "make-shortcut.ps1": {
     "mtime": 1778044166.8414156,
-    "seen": 1793177021.621716,
     "ast_hash": "f79346109f16b0eb8d53434fe2633aa3",
     "semantic_hash": "f79346109f16b0eb8d53434fe2633aa3"
   },
   "projects/erpnext_sbca/commit_reconciliation_feature.sh": {
     "mtime": 1778740028.8216257,
-    "seen": 1793177021.6217177,
     "ast_hash": "32a570349f3a0727f6f94f9e7211a27f",
     "semantic_hash": "32a570349f3a0727f6f94f9e7211a27f"
   },
   "projects/quick_purchase_invoice/pyproject.toml": {
     "mtime": 1778064689.2396731,
-    "seen": 1793177021.6217194,
     "ast_hash": "2c8a55886195dddef501a4f235c2f2cc",
     "semantic_hash": "2c8a55886195dddef501a4f235c2f2cc"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/__init__.py": {
     "mtime": 1778070651.3723323,
-    "seen": 1793177021.6217208,
     "ast_hash": "62ed0e3fab52e99813e3f82df85e39bb",
     "semantic_hash": "62ed0e3fab52e99813e3f82df85e39bb"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/api.py": {
     "mtime": 1778064861.0960097,
-    "seen": 1793177021.6217222,
     "ast_hash": "4c7b52e31fccf318f1535852d60f66bd",
     "semantic_hash": "4c7b52e31fccf318f1535852d60f66bd"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/hooks.py": {
     "mtime": 1778070653.0601125,
-    "seen": 1793177021.6217234,
     "ast_hash": "8e44955f62257630deb51f93d2c7b669",
     "semantic_hash": "8e44955f62257630deb51f93d2c7b669"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/__init__.py": {
     "mtime": 1778064711.734874,
-    "seen": 1793177021.6217248,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/__init__.py": {
     "mtime": 1778064712.8799706,
-    "seen": 1793177021.6217265,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/__init__.py": {
     "mtime": 1778064761.2919037,
-    "seen": 1793177021.6217277,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.js": {
     "mtime": 1778066997.023804,
-    "seen": 1793177021.6217296,
     "ast_hash": "147dd0a3ee0c9c86872a1a59a58dc31d",
     "semantic_hash": "147dd0a3ee0c9c86872a1a59a58dc31d"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.json": {
     "mtime": 1778067074.7193525,
-    "seen": 1793177021.621731,
     "ast_hash": "bb93cb550bc7405ed22833dba01718e8",
     "semantic_hash": "bb93cb550bc7405ed22833dba01718e8"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice/quick_purchase_invoice.py": {
     "mtime": 1778064818.4527836,
-    "seen": 1793177021.6217322,
     "ast_hash": "923a97e741d27b687cfc6079a3536b4f",
     "semantic_hash": "923a97e741d27b687cfc6079a3536b4f"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/__init__.py": {
     "mtime": 1778064744.266495,
-    "seen": 1793177021.621734,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/quick_purchase_invoice_item.json": {
     "mtime": 1778064753.2966135,
-    "seen": 1793177021.621735,
     "ast_hash": "84b8831c7f2af11549bb738eef9c184c",
     "semantic_hash": "84b8831c7f2af11549bb738eef9c184c"
   },
   "projects/quick_purchase_invoice/quick_purchase_invoice/quick_purchase_invoice/doctype/quick_purchase_invoice_item/quick_purchase_invoice_item.py": {
     "mtime": 1778064758.1153548,
-    "seen": 1793177021.6217365,
     "ast_hash": "11284162ea757bbad66ab2932e40ee07",
     "semantic_hash": "11284162ea757bbad66ab2932e40ee07"
   },
   "sites/ardmore-pos-page-script-fixed.js": {
     "mtime": 1784549502.0572996,
-    "seen": 1793177021.6217377,
     "ast_hash": "f2795f0d2fe827d13c8d01c94dc16c05",
     "semantic_hash": "f2795f0d2fe827d13c8d01c94dc16c05"
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_bar.json": {
     "mtime": 1778043093.9718144,
-    "seen": 1793177021.6217391,
     "ast_hash": "40bb41b10d2f48558e3bfa896cc35749",
     "semantic_hash": "40bb41b10d2f48558e3bfa896cc35749"
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_number.json": {
     "mtime": 1778043093.9382691,
-    "seen": 1793177021.6217403,
     "ast_hash": "453072eec6c291cbcc32a627d194b4e9",
     "semantic_hash": "453072eec6c291cbcc32a627d194b4e9"
   },
   "skills/frappe-insights-v3-dashboard/templates/chart_table.json": {
     "mtime": 1778043274.159557,
-    "seen": 1793177021.6217418,
     "ast_hash": "2532556b0fe55b0c0c75c7a5342d2491",
     "semantic_hash": "2532556b0fe55b0c0c75c7a5342d2491"
   },
   "skills/frappe-insights-v3-dashboard/templates/dashboard_items.json": {
     "mtime": 1778043094.0117984,
-    "seen": 1793177021.621743,
     "ast_hash": "dc371923afd1066e5b8cbcd315afff5e",
     "semantic_hash": "dc371923afd1066e5b8cbcd315afff5e"
   },
   "skills/frappe-insights-v3-dashboard/templates/data_query.json": {
     "mtime": 1778043093.9009104,
-    "seen": 1793177021.6217444,
     "ast_hash": "7ffbc89b2442d660173d7b67a17d2e2e",
     "semantic_hash": "7ffbc89b2442d660173d7b67a17d2e2e"
   },
   "skills/frappe-insights-v3-dashboard/templates/source_query.json": {
     "mtime": 1778043093.8656452,
-    "seen": 1793177021.6217456,
     "ast_hash": "e1a0db5a3e84ebd43bbacc0b598d26e5",
     "semantic_hash": "e1a0db5a3e84ebd43bbacc0b598d26e5"
   },
   "templates/blomoplastics-insights-theme.user.js": {
     "mtime": 1778052592.6923356,
-    "seen": 1793177021.6217468,
     "ast_hash": "477c653879b9c18b326429cfd3f4444a",
     "semantic_hash": "477c653879b9c18b326429cfd3f4444a"
   },
   "templates/dashboard-theme-industrial-pro.js": {
     "mtime": 1778051296.0423427,
-    "seen": 1793177021.6217482,
     "ast_hash": "58d99b6f522175fdd98af150e7cd5bb6",
     "semantic_hash": "58d99b6f522175fdd98af150e7cd5bb6"
   },
   "templates/insights-theme-all-sites.user.js": {
     "mtime": 1778063015.2200263,
-    "seen": 1793177021.6217494,
     "ast_hash": "ee979ab455260cee50474fc48850b723",
     "semantic_hash": "ee979ab455260cee50474fc48850b723"
   },
@@ -173,10 +146,9 @@
     "semantic_hash": "a5d10dad6ab6a6a447ca8ec3f0b46b27"
   },
   "README.md": {
-    "mtime": 1794205457.7148294,
-    "seen": 1794206390.065272,
-    "ast_hash": "810d3b2149cf1ed19d6d50ad56f80697",
-    "semantic_hash": "810d3b2149cf1ed19d6d50ad56f80697"
+    "mtime": 1795603957.3632088,
+    "ast_hash": "a2a43db222beb5eefda6d2419a7d90f3",
+    "semantic_hash": "a2a43db222beb5eefda6d2419a7d90f3"
   },
   "gotchas/2026-05-06-bash-vs-windows-git-ownership.md": {
     "mtime": 1778067442.4326575,
@@ -640,10 +612,9 @@
     "semantic_hash": "ea43294f4f2a879e928e14345d633632"
   },
   "sites/ardmore.md": {
-    "mtime": 1794205457.7168398,
-    "seen": 1794206390.0652978,
-    "ast_hash": "3417a332ab267f229f0cfeb7b988cf7c",
-    "semantic_hash": "3417a332ab267f229f0cfeb7b988cf7c"
+    "mtime": 1795603943.279638,
+    "ast_hash": "d7cb62959d740ada8ffeb71543551d55",
+    "semantic_hash": "d7cb62959d740ada8ffeb71543551d55"
   },
   "sites/blomoplastics.md": {
     "mtime": 1778843129.5468223,
@@ -651,10 +622,9 @@
     "semantic_hash": "8ffbf4f0cb36e247a1fe350c1acd7144"
   },
   "sites/nesterp.md": {
-    "mtime": 1791904144.87738,
-    "seen": 1793177021.6218548,
-    "ast_hash": "6dbc5557eab770885a3900473c590f3c",
-    "semantic_hash": "6dbc5557eab770885a3900473c590f3c"
+    "mtime": 1794897428.7121067,
+    "ast_hash": "75d8ce3ab4cbffad8c91b86dc82fa3ac",
+    "semantic_hash": "75d8ce3ab4cbffad8c91b86dc82fa3ac"
   },
   "skills/frappe-insights-v3-dashboard/SKILL.md": {
     "mtime": 1778043093.8217542,
@@ -742,10 +712,9 @@
     "semantic_hash": "62a32f3bd30a7aa05dc53e33d9cb6487"
   },
   "gotchas/2026-08-12-price-list-holding-two-vat-conventions-at-once.md": {
-    "mtime": 1786533832.17596,
-    "seen": 1793177021.6217997,
-    "ast_hash": "16d4b7fa3a55fae0152299eec5cc78e5",
-    "semantic_hash": "16d4b7fa3a55fae0152299eec5cc78e5"
+    "mtime": 1794291268.3858871,
+    "ast_hash": "f4a26e0ee65eaae8aa345cbc299cc8f9",
+    "semantic_hash": "f4a26e0ee65eaae8aa345cbc299cc8f9"
   },
   "gotchas/2026-08-18-page-css-served-stale-when-the-cache-buster-is-not-bumped.md": {
     "mtime": 1787123276.1041472,
@@ -808,10 +777,9 @@
     "semantic_hash": "01dd91ae787c9740f7f612a00a08146e"
   },
   "gotchas/2026-09-22-ardmore-uat-sage-test-lock-register.md": {
-    "mtime": 1793094944.6254632,
-    "seen": 1793177021.6218114,
-    "ast_hash": "8db6be34ec1019b14c70ec8044ba7c82",
-    "semantic_hash": "8db6be34ec1019b14c70ec8044ba7c82"
+    "mtime": 1793255720.227424,
+    "ast_hash": "11ff90b84d784e81a6458c83b58441f3",
+    "semantic_hash": "11ff90b84d784e81a6458c83b58441f3"
   },
   "gotchas/2026-09-29-ardmore-guides-rebuild-and-screenshot-traps.md": {
     "mtime": 1790750240.3625314,
@@ -988,112 +956,94 @@
     "semantic_hash": "535e9bc8679ac287adf2d529448c4e3c"
   },
   "sites/ardmore-sunday-2026-11-08/client/Company Sage Integration - Sales Other Account.js": {
-    "mtime": 1793964943.7394593,
-    "seen": 1794206390.0651174,
-    "ast_hash": "a8a38e697ed38b9cf92dafef1aad19aa",
-    "semantic_hash": "a8a38e697ed38b9cf92dafef1aad19aa"
+    "mtime": 1795603906.7886832,
+    "ast_hash": "e4437b282a0df0e26384c027eb03acef",
+    "semantic_hash": "e4437b282a0df0e26384c027eb03acef"
   },
   "sites/ardmore-sunday-2026-11-08/client/POS Sales Other.js": {
-    "mtime": 1793964943.8067055,
-    "seen": 1794206390.0651197,
-    "ast_hash": "69a68647a5ca234b9c5f17e19bd9e435",
-    "semantic_hash": "69a68647a5ca234b9c5f17e19bd9e435"
+    "mtime": 1795603906.7886832,
+    "ast_hash": "3d1add397739d9bc7b4ad560c5819857",
+    "semantic_hash": "3d1add397739d9bc7b4ad560c5819857"
   },
   "sites/ardmore-sunday-2026-11-08/custom_fields.json": {
-    "mtime": 1793965021.346124,
-    "seen": 1794206390.0651217,
-    "ast_hash": "fbcce457fb0e7fb48a471d6ca54fb318",
-    "semantic_hash": "fbcce457fb0e7fb48a471d6ca54fb318"
+    "mtime": 1795603906.7886832,
+    "ast_hash": "1cd223268c6e19bfc1d718188b83affe",
+    "semantic_hash": "1cd223268c6e19bfc1d718188b83affe"
   },
   "sites/ardmore-sunday-2026-11-08/make_patched.py": {
-    "mtime": 1793965021.4225867,
-    "seen": 1794206390.0651226,
-    "ast_hash": "bb4f3f42d4affb6eb13c7849702e0e7c",
-    "semantic_hash": "bb4f3f42d4affb6eb13c7849702e0e7c"
+    "mtime": 1795603906.7886832,
+    "ast_hash": "dc134fee9b9bba81604ae478f4e4bfe5",
+    "semantic_hash": "dc134fee9b9bba81604ae478f4e4bfe5"
   },
   "sites/ardmore-sunday-2026-11-08/patched/Home_Fashion_Importer_-_Import.py": {
-    "mtime": 1794133995.8335135,
-    "seen": 1794206390.065228,
-    "ast_hash": "d5092f64db8a8bbc967d9514e4ba47ff",
-    "semantic_hash": "d5092f64db8a8bbc967d9514e4ba47ff"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "bc5811faedd539b51ac25d25b51868ee",
+    "semantic_hash": "bc5811faedd539b51ac25d25b51868ee"
   },
   "sites/ardmore-sunday-2026-11-08/patched/Kiln_Sheet_Importer_-_Import.py": {
-    "mtime": 1794133995.8335135,
-    "seen": 1794206390.0652304,
-    "ast_hash": "814cbbf419a8d949e167bab811247486",
-    "semantic_hash": "814cbbf419a8d949e167bab811247486"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "862608f102447ac58539729263dd1911",
+    "semantic_hash": "862608f102447ac58539729263dd1911"
   },
   "sites/ardmore-sunday-2026-11-08/patched/POS_Cart_Quantity.js": {
-    "mtime": 1794114760.6494012,
-    "seen": 1794206390.0652318,
-    "ast_hash": "9c99d76d664b06542518c6f8ca684836",
-    "semantic_hash": "9c99d76d664b06542518c6f8ca684836"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "b6698027bd20a6480f594a15bef8dcdd",
+    "semantic_hash": "b6698027bd20a6480f594a15bef8dcdd"
   },
   "sites/ardmore-sunday-2026-11-08/patched/POS_Return_Item_Picker.js": {
-    "mtime": 1794114760.6494012,
-    "seen": 1794206390.065233,
-    "ast_hash": "7f824f427c6220c7bc660ef9f1812251",
-    "semantic_hash": "7f824f427c6220c7bc660ef9f1812251"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "62731871dad5d6da33d7696818dea13d",
+    "semantic_hash": "62731871dad5d6da33d7696818dea13d"
   },
   "sites/ardmore-sunday-2026-11-08/patched/get-inventory-for-erpnext.py": {
-    "mtime": 1794114760.6494012,
-    "seen": 1794206390.0652344,
-    "ast_hash": "c02efcdd55abb9ee428ed6ad63697dcb",
-    "semantic_hash": "c02efcdd55abb9ee428ed6ad63697dcb"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "d2e668ec32bc79b6b5fd50c4c25cc1b1",
+    "semantic_hash": "d2e668ec32bc79b6b5fd50c4c25cc1b1"
   },
   "sites/ardmore-sunday-2026-11-08/patched/post-customerreturn-to-sage.py": {
-    "mtime": 1794114760.6494012,
-    "seen": 1794206390.0652356,
-    "ast_hash": "a619af4be4b796b56254fac81e76b059",
-    "semantic_hash": "a619af4be4b796b56254fac81e76b059"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "5d0337e0e25c1f0bdaed08a785587000",
+    "semantic_hash": "5d0337e0e25c1f0bdaed08a785587000"
   },
   "sites/ardmore-sunday-2026-11-08/patched/post-intercompany-sale-to-sage.py": {
-    "mtime": 1794114760.6494012,
-    "seen": 1794206390.065237,
-    "ast_hash": "a7387754f6c68d2175c7c37f3de7ff19",
-    "semantic_hash": "a7387754f6c68d2175c7c37f3de7ff19"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "fd057bcd9e13cf798dcffd4897ea9031",
+    "semantic_hash": "fd057bcd9e13cf798dcffd4897ea9031"
   },
   "sites/ardmore-sunday-2026-11-08/patched/post-taxinvoice-to-sage.py": {
-    "mtime": 1794114760.6479306,
-    "seen": 1794206390.065238,
-    "ast_hash": "f6471773056b67d5a17928fbf0669009",
-    "semantic_hash": "f6471773056b67d5a17928fbf0669009"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "9afc0e9dd4fd2b1e0c41d00af50647e6",
+    "semantic_hash": "9afc0e9dd4fd2b1e0c41d00af50647e6"
   },
   "sites/ardmore-sunday-2026-11-08/patched/sync-home-retail-prices.py": {
-    "mtime": 1794114760.6494012,
-    "seen": 1794206390.065239,
-    "ast_hash": "91ed06ab50b199caf0e6c7b447b51a53",
-    "semantic_hash": "91ed06ab50b199caf0e6c7b447b51a53"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "649c4a743b4b3e839d473b5b359bd194",
+    "semantic_hash": "649c4a743b4b3e839d473b5b359bd194"
   },
   "sites/ardmore-sunday-2026-11-08/server/Sales Invoice - Sales Other.py": {
-    "mtime": 1793964943.5151434,
-    "seen": 1794206390.065241,
-    "ast_hash": "9d3482a7459a63c1c38b336a5c0aebd8",
-    "semantic_hash": "9d3482a7459a63c1c38b336a5c0aebd8"
+    "mtime": 1795603906.8199346,
+    "ast_hash": "ec750446647116073a2eb5bfb99eb297",
+    "semantic_hash": "ec750446647116073a2eb5bfb99eb297"
   },
   "sites/ardmore-sunday-2026-11-08/server/pos-sales-other-setup.py": {
-    "mtime": 1793964943.6095264,
-    "seen": 1794206390.0652442,
-    "ast_hash": "dacdfef12d9f69f21e5b48a0ab1bb66e",
-    "semantic_hash": "dacdfef12d9f69f21e5b48a0ab1bb66e"
+    "mtime": 1795603906.8199346,
+    "ast_hash": "d9fc535d4d9bbb0282524fa098b0dcc7",
+    "semantic_hash": "d9fc535d4d9bbb0282524fa098b0dcc7"
   },
   "sites/ardmore-sunday-2026-11-08/server/post-pending-items-to-sage.py": {
-    "mtime": 1794134218.7986498,
-    "seen": 1794206390.0652459,
-    "ast_hash": "e58f143a27946eec52e7dcd674c3db12",
-    "semantic_hash": "e58f143a27946eec52e7dcd674c3db12"
+    "mtime": 1795603906.8199346,
+    "ast_hash": "479edb376e78ae75b6555a05897d270c",
+    "semantic_hash": "479edb376e78ae75b6555a05897d270c"
   },
   "sites/ardmore-sunday-2026-11-08/server/post_new_item_to_sage.py": {
-    "mtime": 1793965021.1970391,
-    "seen": 1794206390.0652483,
-    "ast_hash": "16d8e2b725aa2a5d52bacc668ee71d17",
-    "semantic_hash": "16d8e2b725aa2a5d52bacc668ee71d17"
+    "mtime": 1795603906.8199346,
+    "ast_hash": "236da295d0d3c642ff8ddaf0be4fc95b",
+    "semantic_hash": "236da295d0d3c642ff8ddaf0be4fc95b"
   },
   "sites/ardmore-sunday-2026-11-08/server/sage-accounts-for-company.py": {
-    "mtime": 1793964943.673679,
-    "seen": 1794206390.0652509,
-    "ast_hash": "78ad0436728cce244f13811f6cf1ff8e",
-    "semantic_hash": "78ad0436728cce244f13811f6cf1ff8e"
+    "mtime": 1795603906.8199346,
+    "ast_hash": "382255701ad3e90b1835736731f55018",
+    "semantic_hash": "382255701ad3e90b1835736731f55018"
   },
   "gotchas/2026-10-28-pos-register-empty-in-sales-invoice-mode.md": {
     "mtime": 1793691199.9905188,
@@ -1102,39 +1052,248 @@
     "semantic_hash": "778a5d0d9444bc053a2490729442d2d4"
   },
   "gotchas/2026-11-05-job-card-save-refused-before-earlier-step.md": {
-    "mtime": 1794205468.095533,
-    "seen": 1794206390.0652845,
-    "ast_hash": "f2136dde99307091e0e77d2903591484",
-    "semantic_hash": "f2136dde99307091e0e77d2903591484"
+    "mtime": 1795603906.5851192,
+    "ast_hash": "4e0aac70cb36be99726bceb95480c9cb",
+    "semantic_hash": "4e0aac70cb36be99726bceb95480c9cb"
   },
   "gotchas/2026-11-06-list-onload-filter-narrows-fresh-drilldown.md": {
-    "mtime": 1794205468.121706,
-    "seen": 1794206390.065286,
-    "ast_hash": "5d85d84649c44d635072624acb520dcf",
-    "semantic_hash": "5d85d84649c44d635072624acb520dcf"
+    "mtime": 1795603906.5851192,
+    "ast_hash": "b2cee6af66ebb68bbbeffac705c6f5d8",
+    "semantic_hash": "b2cee6af66ebb68bbbeffac705c6f5d8"
   },
   "gotchas/2026-11-08-sage-item-cost-and-frappe-sandbox.md": {
-    "mtime": 1794205456.6960297,
-    "seen": 1794206390.065287,
-    "ast_hash": "17fcdf97ebea76db9dbb8ef47e064517",
-    "semantic_hash": "17fcdf97ebea76db9dbb8ef47e064517"
+    "mtime": 1795603906.5851192,
+    "ast_hash": "dce150ddb92c72a2b682959e03e1d796",
+    "semantic_hash": "dce150ddb92c72a2b682959e03e1d796"
   },
   "sites/ardmore-handover-2026-11-09.md": {
-    "mtime": 1794205456.6285331,
-    "seen": 1794206390.065292,
-    "ast_hash": "c2c9ad23fc02c43280bd64833d2133dd",
-    "semantic_hash": "c2c9ad23fc02c43280bd64833d2133dd"
+    "mtime": 1795603906.726187,
+    "ast_hash": "4b6a2579130d40ee6270224994fd73b3",
+    "semantic_hash": "4b6a2579130d40ee6270224994fd73b3"
   },
   "sites/ardmore-sunday-2026-11-08/README.md": {
-    "mtime": 1794134554.5228748,
-    "seen": 1794206390.065293,
-    "ast_hash": "2138e2acb0be5ce964219b09eb10c1ce",
-    "semantic_hash": "2138e2acb0be5ce964219b09eb10c1ce"
+    "mtime": 1795603906.7886832,
+    "ast_hash": "58bf4e1f568b2835212e3da97c03c924",
+    "semantic_hash": "58bf4e1f568b2835212e3da97c03c924"
   },
   "sites/ardmore-sunday-2026-11-08/pharoh-prompt-2026-11-08.md": {
-    "mtime": 1794124704.256266,
-    "seen": 1794206390.0652955,
-    "ast_hash": "87c115bdf5cef955fba40df8259d1377",
-    "semantic_hash": "87c115bdf5cef955fba40df8259d1377"
+    "mtime": 1795603906.8043103,
+    "ast_hash": "841ac255825e3634103069259c5e2750",
+    "semantic_hash": "841ac255825e3634103069259c5e2750"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/BEFORE_Home_Fashion_Importer_-_Download_Template.js": {
+    "mtime": 1795603906.726187,
+    "ast_hash": "3d4c8ea0326496b54665541f3088c993",
+    "semantic_hash": "3d4c8ea0326496b54665541f3088c993"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/BEFORE_Home_Fashion_Importer_-_Import.py": {
+    "mtime": 1795603906.726187,
+    "ast_hash": "5c7bdc52b9d0d59cf593c31130790ca2",
+    "semantic_hash": "5c7bdc52b9d0d59cf593c31130790ca2"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/Home_Fashion_Importer_-_Download_Template.js": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "8914f2b08152978401dea8648fc5f856",
+    "semantic_hash": "8914f2b08152978401dea8648fc5f856"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/Home_Fashion_Importer_-_Import.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "7b0242aac6e312c5cecc54831ca0b97b",
+    "semantic_hash": "7b0242aac6e312c5cecc54831ca0b97b"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/build_category_lists.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "8ad8be23be9d2725b5b9eaf731fb8f1a",
+    "semantic_hash": "8ad8be23be9d2725b5b9eaf731fb8f1a"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/category_changes.json": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "8587905daf576cf3bc98170db27595c3",
+    "semantic_hash": "8587905daf576cf3bc98170db27595c3"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/cheri_answers_apply_2026-11-25.json": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "bc15b50d94755def46caa8523d65bef1",
+    "semantic_hash": "bc15b50d94755def46caa8523d65bef1"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/lists_before_2026-11-23.json": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "3905f03ad9d820c0838bf11ff9a41e7d",
+    "semantic_hash": "3905f03ad9d820c0838bf11ff9a41e7d"
+  },
+  "sites/ardmore-online-split-2026-11-20/base/Sales_Invoice_-_Online_Auto_Transfer.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "81ec0ef65f00a3adc9ad870a4a5a32a2",
+    "semantic_hash": "81ec0ef65f00a3adc9ad870a4a5a32a2"
+  },
+  "sites/ardmore-online-split-2026-11-20/base/pos-pool-items.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "01c3da3c49ea815029f6d7e28e05a4b6",
+    "semantic_hash": "01c3da3c49ea815029f6d7e28e05a4b6"
+  },
+  "sites/ardmore-online-split-2026-11-20/base/pos-pool-stock.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "f0b73e39d7b5979666ff069d2633c377",
+    "semantic_hash": "f0b73e39d7b5979666ff069d2633c377"
+  },
+  "sites/ardmore-online-split-2026-11-20/base/post-customerreturn-to-sage.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "5d0337e0e25c1f0bdaed08a785587000",
+    "semantic_hash": "5d0337e0e25c1f0bdaed08a785587000"
+  },
+  "sites/ardmore-online-split-2026-11-20/base/post-intercompany-sale-to-sage.py": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "fd057bcd9e13cf798dcffd4897ea9031",
+    "semantic_hash": "fd057bcd9e13cf798dcffd4897ea9031"
+  },
+  "sites/ardmore-online-split-2026-11-20/base/post-taxinvoice-to-sage.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "9afc0e9dd4fd2b1e0c41d00af50647e6",
+    "semantic_hash": "9afc0e9dd4fd2b1e0c41d00af50647e6"
+  },
+  "sites/ardmore-online-split-2026-11-20/client/POS_Shopify_Orders.js": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "77c5538a1cda1f1d570753178ee6fee1",
+    "semantic_hash": "77c5538a1cda1f1d570753178ee6fee1"
+  },
+  "sites/ardmore-online-split-2026-11-20/custom_fields.json": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "371c38902b7dfae6f547560c85481f88",
+    "semantic_hash": "371c38902b7dfae6f547560c85481f88"
+  },
+  "sites/ardmore-online-split-2026-11-20/patched/Sales_Invoice_-_Online_Auto_Transfer.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "d3f69abfce987965e40a5948f58a80f3",
+    "semantic_hash": "d3f69abfce987965e40a5948f58a80f3"
+  },
+  "sites/ardmore-online-split-2026-11-20/patched/pos-pool-items.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "04c34e39e85351b4f26ef8cefcd30505",
+    "semantic_hash": "04c34e39e85351b4f26ef8cefcd30505"
+  },
+  "sites/ardmore-online-split-2026-11-20/patched/pos-pool-stock.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "9bd6cb265de6121e90de9b196b37e2e1",
+    "semantic_hash": "9bd6cb265de6121e90de9b196b37e2e1"
+  },
+  "sites/ardmore-online-split-2026-11-20/patched/post-customerreturn-to-sage.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "edefc08eaf04c2a1a9a70c5f0b154f16",
+    "semantic_hash": "edefc08eaf04c2a1a9a70c5f0b154f16"
+  },
+  "sites/ardmore-online-split-2026-11-20/patched/post-intercompany-sale-to-sage.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "9a6fb15420a0ef77df9c96199ace3bfc",
+    "semantic_hash": "9a6fb15420a0ef77df9c96199ace3bfc"
+  },
+  "sites/ardmore-online-split-2026-11-20/patched/post-taxinvoice-to-sage.py": {
+    "mtime": 1795603906.7574334,
+    "ast_hash": "514cd16463ba97a397d12c106f8862e1",
+    "semantic_hash": "514cd16463ba97a397d12c106f8862e1"
+  },
+  "sites/ardmore-online-split-2026-11-20/server/Customer_-_Mailing_List_Email.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "90496d901b4baf07c9109bc9d129c9d7",
+    "semantic_hash": "90496d901b4baf07c9109bc9d129c9d7"
+  },
+  "sites/ardmore-online-split-2026-11-20/server/Sales_Invoice_-_Close_Shopify_Order.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "eee57edd34b2be03daf89773df1df9aa",
+    "semantic_hash": "eee57edd34b2be03daf89773df1df9aa"
+  },
+  "sites/ardmore-online-split-2026-11-20/server/Sales_Invoice_-_Sell_From_Item_Company.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "5bcc4e6cbe3d168f7bc6dc77be96ea38",
+    "semantic_hash": "5bcc4e6cbe3d168f7bc6dc77be96ea38"
+  },
+  "sites/ardmore-online-split-2026-11-20/server/Sales_Order_-_Shopify_Category_Check.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "6400638170fa1b67bc5d350d9ef9134a",
+    "semantic_hash": "6400638170fa1b67bc5d350d9ef9134a"
+  },
+  "sites/ardmore-online-split-2026-11-20/server/pos-shopify-orders.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "b8db216bc1b4bde81f4d086b3884a3eb",
+    "semantic_hash": "b8db216bc1b4bde81f4d086b3884a3eb"
+  },
+  "sites/ardmore-online-split-2026-11-20/tests/fake_frappe.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "8880628073b1873aee0b29447e493426",
+    "semantic_hash": "8880628073b1873aee0b29447e493426"
+  },
+  "sites/ardmore-online-split-2026-11-20/tests/test_connector.py": {
+    "mtime": 1795603906.77306,
+    "ast_hash": "19d8c73aa0bc0922e5e8fcb1b95369a8",
+    "semantic_hash": "19d8c73aa0bc0922e5e8fcb1b95369a8"
+  },
+  "sites/ardmore-online-split-2026-11-20/tests/test_site_scripts.py": {
+    "mtime": 1795603906.7886832,
+    "ast_hash": "41d8052e831f88230f4558791889cd8a",
+    "semantic_hash": "41d8052e831f88230f4558791889cd8a"
+  },
+  "gotchas/2026-10-30-insights-data-query-live-connection.md": {
+    "mtime": 1793354732.7271414,
+    "ast_hash": "477fbfaa4bc1693eb5d51a4f852ce24b",
+    "semantic_hash": "477fbfaa4bc1693eb5d51a4f852ce24b"
+  },
+  "gotchas/2026-10-31-web-speech-no-restart-loop.md": {
+    "mtime": 1793432192.9710288,
+    "ast_hash": "2f067f436d962b0faae58e977d9494eb",
+    "semantic_hash": "2f067f436d962b0faae58e977d9494eb"
+  },
+  "gotchas/2026-11-09-sage-opening-stock-costed-at-selling-price.md": {
+    "mtime": 1794227404.8456001,
+    "ast_hash": "e53baef08c33d840a6727894d910257f",
+    "semantic_hash": "e53baef08c33d840a6727894d910257f"
+  },
+  "gotchas/2026-11-10-ardmore-price-sync-double-vat-and-half-lists.md": {
+    "mtime": 1794293570.1919904,
+    "ast_hash": "8fb6287cb87c462ec58b1c8113994b83",
+    "semantic_hash": "8fb6287cb87c462ec58b1c8113994b83"
+  },
+  "gotchas/2026-11-10-tdr-v16-generate-list-and-orphan-child-rows.md": {
+    "mtime": 1795603906.5851192,
+    "ast_hash": "bef5d1f6d3307c3c0d10f66caa178608",
+    "semantic_hash": "bef5d1f6d3307c3c0d10f66caa178608"
+  },
+  "gotchas/2026-11-11-frappe-v16-boot-home-page-must-be-a-page.md": {
+    "mtime": 1794401873.061885,
+    "ast_hash": "92b7fe64d9d0727d0b73d57f0c17b10d",
+    "semantic_hash": "92b7fe64d9d0727d0b73d57f0c17b10d"
+  },
+  "gotchas/2026-11-12-frappe-16-56-get-route-empty-on-load.md": {
+    "mtime": 1794470456.0686407,
+    "ast_hash": "37f88714e4c4b375268014f6c1f1bb67",
+    "semantic_hash": "37f88714e4c4b375268014f6c1f1bb67"
+  },
+  "gotchas/2026-11-12-frappe-16-56-page-header-has-no-navbar.md": {
+    "mtime": 1795603906.5851192,
+    "ast_hash": "855a243cb18be23fb687e438a303714e",
+    "semantic_hash": "855a243cb18be23fb687e438a303714e"
+  },
+  "gotchas/2026-11-12-frappe-plain-app-include-js-cached-for-a-year.md": {
+    "mtime": 1795603906.5851192,
+    "ast_hash": "dde9bc1e2e40fb071b5643de0d4b9db4",
+    "semantic_hash": "dde9bc1e2e40fb071b5643de0d4b9db4"
+  },
+  "gotchas/2026-11-12-general-ledger-total-row-double-counts.md": {
+    "mtime": 1795603906.5851192,
+    "ast_hash": "141c3758699c01b7482e410bea9df12b",
+    "semantic_hash": "141c3758699c01b7482e410bea9df12b"
+  },
+  "gotchas/2026-11-23-word-pdf-export-hangs-use-page-emf.md": {
+    "mtime": 1795425791.079293,
+    "ast_hash": "88f88dd19ea9bc73d23581a978180f46",
+    "semantic_hash": "88f88dd19ea9bc73d23581a978180f46"
+  },
+  "sites/ardmore-item-attributes-2026-11-23/README.md": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "b69152a5f8c139d0fe91cff0ae7545a5",
+    "semantic_hash": "b69152a5f8c139d0fe91cff0ae7545a5"
+  },
+  "sites/ardmore-online-split-2026-11-20/README.md": {
+    "mtime": 1795603906.7418096,
+    "ast_hash": "6ba3a8eca28e0a42eb7e78b593af774f",
+    "semantic_hash": "6ba3a8eca28e0a42eb7e78b593af774f"
   }
 }

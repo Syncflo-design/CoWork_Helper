@@ -63,6 +63,13 @@ when he says the word.** Nothing here reverts on its own.
     it back to `Ardmore` (Session Defaults, or
     `session_default_settings.set_session_default_values`) when the training company is retired.
 
+12. **Passwords (Russell, 29 Oct 2026): after Sunday's training, reset only the users he
+    names.** Standard Frappe: User -> Reset Password sends a one-time link; the user sets
+    their own password at first login Monday and the training password dies. Before sending:
+    the user record must hold a real mailbox (the shared till login included), and lengthen
+    the link validity in System Settings so it survives the night. Russell picks the users;
+    do not reset the lot.
+
 ## See also
 
 - `gotchas/2026-09-21-pos-sales-never-reached-sage-stock-leak.md` (why the lock exists, POS = Sales Invoice mode)
