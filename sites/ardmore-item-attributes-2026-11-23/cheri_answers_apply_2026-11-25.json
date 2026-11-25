@@ -1,0 +1,106 @@
+{
+ "changes": [
+  [
+   "CARDIS01",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "CARLLC",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "CARQSTAC04",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "CARQSTRE02",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "CARQSTZR05",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "ENVPOSTCARDG",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "GIFT1",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "GIFT2",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "GIFT3",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "GIFT4",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "Lovebird Leopard Night 50x50",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "XMASBAG",
+   "Ceramics",
+   "Home"
+  ],
+  [
+   "SCASKR65",
+   "Ceramics",
+   "Fashion"
+  ],
+  [
+   "SCAWLSM90 -SAMPLE",
+   "Ceramics",
+   "Fashion"
+  ]
+ ],
+ "disable": [
+  "AB67620DSJ",
+  "RM-001",
+  "RM-002",
+  "RM-003",
+  "zzz_HA ADJ - 2026"
+ ],
+ "unclear": [
+  "AM529JAN24",
+  "AR309APR25R (2)",
+  "AR316JUN25 (2)",
+  "BN928DEC24R (2)",
+  "FK867FEB24",
+  "FK869FEB24"
+ ],
+ "merges": [
+  [
+   "custom_design",
+   "Sampe Critters",
+   "Camp Critters"
+  ],
+  [
+   "custom_colour",
+   "Silver Rippler",
+   "Silver Ripple"
+  ],
+  [
+   "custom_colour",
+   "Rippler",
+   "Silver Ripple"
+  ]
+ ]
+}

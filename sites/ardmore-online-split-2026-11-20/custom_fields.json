@@ -1,0 +1,20 @@
+[
+  {"dt": "Sales Invoice", "fieldname": "custom_sage_companies", "label": "Sage Companies", "fieldtype": "Data",
+   "insert_after": "custom_sage_document_number", "read_only": 1, "no_copy": 1, "print_hide": 1,
+   "description": "The Sage company of each Sage number, in the same order (an online sale can post to several)."},
+
+  {"dt": "POS Profile", "fieldname": "custom_split_by_item_company", "label": "Post Each Item to Its Own Company", "fieldtype": "Check",
+   "insert_after": "custom_sage_sales_rep_id", "default": "0",
+   "description": "Online: each item sells from its own company's warehouse and posts to Sage in that company (one Sage invoice per company, on the company's online customer and rep). No stock transfer, no intercompany."},
+
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_online_section", "label": "Online sales", "fieldtype": "Section Break",
+   "insert_after": "custom_sage_pos_sales_rep_id"},
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_online_customer_id", "label": "Online Customer ID (Sage)", "fieldtype": "Data",
+   "insert_after": "custom_sage_online_section",
+   "description": "The Sage customer an online sale of this company's items posts to (till ticked Post Each Item to Its Own Company)."},
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_online_customer_name", "label": "Online Customer Name (Sage)", "fieldtype": "Data",
+   "insert_after": "custom_sage_online_customer_id"},
+  {"dt": "Company Sage Integration", "fieldname": "custom_sage_online_sales_rep_id", "label": "Online Sales Rep ID (Sage)", "fieldtype": "Int",
+   "insert_after": "custom_sage_online_customer_name",
+   "description": "This company's Sage rep for online sales. Sage refuses a credit note without one."}
+]
